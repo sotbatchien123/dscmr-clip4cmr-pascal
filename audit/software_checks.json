@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-10-11T17:36:18.102018+07:00",
+  "scope": "synthetic_software_tests_only_NOT_model_benchmarks",
+  "python": "C:\\Program Files\\Python310\\python.exe",
+  "syntax": {
+    "files": 19,
+    "errors": []
+  },
+  "tests_exit_code": 0,
+  "cli_help_checks": [
+    {
+      "script": "01_CLIP/evaluate.py",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "script": "02_ViLT/run.py",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "script": "03_DSCMR/train.py",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "script": "04_DCMH/run.py",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "script": "05_DCHMT/run.py",
+      "exit_code": 0,
+      "stderr": ""
+    }
+  ]
+}
