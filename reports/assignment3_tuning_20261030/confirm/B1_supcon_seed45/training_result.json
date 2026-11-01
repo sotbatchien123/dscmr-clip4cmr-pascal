@@ -1,0 +1,27 @@
+{
+  "config": {
+    "name": "B1_supcon*",
+    "weights": [
+      1.0,
+      0.03,
+      0.03
+    ],
+    "contrastive": true,
+    "tau": 0.2,
+    "adaptive": false
+  },
+  "seed": 45,
+  "epochs": 176,
+  "budget": 500,
+  "patience": 50,
+  "best_epoch": 126,
+  "best_validation_mean_map": 0.753967697920787,
+  "mean_term_share_until_best": [
+    0.6277383722525552,
+    0.2953205799667627,
+    0.07694104778068195
+  ],
+  "elapsed_seconds": 44.937240100000054,
+  "run": "C:\\Users\\ASUS G615\\OneDrive\\Documents\\ChatGPT\\SEG\\reports\\assignment3_tuning_20261030\\confirm\\B1_supcon_seed45",
+  "test_evaluated": false
+}

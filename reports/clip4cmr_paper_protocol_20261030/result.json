@@ -1,0 +1,96 @@
+{
+  "protocol": "Diagnostic: CLIP4CMR base vs A_sem+B under the paper's selection rule, author split (mirror).\n\nPaper sec. 4.1: all 800 train pairs, max 200 epochs, early stopping 20; upstream code evaluates\nTEST after every epoch and keeps the best test mean. Test-selected, hence optimistic; used only to\nput our numbers on the same footing as the published 69.8 / 69.2. alpha = 0.3 (chosen by CV in\nreports/clip4cmr_author_split_20261030). Seeds 42-46. Usage: python clip4cmr_paper_protocol.py\n",
+  "runs": {
+    "base": [
+      {
+        "seed": 42,
+        "best_epoch": 77,
+        "I2T": 0.6899218835042273,
+        "T2I": 0.68884171936283
+      },
+      {
+        "seed": 43,
+        "best_epoch": 75,
+        "I2T": 0.6860022081370929,
+        "T2I": 0.6912127934528002
+      },
+      {
+        "seed": 44,
+        "best_epoch": 77,
+        "I2T": 0.6967180652636117,
+        "T2I": 0.6869524345123161
+      },
+      {
+        "seed": 45,
+        "best_epoch": 80,
+        "I2T": 0.6908018590257189,
+        "T2I": 0.6860886661289957
+      },
+      {
+        "seed": 46,
+        "best_epoch": 80,
+        "I2T": 0.6980262435044738,
+        "T2I": 0.6943387034767231
+      }
+    ],
+    "A_sem+B": [
+      {
+        "seed": 42,
+        "best_epoch": 130,
+        "I2T": 0.7105173766001417,
+        "T2I": 0.7108405923064077
+      },
+      {
+        "seed": 43,
+        "best_epoch": 130,
+        "I2T": 0.7123656553670602,
+        "T2I": 0.7094083467500688
+      },
+      {
+        "seed": 44,
+        "best_epoch": 175,
+        "I2T": 0.7103173311748563,
+        "T2I": 0.7096657521951084
+      },
+      {
+        "seed": 45,
+        "best_epoch": 126,
+        "I2T": 0.7119867342831557,
+        "T2I": 0.7110582360318779
+      },
+      {
+        "seed": 46,
+        "best_epoch": 148,
+        "I2T": 0.7117229785961956,
+        "T2I": 0.7090387243613084
+      }
+    ]
+  },
+  "aggregate_mean_sd": {
+    "base": {
+      "I2T": [
+        0.692294051887025,
+        0.00499677484085
+      ],
+      "T2I": [
+        0.689486863386733,
+        0.003350614569946054
+      ]
+    },
+    "A_sem+B": {
+      "I2T": [
+        0.7113820152042819,
+        0.0009125022146676288
+      ],
+      "T2I": [
+        0.7100023303289543,
+        0.0008961386317643921
+      ]
+    }
+  },
+  "paper": {
+    "I2T": 0.698,
+    "T2I": 0.692,
+    "source": "arXiv 2201.02772v2 sec. 4.1"
+  }
+}

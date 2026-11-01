@@ -1,0 +1,28 @@
+{
+  "phase": "main",
+  "variant": "B2_adaptive",
+  "seed": 42,
+  "epochs": 74,
+  "budget": 500,
+  "patience": 50,
+  "best_epoch": 24,
+  "best_validation_mean_map": 0.7549996900569408,
+  "elapsed_seconds": 13.93859519995749,
+  "seconds_per_epoch_median": 0.14770359999965876,
+  "run": "C:\\Users\\ASUS G615\\OneDrive\\Documents\\ChatGPT\\SEG\\reports\\assignment3_20261029\\main\\B2_adaptive_seed42",
+  "test_evaluated": true,
+  "test": {
+    "I2T": {
+      "mAP@ALL": 0.6681104491828727,
+      "R@1": 0.67,
+      "R@5": 0.89,
+      "R@10": 0.96
+    },
+    "T2I": {
+      "mAP@ALL": 0.696442774229042,
+      "R@1": 0.75,
+      "R@5": 0.94,
+      "R@10": 0.97
+    }
+  }
+}

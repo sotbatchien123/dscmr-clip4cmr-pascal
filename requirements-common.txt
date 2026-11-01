@@ -1,4 +1,17 @@
-# Common infrastructure only. Does not install all five model environments.
+# Python 3.10. Cài PyTorch có CUDA phù hợp trước (dự án dùng torch 2.7.1+cu128, torchvision 0.22.1+cu128).
 numpy==1.26.4
 scipy==1.15.3
-Pillow>=10,<12
+Pillow>=10,<13
+h5py>=3.10
+ftfy
+regex
+tqdm
+matplotlib>=3.7
+python-docx>=1.1
+# OpenAI CLIP (RN50, ViT-L/14) cho CLIP4CMR
+git+https://github.com/openai/CLIP.git
+
+# Vòng 3 (encoder lớn, fine-tune DFN5B) cần thêm hai gói dưới. Dự án cài chúng vào thư mục
+# riêng .feat_libs (pip install --target .feat_libs ...), vì venv chính giữ timm 0.4.12 cho mã gốc.
+# open_clip_torch==2.32.0
+# timm==1.0.15

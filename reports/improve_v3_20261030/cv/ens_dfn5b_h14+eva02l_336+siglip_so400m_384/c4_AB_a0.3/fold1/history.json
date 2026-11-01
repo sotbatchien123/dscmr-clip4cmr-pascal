@@ -1,0 +1,4422 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 0.020902388993261467,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.622722301603209,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6197372476453895,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 2,
+    "train_loss": 0.020885883705384696,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6233813817388069,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6202033760025427,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.020868764314522493,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.623809507013406,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6203957117520128,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 4,
+    "train_loss": 0.02088049343272821,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6242239776124872,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6206251184629569,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 5,
+    "train_loss": 0.02086581471862633,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6245828812360804,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6212022081959573,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 6,
+    "train_loss": 0.02084698497470635,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6249783567228585,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6217589507154004,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 7,
+    "train_loss": 0.020853430032730103,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.62569757146039,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.62260844917681,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 8,
+    "train_loss": 0.02083089655793425,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6262347268761623,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6233180737208905,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 9,
+    "train_loss": 0.020829193850061788,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6268468696392302,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6239382227780476,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 10,
+    "train_loss": 0.0208191150771593,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6276352637330979,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6243871865181821,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 11,
+    "train_loss": 0.020804227677299017,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6284164585414577,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6255417703654352,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 12,
+    "train_loss": 0.020795661205453658,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6289828049196456,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6261382918760773,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 13,
+    "train_loss": 0.02079388828697934,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.629822038341629,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6269515666956568,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 14,
+    "train_loss": 0.020787241006853866,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6309727996390063,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6276814748647715,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 15,
+    "train_loss": 0.020768387910367836,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6321390665565786,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6288955374235867,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 16,
+    "train_loss": 0.020734052048690284,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6328971228169762,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6298549076397056,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 17,
+    "train_loss": 0.02073388795521277,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6337155176809761,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6306065433778456,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 18,
+    "train_loss": 0.02070479232595483,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6346774596921012,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6317159499159084,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 19,
+    "train_loss": 0.020680137006426926,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.63574957484357,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6331030759414662,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 20,
+    "train_loss": 0.020643848967529944,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6365551536136491,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6338640355480352,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 21,
+    "train_loss": 0.020623057413457047,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6372558052540132,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6351123887214212,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 22,
+    "train_loss": 0.020570090179567905,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6378206675523176,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.636157334203817,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 23,
+    "train_loss": 0.02053985811436354,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6388466284975937,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.636852381650404,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 24,
+    "train_loss": 0.02051970516957009,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6392973773980228,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6378847445934075,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 25,
+    "train_loss": 0.020460936171350193,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6402234679764931,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6384326748080364,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 26,
+    "train_loss": 0.02042704805342564,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6414128171381193,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6392299436032307,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 27,
+    "train_loss": 0.0203784023369871,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6422659686113934,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6403316908477754,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 28,
+    "train_loss": 0.02030050846289343,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6422272360212968,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.640906477943014,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 29,
+    "train_loss": 0.020254009639594093,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6429776655518945,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.641541078622994,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 30,
+    "train_loss": 0.020184805074623273,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6432814626100719,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6419558437053059,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 31,
+    "train_loss": 0.020141121458762616,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6425648114136232,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6419811278011582,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 32,
+    "train_loss": 0.02008645150310068,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6422344993356949,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6428828080725639,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 33,
+    "train_loss": 0.020034565201112582,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6417084428145939,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6435356783206082,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 34,
+    "train_loss": 0.019957706804818183,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6416642060332151,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6437865291696883,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 35,
+    "train_loss": 0.019953338901943236,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6411082016548713,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6452020008990225,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 36,
+    "train_loss": 0.019923054724375704,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.64063026622018,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.645456004990787,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 37,
+    "train_loss": 0.019888589464461627,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6411685992850746,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6460196100223465,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 38,
+    "train_loss": 0.019838842744035506,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6420071674643516,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6460700441714834,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 39,
+    "train_loss": 0.019793559560802445,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6428219410328067,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6467022833215071,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 40,
+    "train_loss": 0.019762917574661882,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6446332979040996,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6473714442176399,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 41,
+    "train_loss": 0.0197555501458805,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.645680321612535,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6479403699366374,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 42,
+    "train_loss": 0.01975043910319236,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6464169323562998,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6489890226327001,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 43,
+    "train_loss": 0.01971713507742579,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6477631672902687,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6493606005054205,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 44,
+    "train_loss": 0.01969571809159286,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6497432871874659,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6499243776307713,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 45,
+    "train_loss": 0.01967542239033909,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6516440960873984,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6504880381625591,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 46,
+    "train_loss": 0.019657916000196292,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6527755135295257,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6515052413055515,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 47,
+    "train_loss": 0.019667665460216466,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6539471537697602,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6528030952480044,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 48,
+    "train_loss": 0.019606513346531497,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6554272972846942,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6533329469628321,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 49,
+    "train_loss": 0.01962459183284151,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6564961814685817,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6544273629664819,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 50,
+    "train_loss": 0.019576499071806225,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6582127531452141,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.655914128064252,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 51,
+    "train_loss": 0.019586282184542114,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6594415592255752,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6568278440334053,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 52,
+    "train_loss": 0.019573845247279353,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6613725189308715,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6573832542696696,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 53,
+    "train_loss": 0.019552544537764876,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6627576565616651,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6588435999605922,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 54,
+    "train_loss": 0.019542956557958874,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6643242686509053,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6601113939435489,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 55,
+    "train_loss": 0.019500568856610292,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6654604328949126,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.661202658433339,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 56,
+    "train_loss": 0.019504651997182796,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6672452054984064,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6618142949199105,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 57,
+    "train_loss": 0.019491641406915082,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6685968386713733,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6639712941341108,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 58,
+    "train_loss": 0.019467545423045088,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6699234212693295,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6647575320874891,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 59,
+    "train_loss": 0.019455425260560728,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6715154762250203,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6656915902101637,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 60,
+    "train_loss": 0.019471395774674948,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6727449354426853,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6672291969871402,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 61,
+    "train_loss": 0.019425101717238994,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6740554150230952,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6683597478964719,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 62,
+    "train_loss": 0.019419562335668217,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6751601144917286,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6696556841270821,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 63,
+    "train_loss": 0.019407679229529937,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.675755170942351,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6713327150987506,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 64,
+    "train_loss": 0.019393811085775717,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6773089441018514,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6721060711919342,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 65,
+    "train_loss": 0.019392961135773518,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6786991012535314,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6734386718192157,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 66,
+    "train_loss": 0.01935465906315775,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6798462503670606,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6744976915308265,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 67,
+    "train_loss": 0.01934397490278109,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6803451728485828,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6764476694915263,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 68,
+    "train_loss": 0.01935508099398506,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.681734385181605,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6768850018026102,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 69,
+    "train_loss": 0.01934283051584194,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.682926188131596,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6780875120315972,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 70,
+    "train_loss": 0.019311011240664703,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6842464975377065,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6789390295345427,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 71,
+    "train_loss": 0.01929759925036733,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.685349820552784,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6800766318238531,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 72,
+    "train_loss": 0.019298696668067977,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6867567088554601,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6815274622504813,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 73,
+    "train_loss": 0.019268381117439982,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6879554902421726,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6817549633352863,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 74,
+    "train_loss": 0.01925914015954555,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6882759607437413,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.683870153803154,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 75,
+    "train_loss": 0.01925075398897057,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6897685246699212,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6847499544240205,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 76,
+    "train_loss": 0.019231001610186562,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6905359376003276,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6861540288510475,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 77,
+    "train_loss": 0.019232696839677755,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6911123897277357,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6864696306778176,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 78,
+    "train_loss": 0.019212407893987735,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6915705973321054,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6875042439824,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 79,
+    "train_loss": 0.019217808411192538,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6926510988303901,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6886531082489342,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 80,
+    "train_loss": 0.019200993201403477,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6934822459463466,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6894139451680918,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 81,
+    "train_loss": 0.019182581232110068,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6937702857710111,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6902587097303671,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 82,
+    "train_loss": 0.019172524949952738,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6953351430859571,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6913724443252226,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 83,
+    "train_loss": 0.019175961196644983,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6953553955867002,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.69173218538798,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 84,
+    "train_loss": 0.019158120892608342,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6960078860649573,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6926822212663618,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 85,
+    "train_loss": 0.01917443270169532,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6971991123768939,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6938549415583513,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 86,
+    "train_loss": 0.019151279105068142,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6972143214608069,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6938820458706062,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 87,
+    "train_loss": 0.019120457429272025,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6982644570582829,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6953640773038838,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 88,
+    "train_loss": 0.0191218780298064,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6977589924242017,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6951426447482046,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 89,
+    "train_loss": 0.01911005192894989,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6995213879989296,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6963177328684325,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 90,
+    "train_loss": 0.019105131584984152,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.6996201118167085,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6973247279102942,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 91,
+    "train_loss": 0.019110007420071025,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7001377374635466,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6973420004414326,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 92,
+    "train_loss": 0.019099279987945486,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7000889552340134,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6985911440050502,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 93,
+    "train_loss": 0.019074913086508636,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.701387505538524,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.699199877976713,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 94,
+    "train_loss": 0.019053419871227956,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7025599692000905,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6987096650270926,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 95,
+    "train_loss": 0.019043970297076808,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7023273772497,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7001554106478789,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 96,
+    "train_loss": 0.019036559388041496,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.702612847534461,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.6999396280476309,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 97,
+    "train_loss": 0.019044324644465944,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.703451079997601,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7001237640686392,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 98,
+    "train_loss": 0.01901681671169267,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7033013889593589,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7019337178036887,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 99,
+    "train_loss": 0.019025542870608727,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7041250772921358,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7013994238211482,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 100,
+    "train_loss": 0.019005408732971147,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7034362407719591,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7018974334433276,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 101,
+    "train_loss": 0.01898776232473441,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7048154177151191,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7029049074553199,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 102,
+    "train_loss": 0.019019910690388574,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7049999949016215,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7028234495270643,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 103,
+    "train_loss": 0.01898638917995033,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7051304243090193,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7026356157401891,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 104,
+    "train_loss": 0.018974520988873582,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7051899230690086,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7031189257371904,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 105,
+    "train_loss": 0.018988327220527092,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7063343529831267,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.704080895361317,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 106,
+    "train_loss": 0.018969807190014357,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7056868940519239,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7039588018246018,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 107,
+    "train_loss": 0.01894266890890118,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7065287630373562,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7045577520026406,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 108,
+    "train_loss": 0.018944465374546266,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7055435498352706,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.70376261368982,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 109,
+    "train_loss": 0.018956452761012228,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7073284421810667,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7049663144570097,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 110,
+    "train_loss": 0.018942118830867667,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7072686125568819,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7043511165349443,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 111,
+    "train_loss": 0.018931871460778498,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.706741996786821,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7044372578643778,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 112,
+    "train_loss": 0.01892036666621023,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7080276526779982,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7055147609986364,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 113,
+    "train_loss": 0.018928332004084517,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.709130266933043,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7054220884008272,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 114,
+    "train_loss": 0.018893216653212683,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7074189545820481,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7052241933030174,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 115,
+    "train_loss": 0.018914704558564657,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7078563792347332,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.705667857603184,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 116,
+    "train_loss": 0.018895467354068114,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7073373277456276,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7051382840188709,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 117,
+    "train_loss": 0.018911569017861316,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7091436194926622,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7054350439851721,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 118,
+    "train_loss": 0.01889918751514225,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7079963635522931,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7049454671620446,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 119,
+    "train_loss": 0.01890240875142279,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7084021333884339,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7056669558314491,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 120,
+    "train_loss": 0.01888755290532735,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7089554217512737,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7062141613623018,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 121,
+    "train_loss": 0.01890009206566793,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7091504849721051,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7061783163295448,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 122,
+    "train_loss": 0.018883387502560866,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7095672372763432,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7061729320361588,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 123,
+    "train_loss": 0.018885845318436623,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7090351950021306,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7066704383440194,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 124,
+    "train_loss": 0.018884836570985282,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7096432799660435,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7068720645871325,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 125,
+    "train_loss": 0.018862820397228447,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7092437430146548,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7061424472630196,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 126,
+    "train_loss": 0.018865386357725555,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7106625023645307,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7071053014454559,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 127,
+    "train_loss": 0.018845970394896036,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7099690532839229,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7062195141514239,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 128,
+    "train_loss": 0.018852395964647408,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7101119360920232,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7071825638663753,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 129,
+    "train_loss": 0.018843444675874354,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7103819941453224,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7066085268036941,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 130,
+    "train_loss": 0.018857366836337902,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7103863108312297,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.70653914311619,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 131,
+    "train_loss": 0.018834164532930103,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7098420327295747,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7063671769351745,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 132,
+    "train_loss": 0.018828445086394672,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7111692554833794,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7071756943924532,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 133,
+    "train_loss": 0.018818792956533718,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7103001361443585,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7062185949106945,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 134,
+    "train_loss": 0.018828361948479467,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7105631507345658,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7071912987858827,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 135,
+    "train_loss": 0.018823411927294375,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7107751959549898,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7065229101141586,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 136,
+    "train_loss": 0.01878808355375902,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7103166748934496,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7077692779975385,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 137,
+    "train_loss": 0.018786022856609144,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7110322622647748,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.706871004843336,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 138,
+    "train_loss": 0.01881647421352899,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7104121348670794,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7071333291389462,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 139,
+    "train_loss": 0.018804204177611798,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7112555666145091,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7075152760422998,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 140,
+    "train_loss": 0.01879757211835527,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7106709059166223,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7078567944215305,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 141,
+    "train_loss": 0.018806313734446,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7116209594235843,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7080910237117214,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 142,
+    "train_loss": 0.018786378343825908,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7112475544056994,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7080176879997634,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 143,
+    "train_loss": 0.01880276105853159,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7116559852235007,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7078714072998051,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 144,
+    "train_loss": 0.018782106367176147,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7113539879811037,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7064025700987483,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 145,
+    "train_loss": 0.01877516299597363,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7111881766542665,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7074780551522611,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 146,
+    "train_loss": 0.01876848897159989,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7118225711266211,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7070496159589017,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 147,
+    "train_loss": 0.01878981075402516,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7100527208625804,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7060835523702306,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 148,
+    "train_loss": 0.018782399038770305,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7123844148221866,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7078022333717556,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 149,
+    "train_loss": 0.018779956791271913,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7114401670673401,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7078907704800915,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 150,
+    "train_loss": 0.018756090774576167,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7108852380002709,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7067066323351039,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 151,
+    "train_loss": 0.018763384698375837,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7117822285406438,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7080696767586022,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 152,
+    "train_loss": 0.018736134213742924,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7110266112181179,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7079385105275344,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 153,
+    "train_loss": 0.018746761438339504,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7116242110214982,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7069903254888512,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 154,
+    "train_loss": 0.018739381221248144,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7112589551274204,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7079913763222441,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 155,
+    "train_loss": 0.01875642486917439,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7109995873026801,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.707876942386062,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 156,
+    "train_loss": 0.018751256974108184,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7116898693776698,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7076422851294067,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 157,
+    "train_loss": 0.01875753055757551,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.711344802294268,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7080969554429986,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 158,
+    "train_loss": 0.01873721119794828,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7110068425123371,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.707579770437639,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 159,
+    "train_loss": 0.01872388765549482,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7119369239740929,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7080749293147667,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 160,
+    "train_loss": 0.018730774188219612,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7120806417235261,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7082160886620851,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 161,
+    "train_loss": 0.018728884131605946,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7113579499888948,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7079916322788852,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 162,
+    "train_loss": 0.018744344128045574,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7118734750680554,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.708343314396528,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 163,
+    "train_loss": 0.018727480600685326,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7113718635061052,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7072032418928381,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 164,
+    "train_loss": 0.018726168255974996,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7117084043325042,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7073156249349707,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 165,
+    "train_loss": 0.018716690783847623,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7117837258330797,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7081314844468399,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 166,
+    "train_loss": 0.018700257444114826,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.712398434272325,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7087759374892598,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 167,
+    "train_loss": 0.018720853323144698,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7117515085304329,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7088405597156551,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 168,
+    "train_loss": 0.018703841965701153,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7115790342810971,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7080093589236833,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 169,
+    "train_loss": 0.018692734387161125,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7121153246589298,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7072432634595555,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 170,
+    "train_loss": 0.018716764358331018,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7119874977267774,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.706780663589331,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 171,
+    "train_loss": 0.018701280300408157,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7126827781723061,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7085309250421351,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 172,
+    "train_loss": 0.018719614330512373,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7114965944366047,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7073924962979792,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 173,
+    "train_loss": 0.018708460199743954,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.712088967973616,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7084915525839416,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 174,
+    "train_loss": 0.018692818956811037,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7120313254119561,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7078155953380458,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 175,
+    "train_loss": 0.018685982882309316,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7115884165207698,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7080630295832544,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 176,
+    "train_loss": 0.01869930336668865,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7123870923640349,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7072782547044336,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 177,
+    "train_loss": 0.018673350728714642,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7118144700489784,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7079956458238941,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 178,
+    "train_loss": 0.01867901283636022,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7113858646043523,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7080982226109296,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 179,
+    "train_loss": 0.01867290840609305,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7119050642336744,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.708042933283269,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 180,
+    "train_loss": 0.018694167386796048,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7114064480162701,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7076600749523863,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 181,
+    "train_loss": 0.018677787271453375,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7117868364444343,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.707322906318334,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 182,
+    "train_loss": 0.018703661358623364,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7119866280758947,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7072999560844975,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 183,
+    "train_loss": 0.01868157961697721,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7118033955110052,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.707718696305313,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 184,
+    "train_loss": 0.018693504966239432,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7121703348209744,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.708503365338144,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 185,
+    "train_loss": 0.018685845574781076,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7124481370754925,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7075648473155309,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 186,
+    "train_loss": 0.01869126758190678,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7126490160137928,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7078625944569135,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 187,
+    "train_loss": 0.01866934249705788,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7125919204336206,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7082227959712164,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 188,
+    "train_loss": 0.018669566389784883,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.712017863801328,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7077153369341179,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 189,
+    "train_loss": 0.018661823568504248,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7124884910422414,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.70757595556767,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 190,
+    "train_loss": 0.01866567029214617,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7118363491050572,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7078597369911268,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 191,
+    "train_loss": 0.018662884928730885,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7117289745816117,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7079612689363094,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 192,
+    "train_loss": 0.018672169672686662,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7112235702000683,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7078695643445155,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 193,
+    "train_loss": 0.018655724100657363,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7124558850252942,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7076281914987359,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 194,
+    "train_loss": 0.01864245861991128,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7119502757784337,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7073799775990259,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 195,
+    "train_loss": 0.018656491788465585,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7115413945369892,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7074855240805921,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 196,
+    "train_loss": 0.01867509912699461,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7117894562790994,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7077620399536168,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 197,
+    "train_loss": 0.01863921828456779,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7116963463873235,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7079417586105239,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 198,
+    "train_loss": 0.01866476061239616,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7124701268787952,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7071640773138949,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 199,
+    "train_loss": 0.01864136652603968,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7119475207055693,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.707893778654265,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 200,
+    "train_loss": 0.018670932765104876,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7124918112981456,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7067644062500724,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 201,
+    "train_loss": 0.018670955506056103,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7115896290677058,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7073813020142253,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 202,
+    "train_loss": 0.018660393293335367,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7131358926603656,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7063743148049951,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 203,
+    "train_loss": 0.018639579804530786,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7120809867783953,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.706980726179276,
+        "queries_without_positive": 0,
+        "R@1": 0.9848484848484849,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 204,
+    "train_loss": 0.018652966134806177,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7125309941842296,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7073643069062141,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 205,
+    "train_loss": 0.018658948839822814,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7123839664859551,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7074041955782568,
+        "queries_without_positive": 0,
+        "R@1": 0.9848484848484849,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 206,
+    "train_loss": 0.018652830967929825,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7117150309040154,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.707313050915606,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 207,
+    "train_loss": 0.018653712972108997,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7119915765932852,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7073871135517632,
+        "queries_without_positive": 0,
+        "R@1": 0.9848484848484849,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 208,
+    "train_loss": 0.018634257977133365,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7116957962557111,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7070358644298359,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 209,
+    "train_loss": 0.018648785135861653,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7110390554406149,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7055525711553239,
+        "queries_without_positive": 0,
+        "R@1": 0.9848484848484849,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 210,
+    "train_loss": 0.018656882513036478,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7115440889498311,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7066116258673341,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 211,
+    "train_loss": 0.018635719180551926,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7118207033215039,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7067106796700028,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 212,
+    "train_loss": 0.01863230140740747,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7116570777194117,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7068330973337897,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 213,
+    "train_loss": 0.018633707982501878,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7118175968380475,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7068046611931179,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 214,
+    "train_loss": 0.018642350072180156,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7115076535094305,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7065270993724999,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 215,
+    "train_loss": 0.01862974845762573,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7116932659526256,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.70709963910839,
+        "queries_without_positive": 0,
+        "R@1": 0.9848484848484849,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 216,
+    "train_loss": 0.018629604658640143,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7115658347171406,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7058950862881538,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 217,
+    "train_loss": 0.018614785884743305,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7111098285984792,
+        "queries_without_positive": 0,
+        "R@1": 0.9924242424242424,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.706470937101799,
+        "queries_without_positive": 0,
+        "R@1": 0.9848484848484849,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 218,
+    "train_loss": 0.01864506870007782,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.712426415460197,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7060667426135318,
+        "queries_without_positive": 0,
+        "R@1": 0.9848484848484849,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 219,
+    "train_loss": 0.018644217957756413,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7117104602208403,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7064925450766676,
+        "queries_without_positive": 0,
+        "R@1": 0.9848484848484849,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 220,
+    "train_loss": 0.01864030893280435,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.712565323495302,
+        "queries_without_positive": 0,
+        "R@1": 1.0,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7068245422201799,
+        "queries_without_positive": 0,
+        "R@1": 0.9848484848484849,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  },
+  {
+    "epoch": 221,
+    "train_loss": 0.018647662711454863,
+    "validation": {
+      "I2T": {
+        "mAP@ALL": 0.7116038519627672,
+        "queries_without_positive": 0,
+        "R@1": 0.9962121212121212,
+        "R@5": 1.0,
+        "R@10": 1.0
+      },
+      "T2I": {
+        "mAP@ALL": 0.7063058042603185,
+        "queries_without_positive": 0,
+        "R@1": 0.9886363636363636,
+        "R@5": 1.0,
+        "R@10": 1.0
+      }
+    }
+  }
+]

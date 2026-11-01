@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "original_loss_value_and_gradient_equivalence",
+    "supcon_bruteforce_equivalence",
+    "singleton_and_same_class_gradients",
+    "adaptive_bounds_warmup_restore",
+    "metric_hand_example_and_existing_evaluator",
+    "all_four_variants_gradient_flow"
+  ]
+}

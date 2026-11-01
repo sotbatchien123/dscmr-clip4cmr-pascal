@@ -1,0 +1,27 @@
+{
+  "config": {
+    "name": "B0_original",
+    "weights": [
+      1.0,
+      0.01,
+      0.3
+    ],
+    "contrastive": false,
+    "tau": 0.1,
+    "adaptive": false
+  },
+  "seed": 42,
+  "epochs": 61,
+  "budget": 300,
+  "patience": 50,
+  "best_epoch": 11,
+  "best_validation_mean_map": 0.6736769319577933,
+  "mean_term_share_until_best": [
+    0.6222573417545627,
+    0.014853177881108875,
+    0.3628894803643284
+  ],
+  "elapsed_seconds": 15.85831609996967,
+  "run": "C:\\Users\\ASUS G615\\OneDrive\\Documents\\ChatGPT\\SEG\\reports\\assignment3_tuning_20261030\\tune\\B0_original_a0.01_b0.3\\fold2",
+  "test_evaluated": false
+}

@@ -1,0 +1,27 @@
+{
+  "config": {
+    "name": "B2_adaptive*",
+    "weights": [
+      1.0,
+      0.01,
+      0.03
+    ],
+    "contrastive": false,
+    "tau": 0.1,
+    "adaptive": true
+  },
+  "seed": 43,
+  "epochs": 228,
+  "budget": 500,
+  "patience": 50,
+  "best_epoch": 178,
+  "best_validation_mean_map": 0.7651360249384613,
+  "mean_term_share_until_best": [
+    0.83350010611141,
+    0.053746034270421184,
+    0.11275385961816894
+  ],
+  "elapsed_seconds": 41.48200329998508,
+  "run": "C:\\Users\\ASUS G615\\OneDrive\\Documents\\ChatGPT\\SEG\\reports\\assignment3_tuning_20261030\\confirm\\B2_adaptive_seed43",
+  "test_evaluated": false
+}

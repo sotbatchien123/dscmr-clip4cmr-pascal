@@ -1,0 +1,104 @@
+{
+  "note": "Feasibility probe (train-only 3-fold CV, test never touched): retrieval in label space.\n\nIdea (Semantic Correlation Matching, Rasiwasia et al. 2010; DSCMR label layer): give each image and\neach text a 20-class probability vector from a per-modality classifier, rank by similarity of those\nvectors. Relevance = same class, so mAP@ALL tracks how well both modalities are classified.\nCompares, on held-out folds of the 800 train rows:\n  feature cosine (no training)  vs  softmax-regression probabilities (per modality)  vs\n  + zero-shot CLIP prompt probabilities fused in (CLIP only).\nUsage: python probe_label_space.py\n",
+  "values": "[I2T, T2I] mAP@ALL % mean over 3 CV folds on train (acc: img, txt)",
+  "results": {
+    "clip4cmr_author/rn50/concat": {
+      "feature_cosine": [
+        53.25,
+        54.66
+      ],
+      "label_space_probs": [
+        64.09,
+        63.34
+      ],
+      "classifier_acc_img_txt": [
+        72.85,
+        77.29
+      ],
+      "zero_shot_probs": [
+        65.04,
+        65.7
+      ],
+      "label_space+zero_shot": [
+        66.84,
+        66.73
+      ]
+    },
+    "clip4cmr_author/rn50/capmean": {
+      "feature_cosine": [
+        58.66,
+        57.32
+      ],
+      "label_space_probs": [
+        64.23,
+        64.21
+      ],
+      "classifier_acc_img_txt": [
+        72.85,
+        77.77
+      ],
+      "zero_shot_probs": [
+        65.16,
+        66.14
+      ],
+      "label_space+zero_shot": [
+        66.96,
+        67.2
+      ]
+    },
+    "clip4cmr_author/vitl14/concat": {
+      "feature_cosine": [
+        53.96,
+        56.28
+      ],
+      "label_space_probs": [
+        61.5,
+        67.14
+      ],
+      "classifier_acc_img_txt": [
+        74.76,
+        78.37
+      ],
+      "zero_shot_probs": [
+        67.34,
+        68.05
+      ],
+      "label_space+zero_shot": [
+        68.41,
+        69.02
+      ]
+    },
+    "clip4cmr_author/vitl14/capmean": {
+      "feature_cosine": [
+        59.67,
+        58.42
+      ],
+      "label_space_probs": [
+        60.86,
+        67.88
+      ],
+      "classifier_acc_img_txt": [
+        74.76,
+        78.51
+      ],
+      "zero_shot_probs": [
+        66.48,
+        68.99
+      ],
+      "label_space+zero_shot": [
+        68.33,
+        69.98
+      ]
+    },
+    "dscmr/vgg19+text300": {
+      "label_space_probs": [
+        63.39,
+        68.05
+      ],
+      "classifier_acc_img_txt": [
+        69.29,
+        84.72
+      ]
+    }
+  }
+}

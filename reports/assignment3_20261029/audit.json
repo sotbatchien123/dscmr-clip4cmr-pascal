@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "main_runs": 12,
+  "main_epochs": 1524,
+  "smoke_epochs": 40,
+  "pilot_epochs": 800,
+  "checks": [
+    "source_and_training_data_unchanged",
+    "split_disjoint_complete",
+    "all_epoch_budgets",
+    "checkpoint_selection",
+    "early_stopping_patience",
+    "finite_losses_bounded_weights",
+    "same_initialization_batches_during_warmup",
+    "no_pilot_or_smoke_test_results"
+  ],
+  "training_elapsed_seconds": 448.39064900006633
+}

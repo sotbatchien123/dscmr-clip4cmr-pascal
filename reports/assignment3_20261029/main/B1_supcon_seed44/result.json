@@ -1,0 +1,28 @@
+{
+  "phase": "main",
+  "variant": "B1_supcon",
+  "seed": 44,
+  "epochs": 145,
+  "budget": 500,
+  "patience": 50,
+  "best_epoch": 95,
+  "best_validation_mean_map": 0.7584362234637979,
+  "elapsed_seconds": 25.542990699992515,
+  "seconds_per_epoch_median": 0.15055190003477037,
+  "run": "C:\\Users\\ASUS G615\\OneDrive\\Documents\\ChatGPT\\SEG\\reports\\assignment3_20261029\\main\\B1_supcon_seed44",
+  "test_evaluated": true,
+  "test": {
+    "I2T": {
+      "mAP@ALL": 0.665819398717798,
+      "R@1": 0.68,
+      "R@5": 0.85,
+      "R@10": 0.94
+    },
+    "T2I": {
+      "mAP@ALL": 0.6875295493079453,
+      "R@1": 0.73,
+      "R@5": 0.93,
+      "R@10": 0.97
+    }
+  }
+}

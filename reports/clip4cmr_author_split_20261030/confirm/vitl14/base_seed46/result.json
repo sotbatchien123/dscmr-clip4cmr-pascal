@@ -1,0 +1,28 @@
+{
+  "variant": "base",
+  "alpha": null,
+  "seed": 46,
+  "epochs": 159,
+  "best_epoch": 109,
+  "best_validation_mean_map": 0.7074159288460566,
+  "elapsed_seconds": 9.140178699977696,
+  "run": "D:\\SEG\\reports\\clip4cmr_author_split_20261030\\confirm\\vitl14\\base_seed46",
+  "test_evaluated": true,
+  "backbone": "vitl14",
+  "test": {
+    "I2T": {
+      "mAP@ALL": 0.7247457884207216,
+      "queries_without_positive": 0,
+      "R@1": 0.78,
+      "R@5": 0.94,
+      "R@10": 0.985
+    },
+    "T2I": {
+      "mAP@ALL": 0.7180407277903575,
+      "queries_without_positive": 0,
+      "R@1": 0.77,
+      "R@5": 0.92,
+      "R@10": 0.975
+    }
+  }
+}

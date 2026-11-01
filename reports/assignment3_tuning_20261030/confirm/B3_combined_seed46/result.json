@@ -1,0 +1,41 @@
+{
+  "config": {
+    "name": "B3_combined*",
+    "weights": [
+      1.0,
+      0.03,
+      0.03
+    ],
+    "contrastive": true,
+    "tau": 0.2,
+    "adaptive": true
+  },
+  "seed": 46,
+  "epochs": 210,
+  "budget": 500,
+  "patience": 50,
+  "best_epoch": 160,
+  "best_validation_mean_map": 0.7584235480632009,
+  "mean_term_share_until_best": [
+    0.612103898899947,
+    0.3127361456769894,
+    0.07515995542306361
+  ],
+  "elapsed_seconds": 54.23148700001184,
+  "run": "C:\\Users\\ASUS G615\\OneDrive\\Documents\\ChatGPT\\SEG\\reports\\assignment3_tuning_20261030\\confirm\\B3_combined_seed46",
+  "test_evaluated": true,
+  "test": {
+    "I2T": {
+      "mAP@ALL": 0.6757741429949456,
+      "R@1": 0.69,
+      "R@5": 0.88,
+      "R@10": 0.95
+    },
+    "T2I": {
+      "mAP@ALL": 0.6784532213023948,
+      "R@1": 0.71,
+      "R@5": 0.92,
+      "R@10": 0.96
+    }
+  }
+}

@@ -1,7 +1,36 @@
 [
-  {"id":"clip","folder":"01_CLIP","name":"CLIP","official_repo":"https://github.com/openai/CLIP","execution_repo":"https://github.com/openai/CLIP.git","dataset":"Flickr30K","mode":"zero-shot evaluation","metrics":["I2T R@1/5/10","T2I R@1/5/10"]},
-  {"id":"vilt","folder":"02_ViLT","name":"ViLT","official_repo":"https://github.com/dandelin/ViLT","execution_repo":"https://github.com/dandelin/ViLT.git","dataset":"Flickr30K","mode":"fine-tune and evaluation","metrics":["I2T R@1/5/10","T2I R@1/5/10"]},
-  {"id":"dscmr","folder":"03_DSCMR","name":"DSCMR","official_repo":"https://github.com/penghu-cs/DSCMR","execution_repo":"https://github.com/penghu-cs/DSCMR.git","dataset":"Pascal Sentence","mode":"training on paper-compatible features","metrics":["I2T mAP","T2I mAP"]},
-  {"id":"dcmh","folder":"04_DCMH","name":"DCMH","official_repo":"https://github.com/jiangqy/DCMH-CVPR2017","execution_repo":"https://github.com/WendellGul/DCMH.git","execution_repo_is_community":true,"dataset":"MIRFlickr-25K","mode":"hashing training","metrics":["I2T mAP","T2I mAP"]},
-  {"id":"dchmt","folder":"05_DCHMT","name":"DCHMT","official_repo":"https://github.com/kalenforn/DCHMT","execution_repo":"https://github.com/kalenforn/DCHMT.git","dataset":"MIRFlickr-25K","mode":"CLIP-based hashing training","metrics":["I2T mAP","T2I mAP"]}
+  {
+    "id": "DSCMR",
+    "folder": "DSCMR",
+    "official_repo": "https://github.com/penghu-cs/DSCMR",
+    "dataset": "Pascal-Sentence",
+    "directions": [
+      "I2T",
+      "T2I"
+    ],
+    "primary_metric": "mAP@ALL",
+    "additional_metrics": [
+      "R@1",
+      "R@5",
+      "R@10"
+    ],
+    "status_file": "DSCMR/status.json"
+  },
+  {
+    "id": "CLIP4CMR",
+    "folder": "CLIP4CMR",
+    "official_repo": "https://github.com/zhixiongz/CLIP4CMR",
+    "dataset": "Pascal-Sentence",
+    "directions": [
+      "I2T",
+      "T2I"
+    ],
+    "primary_metric": "mAP@ALL",
+    "additional_metrics": [
+      "R@1",
+      "R@5",
+      "R@10"
+    ],
+    "status_file": "CLIP4CMR/status.json"
+  }
 ]

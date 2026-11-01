@@ -1,0 +1,36 @@
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+WARNING:huggingface_hub.file_download:Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+D:\SEG\.feat_libs\open_clip\factory.py:388: UserWarning: These pretrained weights were trained with QuickGELU activation but the model config does not have that enabled. Consider using a model config with a "-quickgelu" suffix or enable with a flag.
+  warnings.warn(
+saved vitl14_336 (1000, 768) 1.5974111557006836 GB peak
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+WARNING:huggingface_hub.file_download:Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+saved eva02l_336 (1000, 768) 0.9387145042419434 GB peak
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+WARNING:huggingface_hub.file_download:Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+D:\SEG\.venv310\lib\site-packages\huggingface_hub\file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+saved siglip_so400m_384 (1000, 1152) 1.818160057067871 GB peak
+Traceback (most recent call last):
+  File "D:\SEG\scripts\extract_encoders.py", line 78, in <module>
+    main()
+  File "D:\SEG\scripts\extract_encoders.py", line 56, in main
+    model, _, preprocess = open_clip.create_model_and_transforms(name, pretrained=pre, precision='fp16', device='cuda')
+  File "D:\SEG\.feat_libs\open_clip\factory.py", line 502, in create_model_and_transforms
+    model = create_model(
+  File "D:\SEG\.feat_libs\open_clip\factory.py", line 370, in create_model
+    model.to(device=device)
+  File "D:\SEG\.venv310\lib\site-packages\torch\nn\modules\module.py", line 1355, in to
+    return self._apply(convert)
+  File "D:\SEG\.venv310\lib\site-packages\torch\nn\modules\module.py", line 915, in _apply
+    module._apply(fn)
+  File "D:\SEG\.venv310\lib\site-packages\torch\nn\modules\module.py", line 915, in _apply
+    module._apply(fn)
+  File "D:\SEG\.venv310\lib\site-packages\torch\nn\modules\module.py", line 915, in _apply
+    module._apply(fn)
+  [Previous line repeated 2 more times]
+  File "D:\SEG\.venv310\lib\site-packages\torch\nn\modules\module.py", line 942, in _apply
+    param_applied = fn(param)
+  File "D:\SEG\.venv310\lib\site-packages\torch\nn\modules\module.py", line 1341, in convert
+    return t.to(
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 16.00 MiB. GPU 0 has a total capacity of 7.96 GiB of which 3.63 GiB is free. 3.18 GiB allowed; Of the allocated memory 3.12 GiB is allocated by PyTorch, and 56.31 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

@@ -1,0 +1,19 @@
+{
+  "CLIP4CMR": {
+    "state": "blocked_missing_data",
+    "url": "https://pan.cstcloud.cn/s/JqKbqGfTRs",
+    "api_result": {
+      "stat": "ERR_SHARE_EXPIRED",
+      "errText": "分享已过期"
+    },
+    "required_files": [
+      "clip_train.pkl",
+      "clip_test.pkl"
+    ]
+  },
+  "DSCMR": {
+    "available_train": 800,
+    "available_test": 100,
+    "reference_test": 200
+  }
+}

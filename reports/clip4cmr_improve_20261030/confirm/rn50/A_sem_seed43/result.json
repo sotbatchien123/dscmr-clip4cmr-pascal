@@ -1,0 +1,28 @@
+{
+  "variant": "A_sem",
+  "alpha": 0.3,
+  "seed": 43,
+  "epochs": 143,
+  "best_epoch": 93,
+  "best_validation_mean_map": 0.7458169312289666,
+  "elapsed_seconds": 4.826138600008562,
+  "run": "D:\\SEG\\reports\\clip4cmr_improve_20261030\\confirm\\rn50\\A_sem_seed43",
+  "test_evaluated": true,
+  "backbone": "rn50",
+  "test": {
+    "I2T": {
+      "mAP@ALL": 0.7211959516432492,
+      "queries_without_positive": 0,
+      "R@1": 0.94,
+      "R@5": 0.99,
+      "R@10": 1.0
+    },
+    "T2I": {
+      "mAP@ALL": 0.7199717870481527,
+      "queries_without_positive": 0,
+      "R@1": 0.93,
+      "R@5": 0.99,
+      "R@10": 0.99
+    }
+  }
+}

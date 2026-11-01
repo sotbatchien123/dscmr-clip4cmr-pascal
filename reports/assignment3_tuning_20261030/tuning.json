@@ -1,0 +1,384 @@
+{
+  "rows": [
+    {
+      "tag": "B0_original_a0.001_b0.03",
+      "config": {
+        "name": "B0_original",
+        "weights": [
+          1.0,
+          0.001,
+          0.03
+        ],
+        "contrastive": false,
+        "tau": 0.1,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6820172830652764,
+        0.7041056874452587,
+        0.6773961369107917
+      ],
+      "mean": 0.6878397024737756,
+      "std": 0.014274993809619062
+    },
+    {
+      "tag": "B0_original_a0.001_b0.1",
+      "config": {
+        "name": "B0_original",
+        "weights": [
+          1.0,
+          0.001,
+          0.1
+        ],
+        "contrastive": false,
+        "tau": 0.1,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6797417482430268,
+        0.6953089540613794,
+        0.6731113182748196
+      ],
+      "mean": 0.6827206735264086,
+      "std": 0.01139470295844381
+    },
+    {
+      "tag": "B0_original_a0.001_b0.3",
+      "config": {
+        "name": "B0_original",
+        "weights": [
+          1.0,
+          0.001,
+          0.3
+        ],
+        "contrastive": false,
+        "tau": 0.1,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6761123577812069,
+        0.7003598240763829,
+        0.6731725432364792
+      ],
+      "mean": 0.6832149083646897,
+      "std": 0.01492051367949998
+    },
+    {
+      "tag": "B0_original_a0.01_b0.03",
+      "config": {
+        "name": "B0_original",
+        "weights": [
+          1.0,
+          0.01,
+          0.03
+        ],
+        "contrastive": false,
+        "tau": 0.1,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6843588795286594,
+        0.7076692893152192,
+        0.6768489717746977
+      ],
+      "mean": 0.6896257135395255,
+      "std": 0.016071018906657908
+    },
+    {
+      "tag": "B0_original_a0.01_b0.1",
+      "config": {
+        "name": "B0_original",
+        "weights": [
+          1.0,
+          0.01,
+          0.1
+        ],
+        "contrastive": false,
+        "tau": 0.1,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6802009502038133,
+        0.6951577074818531,
+        0.6735995481729009
+      ],
+      "mean": 0.6829860686195225,
+      "std": 0.011045642653991772
+    },
+    {
+      "tag": "B0_original_a0.01_b0.3",
+      "config": {
+        "name": "B0_original",
+        "weights": [
+          1.0,
+          0.01,
+          0.3
+        ],
+        "contrastive": false,
+        "tau": 0.1,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6783137288360608,
+        0.6996335549069435,
+        0.6736769319577933
+      ],
+      "mean": 0.6838747385669325,
+      "std": 0.013843055683310113
+    },
+    {
+      "tag": "B0_original_a0.1_b0.03",
+      "config": {
+        "name": "B0_original",
+        "weights": [
+          1.0,
+          0.1,
+          0.03
+        ],
+        "contrastive": false,
+        "tau": 0.1,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6841006609568564,
+        0.7046235104451739,
+        0.6749271480269937
+      ],
+      "mean": 0.687883773143008,
+      "std": 0.015205342435398578
+    },
+    {
+      "tag": "B0_original_a0.1_b0.1",
+      "config": {
+        "name": "B0_original",
+        "weights": [
+          1.0,
+          0.1,
+          0.1
+        ],
+        "contrastive": false,
+        "tau": 0.1,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6752033607988339,
+        0.6968425095014208,
+        0.6740873885752521
+      ],
+      "mean": 0.682044419625169,
+      "std": 0.012827663329311869
+    },
+    {
+      "tag": "B0_original_a0.1_b0.3",
+      "config": {
+        "name": "B0_original",
+        "weights": [
+          1.0,
+          0.1,
+          0.3
+        ],
+        "contrastive": false,
+        "tau": 0.1,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6765950164556723,
+        0.7015656489417594,
+        0.676062966236185
+      ],
+      "mean": 0.684741210544539,
+      "std": 0.014572819387318813
+    },
+    {
+      "tag": "B1_supcon_a0.03_b0.03_t0.05",
+      "config": {
+        "name": "B1_supcon",
+        "weights": [
+          1.0,
+          0.03,
+          0.03
+        ],
+        "contrastive": true,
+        "tau": 0.05,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6604250250960132,
+        0.6781305680710307,
+        0.6584032892561489
+      ],
+      "mean": 0.665652960807731,
+      "std": 0.010853103989845994
+    },
+    {
+      "tag": "B1_supcon_a0.03_b0.03_t0.1",
+      "config": {
+        "name": "B1_supcon",
+        "weights": [
+          1.0,
+          0.03,
+          0.03
+        ],
+        "contrastive": true,
+        "tau": 0.1,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6820383899303699,
+        0.7015946296403428,
+        0.6681272257726023
+      ],
+      "mean": 0.6839200817811051,
+      "std": 0.01681286274188471
+    },
+    {
+      "tag": "B1_supcon_a0.03_b0.03_t0.2",
+      "config": {
+        "name": "B1_supcon",
+        "weights": [
+          1.0,
+          0.03,
+          0.03
+        ],
+        "contrastive": true,
+        "tau": 0.2,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6803146408709921,
+        0.7108506134752776,
+        0.6729301294817029
+      ],
+      "mean": 0.6880317946093243,
+      "std": 0.020103647006016762
+    },
+    {
+      "tag": "B1_supcon_a0.1_b0.03_t0.05",
+      "config": {
+        "name": "B1_supcon",
+        "weights": [
+          1.0,
+          0.1,
+          0.03
+        ],
+        "contrastive": true,
+        "tau": 0.05,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6568411734909014,
+        0.6826373463093403,
+        0.6529569122819754
+      ],
+      "mean": 0.6641451440274057,
+      "std": 0.01613204978332826
+    },
+    {
+      "tag": "B1_supcon_a0.1_b0.03_t0.1",
+      "config": {
+        "name": "B1_supcon",
+        "weights": [
+          1.0,
+          0.1,
+          0.03
+        ],
+        "contrastive": true,
+        "tau": 0.1,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6779333474548619,
+        0.6968467679981502,
+        0.6641339636176062
+      ],
+      "mean": 0.6796380263568728,
+      "std": 0.016422890739122453
+    },
+    {
+      "tag": "B1_supcon_a0.1_b0.03_t0.2",
+      "config": {
+        "name": "B1_supcon",
+        "weights": [
+          1.0,
+          0.1,
+          0.03
+        ],
+        "contrastive": true,
+        "tau": 0.2,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6762996741089956,
+        0.7038658044069186,
+        0.6727393981283538
+      ],
+      "mean": 0.6843016255480894,
+      "std": 0.01703633505422395
+    },
+    {
+      "tag": "B1_supcon_a0.3_b0.03_t0.05",
+      "config": {
+        "name": "B1_supcon",
+        "weights": [
+          1.0,
+          0.3,
+          0.03
+        ],
+        "contrastive": true,
+        "tau": 0.05,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6518436106274237,
+        0.6875126759492719,
+        0.6585685583756882
+      ],
+      "mean": 0.6659749483174613,
+      "std": 0.01895287614613589
+    },
+    {
+      "tag": "B1_supcon_a0.3_b0.03_t0.1",
+      "config": {
+        "name": "B1_supcon",
+        "weights": [
+          1.0,
+          0.3,
+          0.03
+        ],
+        "contrastive": true,
+        "tau": 0.1,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6733034050317361,
+        0.6985069778535784,
+        0.6606695046335289
+      ],
+      "mean": 0.6774932958396146,
+      "std": 0.019263566223727845
+    },
+    {
+      "tag": "B1_supcon_a0.3_b0.03_t0.2",
+      "config": {
+        "name": "B1_supcon",
+        "weights": [
+          1.0,
+          0.3,
+          0.03
+        ],
+        "contrastive": true,
+        "tau": 0.2,
+        "adaptive": false
+      },
+      "fold_scores": [
+        0.6715292230315641,
+        0.7007861921555609,
+        0.6668260249485825
+      ],
+      "mean": 0.6797138133785691,
+      "std": 0.018400105394880215
+    }
+  ],
+  "b0_best": "B0_original_a0.01_b0.03",
+  "b1_best": "B1_supcon_a0.03_b0.03_t0.2"
+}

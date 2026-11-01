@@ -1,57 +1,71 @@
-# SEG Assignment 2 - 5 phương pháp
+# Cải tiến DSCMR và CLIP4CMR cho truy hồi ảnh – văn bản (Pascal Sentence)
 
-**Trạng thái bàn giao: bộ mã hỗ trợ tái lập, CHƯA hoàn thành thực nghiệm Assignment 2.**
-Không có điểm benchmark thực tế nào được sinh trong phiên này. Đọc `REPORT.md` trước khi sử dụng.
+> Ghi chú làm việc nội bộ: đọc và cập nhật `GHI_NHO.md` mỗi phiên. File này chỉ có trên máy, không đưa lên GitHub.
 
-## Phạm vi
+Dự án Assignment 3 có ba phần chính:
+- Tái lập hai phương pháp truy hồi đa phương thức có giám sát: **DSCMR** (CVPR 2019) và **CLIP4CMR** (2022).
+- Đề xuất và kiểm chứng các cải tiến cho từng phương pháp.
+- Báo cáo trung thực, gồm cả các kết quả âm tính.
 
-| Thư mục | Phương pháp | Dữ liệu | Nội dung đã soạn |
+**Báo cáo tổng hợp (Word):** [reports/BAO_CAO_CAI_TIEN_20261031/Bao_cao_cai_tien_DSCMR_CLIP4CMR.docx](reports/BAO_CAO_CAI_TIEN_20261031/Bao_cao_cai_tien_DSCMR_CLIP4CMR.docx)
+
+## Kết quả chính
+
+mAP@ALL (%) trên tập test 200 cặp, trung bình 5 seed. Cấu hình được chọn bằng kiểm định chéo trên train; test chỉ mở một lần.
+
+| Mô hình | Baseline I2T / T2I | Cải tiến I2T / T2I | Tăng (TB 2 chiều) |
 |---|---|---|---|
-| `01_CLIP` | CLIP | Flickr30K | Evaluator hai chiều, lưu embedding và ví dụ top-10 |
-| `02_ViLT` | ViLT | Flickr30K | Adapter train/eval chính thức và converter Arrow |
-| `03_DSCMR` | DSCMR | Pascal Sentence | Driver dùng model/loss gốc, lưu checkpoint, hai chế độ chọn model |
-| `04_DCMH` | DCMH | MIRFlickr-25K | Adapter bản PyTorch cộng đồng, cấu hình bit/epoch/batch |
-| `05_DCHMT` | DCHMT | MIRFlickr-25K | Adapter repo gốc, kiểm tra các đầu vào cần thiết |
+| CLIP4CMR (split tác giả) | 68.48 / 67.87 | **76.63 / 75.68** | **+7.98**, 5/5 seed |
+| DSCMR, đầu và loss gốc (split CLIP4CMR) | 68.86 / 69.89 | **74.78 / 72.70** | **+4.36**, 5/5 seed |
 
-Code thuật toán gốc của các tác giả **chưa tải được và không nằm trong ZIP**. `fetch_upstream.py` chuẩn bị thao tác clone, giữ lại revision thật khi thành công. Các adapter chưa được chạy end-to-end, không được gọi là implementation đã xác nhận hoạt động.
+Các cải tiến đã dùng:
+- (A) Prototype ngữ nghĩa từ câu nhắc CLIP thay cho tâm lớp ngẫu nhiên, cộng adapter phần dư.
+- (B) Huấn luyện theo từng câu mô tả.
+- (C) Encoder mạnh hơn (DFN5B ViT-H/14, EVA02, SigLIP).
+- (D) Fine-tune 2–4 block cuối của encoder ảnh.
+- Với DSCMR còn có SupCon cho không gian chung: chỉ cải thiện chiều I2T (+1.15 điểm).
 
-## Bắt đầu trên Windows
+CLIP4CMR cải tiến vượt số công bố của bài báo gốc (69.8 / 69.2). DSCMR không so cùng tập test với bài gốc, vì danh sách ảnh trong split của DSCMR không được công bố (xem [DSCMR/data_ids/NOTE.md](DSCMR/data_ids/NOTE.md)).
 
-Giải nén vào thư mục riêng, mở PowerShell tại thư mục có README này. Dùng Python 3.10 trở lên.
+## Báo cáo chi tiết
 
-```powershell
-$py = 'C:\Program Files\Python310\python.exe'
-& $py scripts\preflight.py --out audit\environment_local.json
-& $py -m unittest discover -s tests -v
-& $py scripts\fetch_upstream.py --method all
+| Nội dung | Báo cáo |
+|---|---|
+| So sánh với bài báo gốc | [reports/SO_SANH_BAI_BAO_20261030.md](reports/SO_SANH_BAI_BAO_20261030.md) |
+| Baseline 5.000 + 1.000 epoch | [reports/RESULTS_5000_1000.md](reports/RESULTS_5000_1000.md) |
+| DSCMR: cải tiến loss, vòng 1 và vòng 2 (tuning + 5 seed) | [vòng 1](reports/assignment3_20261029/BAO_CAO.md) · [vòng 2](reports/assignment3_tuning_20261030/BAO_CAO.md) · [protocol](reports/ASSIGNMENT3_PROTOCOL.md) |
+| CLIP4CMR: cải tiến A + B | [split local](reports/clip4cmr_improve_20261030/BAO_CAO.md) · [split tác giả](reports/clip4cmr_author_split_20261030/REPORT.md) |
+| Vòng 3: encoder mạnh + fine-tune | [reports/improve_v3_20261030/BAO_CAO.md](reports/improve_v3_20261030/BAO_CAO.md) |
+
+## Cấu trúc thư mục
+
+```
+scripts/      mã huấn luyện, đánh giá, kiểm chứng và dựng báo cáo
+common/       hàm tính metric dùng chung; tests/ kiểm tra metric
+reports/      kết quả (JSON/CSV/log/hình) và báo cáo của từng vòng
+DSCMR/        source.json (nguồn mã gốc), data_ids/NOTE.md; mã gốc tải về upstream/
+CLIP4CMR/     source.json; mã gốc tải về upstream/, dữ liệu trong data/
+logs/         log các lượt chạy vòng 3
+docs/         ghi chú bố cục
 ```
 
-Lệnh kiểm tra metric chỉ dùng dữ liệu tổng hợp; không phải huấn luyện hay kết quả dataset.
-Nếu clone thất bại, đọc `results/upstream.json` trong từng phương pháp. Không khởi chạy model khi code hoặc dữ liệu chưa có.
+Không có trong repo (xem [.gitignore](.gitignore)): mã gốc của tác giả, dữ liệu, đặc trưng, trọng số, checkpoint và môi trường Python.
 
-## Môi trường riêng
+## Tái lập
 
-Không cài đè các Python đang dùng cho dự án khác. Tạo venv riêng cho từng phương pháp nếu cần. Ví dụ môi trường CLIP/DSCMR để thử tương thích:
+1. Tạo môi trường Python 3.10, cài PyTorch có CUDA, rồi chạy `pip install -r requirements-common.txt`.
+2. Tải mã gốc DSCMR và CLIP4CMR (kèm đặc trưng Pascal của DSCMR): `python scripts/fetch_selected_20261014.py`.
+3. Dữ liệu CLIP4CMR:
+   - Tải 1.000 ảnh và câu mô tả Pascal Sentence từ trang UIUC: `python scripts/build_pascal_rn50_local.py` (đọc danh sách trong `reports/clip4cmr_investigation_20261014/pascal_raw_manifest.json`).
+   - Tải `clip_train.pkl` và `clip_test.pkl` từ HF Space `shivangibithel/LCMI_T2I` vào `CLIP4CMR/data/hf_mirror_lcmi/`.
+   - Kiểm chứng bằng `scripts/verify_hf_mirror_clip4cmr.py`, dựng split bằng `scripts/build_clip4cmr_author_split.py`.
+4. Chạy thí nghiệm (xem `--help` của từng script):
+   - Cải tiến A + B: `python scripts/clip4cmr_improve.py --feats CLIP4CMR/data/pascal_author_split_mirror --out reports/clip4cmr_author_split_20261030`.
+   - DSCMR: `python scripts/dscmr_assignment3_tuning.py --source-root . --out reports/assignment3_tuning_20261030`.
+   - Vòng 3: `scripts/extract_encoders.py`, rồi `scripts/improve_v3.py --stage cv|confirm`, rồi `scripts/finetune_v3.py --stage cv|confirm`.
 
-```powershell
-& 'C:\Program Files\Python310\python.exe' -m venv .venv-clip
-$py = (Resolve-Path .venv-clip\Scripts\python.exe).Path
-& $py -m pip install torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cu128
-& $py -m pip install -r requirements-common.txt
-& $py -m pip install -e upstream\clip
-```
+Bảng ánh xạ đầy đủ giữa script và kết quả nằm ở mục 8 của báo cáo Word.
 
-Đây là cấu hình khởi điểm CHƯA kiểm chứng tại máy, không phải môi trường đã khóa cho cả 5 repo. Nguồn wheel: https://pytorch.org/get-started/previous-versions/ . Repo ViLT/DCMH cũ có thể cần port API trước khi chạy với PyTorch mới; không cài toàn bộ requirements cũ vào venv CLIP.
+## License
 
-Chỉ train khi GPU đủ trống. Không chạy đồng thời 5 model trên RTX 5070 8 GB. Chụp cấu hình thực tế bằng preflight; không dùng thông số GPU để suy ra thời gian chạy chưa đo.
-
-## Tiêu chuẩn một phương pháp hoàn thành
-
-1. Có commit upstream và phần thay đổi của nhóm.
-2. Dataset, split, nhãn/caption, preprocessing và hash manifest xác định được.
-3. Có config, seed, dependencies, checkpoint và stdout thật.
-4. Đánh giá hai chiều trên toàn bộ tập quy định; test subset được đánh dấu riêng.
-5. Ghi đúng dòng/bảng paper gốc và so sánh chỉ khi protocol tương ứng.
-6. Mỗi thành viên có commit công việc thực, không gán commit tự động thành đóng góp của người khác.
-
-Mở README trong từng phương pháp để xem bước riêng. `CONTRIBUTIONS.md` mô tả phân công dự kiến, không xác nhận ai đã hoàn thành.
+Mã nguồn và tài liệu của dự án dùng [MIT License](LICENSE). Mã gốc, trọng số mô hình và dữ liệu của bên thứ ba giữ điều khoản riêng, liệt kê trong [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

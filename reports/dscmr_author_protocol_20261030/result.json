@@ -1,0 +1,102 @@
+{
+  "protocol": "Diagnostic: DSCMR trained exactly like the upstream repo, to explain the gap to the paper.\n\nUpstream main.py/train_model.py: all 800 train pairs, DataLoader batch 100 without shuffle,\nAdam 1e-4 betas (.5,.999), alpha 1e-3, beta 1e-1, 500 epochs; test mAP (upstream\nfx_calc_map_label, cosine) after every epoch and the checkpoint with the best TEST mean is kept.\nThat selection uses the test set, so it is optimistic; reported here only as a diagnostic next to\n(a) the last epoch and (b) our validation-selected B0 numbers. Seeds 42-46.\nUsage: python dscmr_author_protocol.py [out_dir]\n",
+  "runs": [
+    {
+      "seed": 42,
+      "best_test_epoch": 51,
+      "best_test": {
+        "epoch": 51,
+        "I2T": 0.6907819865996312,
+        "T2I": 0.7033213536354707
+      },
+      "last": {
+        "epoch": 500,
+        "I2T": 0.6299988768948551,
+        "T2I": 0.6607817300344646
+      }
+    },
+    {
+      "seed": 43,
+      "best_test_epoch": 24,
+      "best_test": {
+        "epoch": 24,
+        "I2T": 0.6951117371614185,
+        "T2I": 0.7089660313740995
+      },
+      "last": {
+        "epoch": 500,
+        "I2T": 0.6435938460274749,
+        "T2I": 0.6794319601380028
+      }
+    },
+    {
+      "seed": 44,
+      "best_test_epoch": 38,
+      "best_test": {
+        "epoch": 38,
+        "I2T": 0.6888882218425042,
+        "T2I": 0.7126122369130339
+      },
+      "last": {
+        "epoch": 500,
+        "I2T": 0.646289426505261,
+        "T2I": 0.6734868772467811
+      }
+    },
+    {
+      "seed": 45,
+      "best_test_epoch": 16,
+      "best_test": {
+        "epoch": 16,
+        "I2T": 0.6820742129872788,
+        "T2I": 0.7134341752431503
+      },
+      "last": {
+        "epoch": 500,
+        "I2T": 0.6388534156782827,
+        "T2I": 0.6688573557038405
+      }
+    },
+    {
+      "seed": 46,
+      "best_test_epoch": 28,
+      "best_test": {
+        "epoch": 28,
+        "I2T": 0.685372854794192,
+        "T2I": 0.7142100653450197
+      },
+      "last": {
+        "epoch": 500,
+        "I2T": 0.6522603471893391,
+        "T2I": 0.6802164471156918
+      }
+    }
+  ],
+  "aggregate_mean_sd": {
+    "best_test": {
+      "I2T": [
+        0.688445802677005,
+        0.005003207382608226
+      ],
+      "T2I": [
+        0.7105087725021548,
+        0.004492247560711195
+      ]
+    },
+    "last": {
+      "I2T": [
+        0.6421991824590425,
+        0.008365761019890549
+      ],
+      "T2I": [
+        0.6725548740477562,
+        0.008048931711604172
+      ]
+    }
+  },
+  "paper": {
+    "I2T": 0.71,
+    "T2I": 0.722,
+    "source": "DSCMR/upstream/Result.jpg"
+  }
+}

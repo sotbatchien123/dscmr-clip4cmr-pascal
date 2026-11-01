@@ -1,0 +1,28 @@
+{
+  "variant": "A_sem+B",
+  "alpha": 0.3,
+  "seed": 46,
+  "epochs": 235,
+  "best_epoch": 185,
+  "best_validation_mean_map": 0.7558428975635155,
+  "elapsed_seconds": 16.202740799984895,
+  "run": "D:\\SEG\\reports\\clip4cmr_author_split_20261030\\confirm\\vitl14\\A_sem+B_seed46",
+  "test_evaluated": true,
+  "backbone": "vitl14",
+  "test": {
+    "I2T": {
+      "mAP@ALL": 0.7322258087968304,
+      "queries_without_positive": 0,
+      "R@1": 0.985,
+      "R@5": 0.995,
+      "R@10": 1.0
+    },
+    "T2I": {
+      "mAP@ALL": 0.7234114870857976,
+      "queries_without_positive": 0,
+      "R@1": 0.94,
+      "R@5": 0.98,
+      "R@10": 0.995
+    }
+  }
+}
