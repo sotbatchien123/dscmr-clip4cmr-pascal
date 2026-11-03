@@ -13,6 +13,7 @@ from scipy.spatial.distance import cdist
 
 ROOT = Path(__file__).resolve().parents[2]
 from common.metrics import label_relevance, map_all, recall_at_k
+from common.paths import to_repo
 
 def write_json(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -115,10 +116,10 @@ def main():
     if (a.out/'result.json').exists(): raise RuntimeError('Completed result exists; choose a new --out to preserve it')
     a.out.mkdir(parents=True,exist_ok=True)
     status=ROOT/a.method/'status.json'
-    write_json(status,{'method':a.method,'state':'loading','run':str(a.out)})
+    write_json(status,{'method':a.method,'state':'loading','run':to_repo(a.out)})
     try: data,hashes,nc=load_data(a.method,a.data)
     except Exception as e:
-        write_json(status,{'method':a.method,'state':'blocked_missing_data','error':str(e),'run':str(a.out)})
+        write_json(status,{'method':a.method,'state':'blocked_missing_data','error':str(e),'run':to_repo(a.out)})
         raise
     torch.set_num_threads(4)
     if a.device=='cuda': torch.cuda.reset_peak_memory_stats()

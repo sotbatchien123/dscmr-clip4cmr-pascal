@@ -29,6 +29,7 @@ from scipy.spatial.distance import cdist
 ROOT = Path(__file__).resolve().parents[2]
 from scripts.baseline import train_baseline as ts  # noqa: E402
 from common.metrics import label_relevance, map_all, recall_at_k  # noqa: E402
+from common.paths import from_repo, to_repo
 
 FEATS = ROOT/'CLIP4CMR/data/pascal_uiuc_seed42_multicaption'
 BACKBONES = ('rn50', 'vitl14')
@@ -173,7 +174,7 @@ def train_run(args, data, pan, rows, val_rows, variant, alpha, seed, run, epochs
     write_json(run/'history.json', history)
     result = {'variant': variant, 'alpha': alpha if mode else None, 'seed': seed, 'epochs': epoch,
               'best_epoch': best_epoch, 'best_validation_mean_map': best,
-              'elapsed_seconds': time.perf_counter()-start, 'run': str(run), 'test_evaluated': False}
+              'elapsed_seconds': time.perf_counter()-start, 'run': to_repo(run), 'test_evaluated': False}
     write_json(run/'training_result.json', result)
     print(f'done {run.relative_to(args.out)} epochs={epoch} best={best_epoch} val={best*100:.2f}', flush=True)
     return result
@@ -238,10 +239,10 @@ def main():
         for r in done:  # test opened only now, after every confirmation run finished
             d = datas[r['backbone']]; mode, use_b = VARIANTS[r['variant']]
             ts.seed_all(r['seed']); model = build_model(d, mode, r['alpha'], args.device)
-            model.load_state_dict(torch.load(Path(r['run'])/'best.pt', map_location=args.device)['state_dict'])
+            model.load_state_dict(torch.load(from_repo(r['run'])/'best.pt', map_location=args.device)['state_dict'])
             m, fi, ft = evaluate(model, d['image'][d['test']], eval_text(d, d['test'], use_b), d['labels'][d['test']])
-            np.savez_compressed(Path(r['run'])/'test_features.npz', image=fi, text=ft, label=d['labels'][d['test']])
-            r = {**r, 'test': m, 'test_evaluated': True}; write_json(Path(r['run'])/'result.json', r); results.append(r)
+            np.savez_compressed(from_repo(r['run'])/'test_features.npz', image=fi, text=ft, label=d['labels'][d['test']])
+            r = {**r, 'test': m, 'test_evaluated': True}; write_json(from_repo(r['run'])/'result.json', r); results.append(r)
         report(args, tuning, chosen, results, datas)
         write_json(args.out/'status.json', {'state': 'completed', 'confirm_runs': len(results), 'tune_runs': 18})
         print('COMPLETED', flush=True)

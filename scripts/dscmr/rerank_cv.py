@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[2]
 from scripts.clip4cmr import improve as ci  # noqa: E402
 from scripts.dscmr import loss_ablation as r1  # noqa: E402
 from scripts.encoders import encoder_study as v  # noqa: E402
+from common.paths import from_repo
 
 
 def main():
@@ -29,7 +30,7 @@ def main():
         tr = np.concatenate([folds[g] for g in range(3) if g != f]); va = folds[f]
         res = r1.train_run(v.Args(base/f'fold{f}'), Model, (X, T), y, tr, va, 'B0_original', 42, '.', ci.TUNE_EPOCHS, ci.PATIENCE)
         m = Model(img_input_dim=x.shape[1], text_input_dim=t.shape[1], output_dim=20).cuda()
-        m.load_state_dict(torch.load(Path(res['run'])/'best.pt', map_location='cuda', weights_only=False)['model']); m.eval()
+        m.load_state_dict(torch.load(from_repo(res['run'])/'best.pt', map_location='cuda', weights_only=False)['model']); m.eval()
         with torch.inference_mode():
             zi, zt = m(X[va], T[va])[:2]
         per.append({'val_best': res['best_validation_mean_map'], 'rerank': v.score(F.normalize(zi, dim=1), F.normalize(zt, dim=1), y[va])})

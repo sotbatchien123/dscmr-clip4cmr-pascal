@@ -27,6 +27,7 @@ import numpy as np
 import torch
 
 from scripts.dscmr import loss_ablation as r1
+from common.paths import from_repo, to_repo
 
 B0_GRID = [(a, b) for a in (0.001, 0.01, 0.1) for b in (0.03, 0.1, 0.3)]
 B1_GRID = [(lam, tau) for lam in (0.03, 0.1, 0.3) for tau in (0.05, 0.1, 0.2)]
@@ -146,7 +147,7 @@ def train_run(args, Model, tensors, y, train, val, cfg, seed, run, epochs, patie
               'best_epoch': best_epoch, 'best_validation_mean_map': best,
               'mean_term_share_until_best': share.tolist(),
               'elapsed_seconds': elapsed_before+time.perf_counter()-start,
-              'run': str(run), 'test_evaluated': False}
+              'run': to_repo(run), 'test_evaluated': False}
     write_json(run/'training_result.json', result)
     (run/'last.pt').unlink(missing_ok=True)
     print(f"done {run.parent.name}/{run.name}: epochs={epoch} best={best_epoch} val={best*100:.2f}", flush=True)
@@ -299,11 +300,11 @@ def main():
         tx, tt = torch.as_tensor(tx, device=args.device), torch.as_tensor(tt, device=args.device)
         results = []
         for r in done:
-            path = Path(r['run'])/'result.json'
+            path = from_repo(r['run'])/'result.json'
             if path.exists():
                 results.append(json.loads(path.read_text())); continue
             model = Model(img_input_dim=x.shape[1], text_input_dim=t.shape[1], output_dim=len(classes)).to(args.device)
-            model.load_state_dict(torch.load(Path(r['run'])/'best.pt', map_location=args.device, weights_only=False)['model'])
+            model.load_state_dict(torch.load(from_repo(r['run'])/'best.pt', map_location=args.device, weights_only=False)['model'])
             res = {**r, 'test': r1.evaluate(model, tx, tt, ty), 'test_evaluated': True}
             write_json(path, res); results.append(res)
         report(args, tuning, (b0_best['tag'], b1_best['tag']), chosen, results)

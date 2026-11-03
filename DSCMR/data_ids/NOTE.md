@@ -6,7 +6,7 @@
 
 ## Lần thử 2 (31/10/2026): VGG19 Caffe gốc (Oxford) — vẫn THẤT BẠI
 
-- Trọng số: bản Keras port từ VGG19 Caffe của Oxford (`fchollet/deep-learning-models` v0.1, sha256 `c872d82e…`). Lưu ngoài repo: `D:/Caches/vgg19_caffe/`. Kiểm tra: ảnh `2008_000716` → lớp 404 "airliner", xác suất 0.51.
+- Trọng số: bản Keras port từ VGG19 Caffe của Oxford (`fchollet/deep-learning-models` v0.1, sha256 `c872d82e…`). Không đưa vào repo: đặt ở `checkpoints/vgg19_caffe/vgg19_keras_caffe.h5` hoặc trỏ biến môi trường `VGG19_CAFFE_H5` tới file. Kiểm tra: ảnh `2008_000716` → lớp 404 "airliner", xác suất 0.51.
 - Script: `scripts/analysis/dscmr_ids_caffe.py`. Tiền xử lý kiểu Caffe: BGR, trừ mean. Thử 3 kiểu cắt ảnh: warp224, center256, tencrop256. Đặc trưng lưu ở `caffe_vgg19_fc7.npz`.
 - Cosine tốt nhất giữa mỗi dòng DSCMR và ảnh: trung vị 0.27–0.31; chỉ 14–58 ảnh khác nhau được chọn làm best match (hubness).
 - Mức kích hoạt trung bình theo từng nơ-ron: tương quan Spearman ≈ 0.00 → chiều của đặc trưng DSCMR **không** tương ứng với nơ-ron fc7 của VGG19 gốc (có thể đã fine-tune mạnh, đã xáo chiều, hoặc dùng mạng khác).

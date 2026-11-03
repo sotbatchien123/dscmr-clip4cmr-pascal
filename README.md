@@ -289,7 +289,8 @@ Mã gốc của cả hai bài báo chọn checkpoint trên tập test. Nhóm đo
 
 - **Tag `experiments-2026-10-31`** đánh dấu đúng phiên bản mã đã sinh ra mọi kết quả trong `reports/`. Các file `protocol.json` ghi checksum (`runner_sha256`) và tên script của phiên bản đó.
 - **Thay đổi sau tag** chỉ là sắp xếp lại thư mục, đổi tên script và sửa đường dẫn import. Đã kiểm tra rằng các lần chạy thử (`--stage smoke`) cho kết quả giống hệt trước khi sắp xếp, và các lệnh `recheck_*` vẫn khớp kết quả cũ.
-- **Đường dẫn trong file kết quả** được ghi tương đối so với thư mục gốc của repo.
+- **Đường dẫn trong file kết quả** được ghi tương đối so với thư mục gốc của repo, dùng dấu `/` (hàm `to_repo` / `from_repo` trong `common/paths.py`), nên đọc được trên mọi máy và hệ điều hành.
+- **Đã sửa metadata:** trong 70 file `training_result.json` / `result.json` của `reports/improve_v3_20261030` (đầu DSCMR), trường `run` từng ghi tên thư mục tạm `B0_original_seed42` thay vì thư mục thật (`foldK` / `seedK`), vì thư mục được đổi tên sau khi ghi. Trường này đã được sửa cho khớp; số liệu không đổi.
 - **Kết quả âm tính:** ID ảnh trong split DSCMR không thể khôi phục (`DSCMR/data_ids/NOTE.md`). Vì vậy DSCMR với encoder mới được đánh giá trên split CLIP4CMR.
 
 ---

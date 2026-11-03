@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+from common.paths import from_repo
 
 
 def read(path):
@@ -21,7 +22,7 @@ def main():
     train, val = p['train_indices'], p['validation_indices']
     assert len(train) == 720 and len(val) == 80 and not set(train)&set(val)
     assert len(set(train)|set(val)) == 800
-    source = Path(p['source_root'])
+    source = from_repo(p['source_root'])
     for file, sha in p['source_sha256'].items():
         assert hashlib.sha256((source/file).read_bytes()).hexdigest() == sha
     for file, sha in p['train_data_sha256'].items():

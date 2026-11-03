@@ -1,8 +1,9 @@
 """Recover DSCMR Pascal row -> image mapping with the ORIGINAL (Oxford Caffe) VGG19 weights.
 
 Weights: Keras port of the Oxford Caffe VGG19 (fchollet/deep-learning-models v0.1,
-vgg19_weights_tf_dim_ordering_tf_kernels.h5, sha256 c872d82e...), stored outside the repo in
-D:/Caches/vgg19_caffe. Caffe preprocessing: BGR, 0-255, minus ImageNet BGR mean.
+vgg19_weights_tf_dim_ordering_tf_kernels.h5, sha256 c872d82e...), not distributed with the repo:
+place it at checkpoints/vgg19_caffe/vgg19_keras_caffe.h5 or set VGG19_CAFFE_H5 to its path.
+Caffe preprocessing: BGR, 0-255, minus ImageNet BGR mean.
 fc7 (Keras 'fc2') after ReLU is compared by cosine to DSCMR train/test image rows.
 Step 1 (--stage extract): features for all 1000 UIUC images under several crop variants.
 Step 2 (--stage match): cosine diagnostics + Hungarian matching; writes DSCMR/data_ids/*.
@@ -21,7 +22,7 @@ from PIL import Image
 from scipy.optimize import linear_sum_assignment
 
 ROOT = Path(__file__).resolve().parents[2]
-H5 = Path(os.environ.get('VGG19_CAFFE_H5', 'D:/Caches/vgg19_caffe/vgg19_keras_caffe.h5'))  # override per machine
+H5 = Path(os.environ.get('VGG19_CAFFE_H5', ROOT/'checkpoints/vgg19_caffe/vgg19_keras_caffe.h5'))
 IMG = ROOT/'CLIP4CMR/data/pascal_uiuc_seed42/images'
 UP = ROOT/'DSCMR/upstream/data/pascal'
 OUT = ROOT/'DSCMR/data_ids'

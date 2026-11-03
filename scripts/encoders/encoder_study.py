@@ -22,6 +22,7 @@ import torch.nn.functional as F
 ROOT = Path(__file__).resolve().parents[2]
 from scripts.clip4cmr import improve as ci  # noqa: E402
 from scripts.dscmr import loss_ablation as r1  # noqa: E402
+from common.paths import to_repo
 
 AUTHOR = ROOT/'CLIP4CMR/data/pascal_author_split_mirror'
 ENC = ROOT/'CLIP4CMR/data/encoders'
@@ -110,7 +111,8 @@ def train_head(d, head, rows, val_rows, seed, run, epochs, pan, Model):
     src = run.parent/'.'/f'B0_original_seed{seed}'
     if src.exists() and src != run:  # r1 names its folder <variant>_seed<s>; move into our run name once
         src.rename(run)
-    res['best_validation_mean_map'] = res['best_validation_mean_map']
+        res['run'] = to_repo(run)  # keep the recorded path in sync with the renamed folder
+        r1.write_json(run/'training_result.json', res)
     def embed(rr):
         m = Model(img_input_dim=x.shape[1], text_input_dim=t.shape[1], output_dim=d['nc']).cuda()
         m.load_state_dict(torch.load(run/'best.pt', map_location='cuda', weights_only=False)['model']); m.eval()

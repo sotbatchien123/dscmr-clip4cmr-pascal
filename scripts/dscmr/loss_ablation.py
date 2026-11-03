@@ -21,6 +21,7 @@ import torch
 import torch.nn.functional as F
 from scipy.io import loadmat
 from scipy.spatial.distance import cdist
+from common.paths import from_repo, to_repo
 
 VARIANTS = ('B0_original', 'B1_supcon', 'B2_adaptive', 'B3_combined')
 
@@ -322,7 +323,7 @@ def train_run(args, Model, tensors, y, train, val, variant, seed, phase, epochs,
         status = {'state': 'training', 'phase': phase, 'variant': variant, 'seed': seed,
                   'epoch': epoch, 'max_epochs': epochs, 'best_epoch': best_epoch,
                   'best_validation_mean_map': best, 'pid': os.getpid(),
-                  'updated_unix': time.time(), 'run': str(run)}
+                  'updated_unix': time.time(), 'run': to_repo(run)}
         write_json(args.out/'status.json', status)
         if epoch % 10 == 0: checkpoint(epoch)
         if epoch == 1 or epoch % 25 == 0:
@@ -332,7 +333,7 @@ def train_run(args, Model, tensors, y, train, val, variant, seed, phase, epochs,
               'budget': epochs, 'patience': patience, 'best_epoch': best_epoch,
               'best_validation_mean_map': best, 'elapsed_seconds': elapsed,
               'seconds_per_epoch_median': float(np.median([h['seconds'] for h in history])),
-              'run': str(run), 'test_evaluated': False}
+              'run': to_repo(run), 'test_evaluated': False}
     write_json(run/'training_result.json', result)
     # Completed runs retain best checkpoint, history and result; optimizer resume
     # state is no longer necessary. Only remove this run's own temporary state.
@@ -417,7 +418,7 @@ def main():
                          'multiplier_bounds': [.5, 2.], 'uses': 'previous training epoch EMA ratios only'},
             'hyperparameter_search': False, 'test_used_for_selection': False,
             'recall_definition': 'fraction of queries with >=1 same-class hit in top K',
-            'source_root': str(args.source_root), 'torch_version': torch.__version__,
+            'source_root': to_repo(args.source_root), 'torch_version': torch.__version__,
             'device': args.device, 'gpu': torch.cuda.get_device_name() if args.device == 'cuda' else None,
             'source_sha256': {str(f.relative_to(args.source_root)): digest(f) for f in
                 [args.source_root/'DSCMR/upstream/model.py', args.source_root/'DSCMR/upstream/train_model.py']},
@@ -448,11 +449,11 @@ def main():
         tx, tt = torch.as_tensor(tx, device=args.device), torch.as_tensor(tt, device=args.device)
         results = []
         for r in completed:
-            path = Path(r['run'])/'result.json'
+            path = from_repo(r['run'])/'result.json'
             if path.exists():
                 results.append(json.loads(path.read_text())); continue
             model = Model(img_input_dim=x.shape[1], text_input_dim=t.shape[1], output_dim=len(classes)).to(args.device)
-            ckpt = torch.load(Path(r['run'])/'best.pt', map_location=args.device, weights_only=False)
+            ckpt = torch.load(from_repo(r['run'])/'best.pt', map_location=args.device, weights_only=False)
             model.load_state_dict(ckpt['model'])
             result = {**r, 'test': evaluate(model, tx, tt, ty), 'test_evaluated': True}
             write_json(path, result); results.append(result)
