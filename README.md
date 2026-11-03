@@ -296,9 +296,9 @@ Mã gốc của cả hai bài báo chọn checkpoint trên tập test. Nhóm đo
 
 ## 9. Biên dịch bài báo
 
-[paper/ieee_latex/main.tex](paper/ieee_latex/main.tex) dùng lớp `IEEEtran` và được biên dịch bằng **XeLaTeX**.
+[paper/ieee_latex/main.tex](paper/ieee_latex/main.tex) dùng lớp `IEEEtran`. File `main.pdf` trong repo được biên dịch bằng **XeLaTeX**; pdfLaTeX cũng biên dịch được (tên tiếng Việt dùng gói `vntex`), chỉ khác font nên số trang có thể chênh một trang.
 
-- **Overleaf:** tải lên `main.tex` và `fig_results.pdf`, rồi chọn *Menu → Compiler → XeLaTeX*.
+- **Overleaf:** tải lên `main.tex` và `fig_results.pdf`, rồi bấm *Recompile* (trình biên dịch mặc định chạy được; chọn *Menu → Compiler → XeLaTeX* để ra đúng như `main.pdf`).
 - **Máy cục bộ:**
 
 ```bash
