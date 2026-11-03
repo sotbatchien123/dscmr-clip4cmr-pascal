@@ -6,7 +6,7 @@ File [LICENSE](LICENSE) (MIT) chỉ áp dụng cho mã nguồn và tài liệu d
 
 | Thành phần | Nguồn | License | Cách dùng trong dự án |
 |---|---|---|---|
-| DSCMR (Zhen et al., CVPR 2019) | [penghu-cs/DSCMR](https://github.com/penghu-cs/DSCMR) | Repo không khai báo license (mặc định giữ toàn quyền) | Tải về `DSCMR/upstream/` bằng `scripts/fetch_selected_20261014.py`. Script của dự án đọc định nghĩa mạng và hàm loss từ thư mục này lúc chạy. Không phân phối lại. |
+| DSCMR (Zhen et al., CVPR 2019) | [penghu-cs/DSCMR](https://github.com/penghu-cs/DSCMR) | Repo không khai báo license (mặc định giữ toàn quyền) | Tải về `DSCMR/upstream/` bằng `scripts/data/fetch_upstream.py`. Script của dự án đọc định nghĩa mạng và hàm loss từ thư mục này lúc chạy. Không phân phối lại. |
 | CLIP4CMR (Zeng et al., 2022) | [zhixiongz/CLIP4CMR](https://github.com/zhixiongz/CLIP4CMR) | Repo không khai báo license (mặc định giữ toàn quyền) | Tải về `CLIP4CMR/upstream/`; xử lý như DSCMR. |
 
 ## Thư viện

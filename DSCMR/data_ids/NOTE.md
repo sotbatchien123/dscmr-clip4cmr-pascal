@@ -1,13 +1,13 @@
 # Khôi phục ID ảnh cho đặc trưng DSCMR: THẤT BẠI (30/10/2026)
 
-- `scripts/recover_dscmr_ids.py`: VGG19 torchvision (fc7 sau ReLU, 2 kiểu tiền xử lý) so với đặc trưng của tác giả cho cos ghép trung bình 0.19 → không cùng mô hình hoặc trọng số (có thể VGG19 Caffe hoặc đã fine-tune). Không thể ghép trực tiếp.
-- `scripts/probe_dscmr_id_matching.py`: ghép theo cấu trúc tương đồng trong từng lớp (QAP), rồi kiểm chứng chéo bằng ridge + Hungarian. Chỉ 3% cặp tái tạo được → các cặp ghép không đáng tin.
+- `scripts/analysis/dscmr_ids_torchvision.py`: VGG19 torchvision (fc7 sau ReLU, 2 kiểu tiền xử lý) so với đặc trưng của tác giả cho cos ghép trung bình 0.19 → không cùng mô hình hoặc trọng số (có thể VGG19 Caffe hoặc đã fine-tune). Không thể ghép trực tiếp.
+- `scripts/analysis/dscmr_ids_matching.py`: ghép theo cấu trúc tương đồng trong từng lớp (QAP), rồi kiểm chứng chéo bằng ridge + Hungarian. Chỉ 3% cặp tái tạo được → các cặp ghép không đáng tin.
 - Kết luận: không có ID cho split 800/100 của DSCMR. Không dùng bất kỳ file ghép nào. Thí nghiệm "DSCMR + đặc trưng CLIP" phải chạy trên split 800/200 của tác giả CLIP4CMR, tức là khác tập test với DSCMR gốc.
 
 ## Lần thử 2 (31/10/2026): VGG19 Caffe gốc (Oxford) — vẫn THẤT BẠI
 
 - Trọng số: bản Keras port từ VGG19 Caffe của Oxford (`fchollet/deep-learning-models` v0.1, sha256 `c872d82e…`). Lưu ngoài repo: `D:/Caches/vgg19_caffe/`. Kiểm tra: ảnh `2008_000716` → lớp 404 "airliner", xác suất 0.51.
-- Script: `scripts/recover_dscmr_ids_caffe.py`. Tiền xử lý kiểu Caffe: BGR, trừ mean. Thử 3 kiểu cắt ảnh: warp224, center256, tencrop256. Đặc trưng lưu ở `caffe_vgg19_fc7.npz`.
+- Script: `scripts/analysis/dscmr_ids_caffe.py`. Tiền xử lý kiểu Caffe: BGR, trừ mean. Thử 3 kiểu cắt ảnh: warp224, center256, tencrop256. Đặc trưng lưu ở `caffe_vgg19_fc7.npz`.
 - Cosine tốt nhất giữa mỗi dòng DSCMR và ảnh: trung vị 0.27–0.31; chỉ 14–58 ảnh khác nhau được chọn làm best match (hubness).
 - Mức kích hoạt trung bình theo từng nơ-ron: tương quan Spearman ≈ 0.00 → chiều của đặc trưng DSCMR **không** tương ứng với nơ-ron fc7 của VGG19 gốc (có thể đã fine-tune mạnh, đã xáo chiều, hoặc dùng mạng khác).
 - Đặc trưng văn bản không âm (đầu ra CNN văn bản đã train) → không tái tạo được.

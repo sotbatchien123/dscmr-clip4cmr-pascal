@@ -1,6 +1,6 @@
 # Kết quả Assignment 3 — DSCMR
 
-Đã hoàn tất 4 lượt kiểm tra × 10 epoch, 4 lượt chạy thử × 200 epoch và 12 lượt chạy chính (4 cấu hình × 3 seed).
+Đã hoàn tất 4 lần kiểm tra × 10 epoch, 4 lần chạy thử × 200 epoch và 12 lần chạy chính (4 cấu hình × 3 seed).
 Chạy chính tối đa 500 epoch/lượt, early stopping 50 epoch; lấy checkpoint có mAP validation trung bình hai chiều cao nhất. Không refit.
 
 ## Kết quả test
@@ -43,13 +43,13 @@ Tổng epoch chạy chính: 1524. Tổng thời gian trong các vòng huấn luy
 - Trọng số thích nghi là quy tắc dựa trên tỷ lệ loss EMA có giới hạn; không phải GradNorm. Tính mới chưa được chứng minh.
 - Ba seed không phải ba fold. Chênh lệch nhỏ cần thêm kiểm chứng; không suy ra ý nghĩa thống kê chỉ từ bảng trung bình.
 - Dùng checkpoint validation, khác các báo cáo refit cũ; không đối chiếu trực tiếp như cùng protocol. Không chạy lại CLIP4CMR.
-- Tập test đã từng được dùng trong lịch sử; lượt này không dùng test để chọn checkpoint hay điều chỉnh cấu hình.
+- Tập test đã được dùng trong các lần chạy trước; lần chạy này không dùng test để chọn checkpoint hay điều chỉnh cấu hình.
 
 ## Kiểm tra
 
 audit.json xác nhận ngân sách, early stopping, checkpoint, split, dữ liệu/mã nguồn gốc không đổi và tính nhất quán giai đoạn warmup.
 
-Kiểm tra độc lập (30/10/2026, `scripts/recheck_assignment3_author_eval.py`): nạp `best.pt` của 12 lượt bằng lớp mô hình gốc, tính mAP test bằng `fx_calc_map_label` của tác giả. Sai khác lớn nhất so với results.csv: 2.2e-16. Epoch trong `best.pt` trùng epoch có mAP validation trung bình cao nhất trong history.json ở cả 12 lượt.
+Kiểm tra độc lập (30/10/2026, `scripts/dscmr/recheck_author_eval.py`): nạp `best.pt` của 12 lượt bằng lớp mô hình gốc, tính mAP test bằng `fx_calc_map_label` của tác giả. Sai khác lớn nhất so với results.csv: 2.2e-16. Epoch trong `best.pt` trùng epoch có mAP validation trung bình cao nhất trong history.json ở cả 12 lượt.
 
 ## So sánh theo cặp seed (chênh lệch so với DSCMR gốc, điểm %)
 

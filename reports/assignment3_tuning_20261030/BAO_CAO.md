@@ -11,7 +11,7 @@ Ngày chạy: 30/10/2026. Bảng số liệu đầy đủ (tuning 18 cấu hình
 1. **Tuning** bằng 3-fold CV phân tầng trên 800 mẫu train (seed 42), không dùng test.
    - B0 (loss gốc): α ∈ {0.001, 0.01, 0.1} × β ∈ {0.03, 0.1, 0.3}, tổng 9 cấu hình.
    - B1 (SupCon): λ ∈ {0.03, 0.1, 0.3} × τ ∈ {0.05, 0.1, 0.2}, tổng 9 cấu hình; β lấy theo B0 tốt nhất.
-   - Mỗi lượt chạy tối đa 300 epoch, dừng sớm sau 50 epoch không cải thiện. Tổng cộng 54 lượt.
+   - Mỗi lần chạy tối đa 300 epoch, dừng sớm sau 50 epoch không cải thiện. Tổng cộng 54 lần chạy.
 2. **Cấu hình được chọn:**
    - B0\* = (1, 0.01, 0.03).
    - B1\* = (1, 0.03, 0.03), τ = 0.2.
@@ -59,14 +59,14 @@ Ngày chạy: 30/10/2026. Bảng số liệu đầy đủ (tuning 18 cấu hình
 
 - Test chỉ có 100 cặp, nên chênh lệch khoảng 1 điểm vẫn có thể bị nhiễu ảnh hưởng. Kết quả 5/5 seed cho thấy xu hướng, nhưng không thay được kiểm định thống kê trên nhiều tập dữ liệu.
 - So sánh với B0 mặc định chỉ dùng 3 seed, và B0 mặc định không trải qua cùng quy trình tuning.
-- Tập test đã được xem ở các lượt trước. Lượt này không dùng test để chọn cấu hình hay checkpoint.
+- Tập test đã được xem ở các lần chạy trước. Lần chạy này không dùng test để chọn cấu hình hay checkpoint.
 - Trọng số thích nghi là quy tắc EMA có giới hạn, không phải GradNorm. SupCon đa positive là kỹ thuật đã có (Khosla et al., 2020); đóng góp ở đây là áp dụng và phân tích cho DSCMR, không phải một loss mới.
 
 ## Kiểm tra
 
 - `verification.json`: self-test vòng 1 đạt (loss và gradient khớp mã tác giả, SupCon khớp phép tính brute-force).
 - **Tái lập vòng 1:** với hệ số gốc, runner mới cho lại đúng history 15 epoch của B0 và B3 seed 42 vòng 1 (sai khác 0).
-- **Kiểm tra độc lập** bằng `scripts/recheck_assignment3_author_eval.py`, dùng `fx_calc_map_label` của tác giả: sai khác tối đa so với results.csv là 2.2e-16. Checkpoint đúng epoch tốt nhất trên validation ở cả 20 lượt.
+- **Kiểm tra độc lập** bằng `scripts/dscmr/recheck_author_eval.py`, dùng `fx_calc_map_label` của tác giả: sai khác tối đa so với results.csv là 2.2e-16. Checkpoint đúng epoch tốt nhất trên validation ở cả 20 lượt.
 - **Sự cố:** lần chạy đầu bị dừng vì OneDrive khóa `status.json` khi ghi. Đã thêm cơ chế thử lại khi ghi file và chạy lại toàn bộ trong thư mục sạch. Không có kết quả nào lấy từ lần chạy lỗi.
 
 ![Heatmap tuning](tuning_heatmaps.png)

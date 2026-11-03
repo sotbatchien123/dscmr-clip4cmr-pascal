@@ -8,7 +8,7 @@ __pycache__/
 CLIP4CMR/dependencies/
 
 # --- Mã gốc của tác giả: repo DSCMR và CLIP4CMR không có license -> không phân phối lại.
-# Tải lại bằng scripts/fetch_selected_20261014.py
+# Tải lại bằng scripts/data/fetch_upstream.py
 */upstream/
 */upstream_official/
 
@@ -47,3 +47,6 @@ reports/clip4cmr_investigation_20261014/clip4cmr_issues*.json
 # --- Lịch sử nội bộ trước khi chốt 2 mô hình (chứa thông tin môi trường máy) ---
 reports/history_before_20261014/
 reports/restructure_20261011/before_edits/
+
+# --- Local archive of retired files (kept on disk and in git history, not published) ---
+archive_local/

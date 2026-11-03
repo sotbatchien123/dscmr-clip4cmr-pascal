@@ -69,4 +69,4 @@ Repo FedCMR còn chứa các tệp Pascal .mat, nhưng chưa xác minh chúng c�
 - `reports/clip4cmr_investigation_20261014/pascal_raw_manifest.json`: danh mục dữ liệu thô.
 - `reports/clip4cmr_investigation_20261014/clip4cmr_issue_*_comments.json`: phản hồi công khai từ tác giả đã tải.
 - `CLIP4CMR/upstream/`: mã gốc đã kiểm tra.
-- `CLIP4CMR/status.json`: vẫn blocked_missing_data; chưa có metric local.
+- Trạng thái lúc điều tra (14/10/2026): chưa có dữ liệu để chạy CLIP4CMR. Sau đó dữ liệu đã được dựng lại, xem mục 4 của README.

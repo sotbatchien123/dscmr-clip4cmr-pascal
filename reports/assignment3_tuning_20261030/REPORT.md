@@ -68,5 +68,5 @@
 - Tuning dùng ngân sách bằng nhau: 9 cấu hình × 3 fold cho B0 và cho B1; B2*/B3* không tuning thêm.
 - CV score lấy epoch tốt nhất của mỗi fold nên hơi lạc quan, nhưng như nhau cho mọi cấu hình; chỉ dùng để xếp hạng.
 - Tập test 100 cặp; chênh lệch dưới ~1 điểm có thể là nhiễu. 5 seed không phải 5 fold; không tuyên bố ý nghĩa thống kê.
-- Tập test đã được xem ở các lượt trước; lượt này không dùng test để chọn cấu hình hay checkpoint.
+- Tập test đã được xem ở các lần chạy trước; lần chạy này không dùng test để chọn cấu hình hay checkpoint.
 - Trọng số thích nghi: quy tắc EMA tốc độ giảm loss có giới hạn, không phải GradNorm; tính mới chưa được chứng minh.

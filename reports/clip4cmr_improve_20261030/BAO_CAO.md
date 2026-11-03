@@ -84,13 +84,13 @@ Ngày chạy: 30/10/2026. Bảng đầy đủ (tuning α, R@K, chênh lệch the
 
 - Đặc trưng RN50 trích xuất lại trùng tuyệt đối với file `clip_*.pkl` cũ. Đặc trưng ViT-L/14 lấy từ checkpoint chính thức; thư viện `clip` đã kiểm tra SHA-256 khi tải.
 - Base RN50 seed 42 tái tạo đúng từng số loss và mAP validation của lượt CLIP4CMR cũ. Checkpoint tốt nhất ở epoch 69, trùng với lượt cũ chạy 5.000 epoch.
-- `scripts/recheck_clip4cmr_improve.py` nạp lại 50 checkpoint và tính mAP bằng `fx_calc_map_label` gốc của CLIP4CMR. Sai khác tối đa so với results.csv: 2.2e-16. Epoch trong `best.pt` đúng là epoch có mAP validation tốt nhất ở cả 50/50 lượt.
+- `scripts/clip4cmr/recheck_author_eval.py` nạp lại 50 checkpoint và tính mAP bằng `fx_calc_map_label` gốc của CLIP4CMR. Sai khác tối đa so với results.csv: 2.2e-16. Epoch trong `best.pt` đúng là epoch có mAP validation tốt nhất ở cả 50/50 lượt.
 
 ## Tái lập
 
 ```
-.venv310\Scripts\python.exe scripts\build_clip4cmr_multicaption.py
-.venv310\Scripts\python.exe scripts\clip4cmr_improve.py --stage all
-.venv310\Scripts\python.exe scripts\recheck_clip4cmr_improve.py
-<python có matplotlib> scripts\plot_clip4cmr_improve.py
+.venv310\Scripts\python.exe scripts\scripts/data/build_multicaption.py
+.venv310\Scripts\python.exe scripts\scripts/clip4cmr/improve.py --stage all
+.venv310\Scripts\python.exe scripts\scripts/clip4cmr/recheck_author_eval.py
+<python có matplotlib> scripts\scripts/clip4cmr/plot_improve.py
 ```

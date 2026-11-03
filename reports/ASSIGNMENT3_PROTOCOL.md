@@ -3,7 +3,7 @@
 ## Scope and budget
 
 This experiment implements the two selected modifications independently and together.
-It does not change or overwrite the historical DSCMR/CLIP4CMR runs under `D:/SEG`.
+It does not change or overwrite the historical DSCMR/CLIP4CMR runs under `.`.
 
 | Configuration | Common-space term | Weighting |
 |---|---|---|
@@ -82,7 +82,7 @@ From the workspace, using the existing Python environment:
 
 ```powershell
 $env:PYTHONDONTWRITEBYTECODE='1'
-& 'D:\SEG\.venv310\Scripts\python.exe' -u scripts/dscmr_assignment3.py --source-root 'D:\SEG' --out reports/assignment3_20261029 --stage all
+& '.venv310\Scripts\python.exe' -u scripts/dscmr/loss_ablation.py --source-root '.' --out reports/assignment3_20261029 --stage all
 ```
 
 Outputs: `protocol.json`, `verification.json`, `timing.json`, `status.json`,

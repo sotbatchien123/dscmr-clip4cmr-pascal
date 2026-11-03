@@ -56,7 +56,7 @@ Mọi số liệu là mAP@ALL (%), trung bình ± độ lệch chuẩn qua 5 see
 |---|---|---:|---:|
 | Bài báo (CVPR 2019, `DSCMR/upstream/Result.jpg`) | theo test (code gốc) | 71.0 | 72.2 |
 | Chạy đúng code gốc (800 train, batch 100, 500 epoch) | theo test | 68.84 ± 0.50 | 71.05 ± 0.45 |
-| Cùng lượt chạy đó, epoch 500 | không chọn | 64.22 ± 0.84 | 67.26 ± 0.80 |
+| Cùng lần chạy đó, epoch 500 | không chọn | 64.22 ± 0.84 | 67.26 ± 0.80 |
 | B0, cách của nhóm (Assignment 3 vòng 1, 3 seed) | validation 720/80 | 66.77 | 69.32 |
 
 - DSCMR **không thiếu dữ liệu**: repo của tác giả có sẵn đặc trưng VGG19 4096 chiều và văn bản 300 chiều.
@@ -73,11 +73,11 @@ Mọi số liệu là mAP@ALL (%), trung bình ± độ lệch chuẩn qua 5 see
 ## Tái lập
 
 ```
-.venv310\Scripts\python.exe -I scripts\verify_hf_mirror_clip4cmr.py
-.venv310\Scripts\python.exe -I scripts\probe_hf_mirror_text_rule.py
-.venv310\Scripts\python.exe -I scripts\build_clip4cmr_author_split.py
-.venv310\Scripts\python.exe scripts\clip4cmr_improve.py --stage all --feats CLIP4CMR/data/pascal_author_split_mirror --out reports/clip4cmr_author_split_20261030
-.venv310\Scripts\python.exe scripts\recheck_clip4cmr_improve.py reports/clip4cmr_author_split_20261030 CLIP4CMR/data/pascal_author_split_mirror
-.venv310\Scripts\python.exe scripts\clip4cmr_paper_protocol.py
-.venv310\Scripts\python.exe scripts\dscmr_author_protocol.py
+.venv310\Scripts\python.exe -I scripts\scripts/data/verify_hf_mirror.py
+.venv310\Scripts\python.exe -I scripts\scripts/data/probe_mirror_text_rule.py
+.venv310\Scripts\python.exe -I scripts\scripts/data/build_author_split.py
+.venv310\Scripts\python.exe scripts\scripts/clip4cmr/improve.py --stage all --feats CLIP4CMR/data/pascal_author_split_mirror --out reports/clip4cmr_author_split_20261030
+.venv310\Scripts\python.exe scripts\scripts/clip4cmr/recheck_author_eval.py reports/clip4cmr_author_split_20261030 CLIP4CMR/data/pascal_author_split_mirror
+.venv310\Scripts\python.exe scripts\scripts/baseline/clip4cmr_paper_protocol.py
+.venv310\Scripts\python.exe scripts\scripts/baseline/dscmr_author_protocol.py
 ```

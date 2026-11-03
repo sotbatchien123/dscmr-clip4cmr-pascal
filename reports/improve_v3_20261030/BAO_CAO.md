@@ -3,7 +3,7 @@
 ## Giao thức
 
 - **Dữ liệu:** split tác giả CLIP4CMR (Pascal Sentence, 800 train / 200 test), khôi phục từ bản sao HF (bên thứ ba), xem `reports/clip4cmr_author_split_20261030/`.
-- **Chọn cấu hình:** 3-fold CV phân tầng, chỉ trên 800 dòng train. Code: `scripts/improve_v3.py --stage cv` và `scripts/finetune_v3.py --stage cv`.
+- **Chọn cấu hình:** 3-fold CV phân tầng, chỉ trên 800 dòng train. Code: `scripts/encoders/encoder_study.py --stage cv` và `scripts/encoders/finetune_image_tower.py --stage cv`.
 - **Xác nhận:**
   - 5 seed (42–46), split cố định 720/80, checkpoint chọn theo validation.
   - Test chỉ mở **một lần**, sau khi train xong tất cả seed.
@@ -66,10 +66,10 @@ Kết quả từng seed (TB 2 chiều):
 
 ## File
 
-- **Code:** `scripts/improve_v3.py`, `scripts/finetune_v3.py`, `scripts/extract_encoders.py`.
+- **Code:** `scripts/encoders/encoder_study.py`, `scripts/encoders/finetune_image_tower.py`, `scripts/data/extract_encoders.py`.
 - **CV:** `cv/`, `finetune/cv/`.
 - **Test:**
   - `confirm_results.json` (đóng băng).
   - `finetune/confirm/<cfg>/test_results.json`.
   - Đặc trưng test của từng seed: `test_features.npz`.
-- **Log:** `logs/v3_confirm_*.log`.
+- **Log:** `reports/improve_v3_20261030/logs/v3_confirm_*.log`.

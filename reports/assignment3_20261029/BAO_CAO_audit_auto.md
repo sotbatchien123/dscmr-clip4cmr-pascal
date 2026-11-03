@@ -1,6 +1,6 @@
 # Kết quả Assignment 3 — DSCMR
 
-Đã hoàn tất 4 lượt kiểm tra × 10 epoch, 4 lượt chạy thử × 200 epoch và 12 lượt chạy chính (4 cấu hình × 3 seed).
+Đã hoàn tất 4 lần kiểm tra × 10 epoch, 4 lần chạy thử × 200 epoch và 12 lần chạy chính (4 cấu hình × 3 seed).
 Chạy chính tối đa 500 epoch/lượt, early stopping 50 epoch; lấy checkpoint có mAP validation trung bình hai chiều cao nhất. Không refit.
 
 ## Kết quả test
@@ -43,7 +43,7 @@ Tổng epoch chạy chính: 1524. Tổng thời gian trong các vòng huấn luy
 - Trọng số thích nghi là quy tắc dựa trên tỷ lệ loss EMA có giới hạn; không phải GradNorm. Tính mới chưa được chứng minh.
 - Ba seed không phải ba fold. Chênh lệch nhỏ cần thêm kiểm chứng; không suy ra ý nghĩa thống kê chỉ từ bảng trung bình.
 - Dùng checkpoint validation, khác các báo cáo refit cũ; không đối chiếu trực tiếp như cùng protocol. Không chạy lại CLIP4CMR.
-- Tập test đã từng được dùng trong lịch sử; lượt này không dùng test để chọn checkpoint hay điều chỉnh cấu hình.
+- Tập test đã được dùng trong các lần chạy trước; lần chạy này không dùng test để chọn checkpoint hay điều chỉnh cấu hình.
 
 ## Kiểm tra
 

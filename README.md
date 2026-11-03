@@ -1,71 +1,318 @@
-# Cải tiến DSCMR và CLIP4CMR cho truy hồi ảnh – văn bản (Pascal Sentence)
+# Cải tiến DSCMR và CLIP4CMR cho truy hồi ảnh – văn bản trên Pascal Sentence
 
-> Ghi chú làm việc nội bộ: đọc và cập nhật `GHI_NHO.md` mỗi phiên. File này chỉ có trên máy, không đưa lên GitHub.
+Đồ án tái lập và cải tiến hai phương pháp truy hồi đa phương thức có giám sát:
+**DSCMR** (Zhen et al., CVPR 2019) và **CLIP4CMR** (Zeng & Mao, 2022).
+Mọi cấu hình được chọn bằng kiểm định chéo trên tập train; tập test chỉ được mở một lần.
 
-Dự án Assignment 3 có ba phần chính:
-- Tái lập hai phương pháp truy hồi đa phương thức có giám sát: **DSCMR** (CVPR 2019) và **CLIP4CMR** (2022).
-- Đề xuất và kiểm chứng các cải tiến cho từng phương pháp.
-- Báo cáo trung thực, gồm cả các kết quả âm tính.
+**Nhóm thực hiện (Đại học FPT Đà Nẵng):** Vũ Quốc Đạt · Mai Quốc Huy · Nguyễn Gia Phúc · Ngô Ngọc Trường Sơn · Trần Đăng Khoa
 
-**Báo cáo tổng hợp (Word):** [reports/BAO_CAO_CAI_TIEN_20261031/Bao_cao_cai_tien_DSCMR_CLIP4CMR.docx](reports/BAO_CAO_CAI_TIEN_20261031/Bao_cao_cai_tien_DSCMR_CLIP4CMR.docx)
+**Bài báo (định dạng IEEE):** [paper/ieee_latex/main.pdf](paper/ieee_latex/main.pdf) · mã nguồn LaTeX [paper/ieee_latex/main.tex](paper/ieee_latex/main.tex)
 
-## Kết quả chính
+---
 
-mAP@ALL (%) trên tập test 200 cặp, trung bình 5 seed. Cấu hình được chọn bằng kiểm định chéo trên train; test chỉ mở một lần.
+## Mục lục
 
-| Mô hình | Baseline I2T / T2I | Cải tiến I2T / T2I | Tăng (TB 2 chiều) |
+1. [Kết quả chính](#1-kết-quả-chính)
+2. [Cấu trúc thư mục](#2-cấu-trúc-thư-mục)
+3. [Cài đặt môi trường](#3-cài-đặt-môi-trường)
+4. [Chuẩn bị dữ liệu](#4-chuẩn-bị-dữ-liệu)
+5. [Tái lập từng thí nghiệm](#5-tái-lập-từng-thí-nghiệm)
+6. [Kiểm chứng kết quả đã lưu](#6-kiểm-chứng-kết-quả-đã-lưu)
+7. [Giao thức đánh giá](#7-giao-thức-đánh-giá)
+8. [Phiên bản mã nguồn và lưu ý tái lập](#8-phiên-bản-mã-nguồn-và-lưu-ý-tái-lập)
+9. [Biên dịch bài báo](#9-biên-dịch-bài-báo)
+10. [License](#10-license)
+
+---
+
+## 1. Kết quả chính
+
+mAP@ALL (%) trên tập test 200 cặp, trung bình 5 seed (42–46).
+
+| Mô hình | Gốc I2T / T2I | Cải tiến I2T / T2I | Tăng (TB 2 chiều) |
 |---|---|---|---|
-| CLIP4CMR (split tác giả) | 68.48 / 67.87 | **76.63 / 75.68** | **+7.98**, 5/5 seed |
-| DSCMR, đầu và loss gốc (split CLIP4CMR) | 68.86 / 69.89 | **74.78 / 72.70** | **+4.36**, 5/5 seed |
+| CLIP4CMR (split tác giả) | 68.48 / 67.87 | **76.63 / 75.68** | **+7.98**, tăng ở 5/5 seed cả hai chiều |
+| DSCMR, giữ nguyên đầu và loss gốc (split CLIP4CMR) | 68.86 / 69.89 | **74.78 / 72.70** | **+4.36**, tăng ở 5/5 seed |
 
-Các cải tiến đã dùng:
-- (A) Prototype ngữ nghĩa từ câu nhắc CLIP thay cho tâm lớp ngẫu nhiên, cộng adapter phần dư.
-- (B) Huấn luyện theo từng câu mô tả.
-- (C) Encoder mạnh hơn (DFN5B ViT-H/14, EVA02, SigLIP).
-- (D) Fine-tune 2–4 block cuối của encoder ảnh.
-- Với DSCMR còn có SupCon cho không gian chung: chỉ cải thiện chiều I2T (+1.15 điểm).
+Đóng góp của từng cải tiến cho CLIP4CMR (test, TB 2 chiều):
 
-CLIP4CMR cải tiến vượt số công bố của bài báo gốc (69.8 / 69.2). DSCMR không so cùng tập test với bài gốc, vì danh sách ảnh trong split của DSCMR không được công bố (xem [DSCMR/data_ids/NOTE.md](DSCMR/data_ids/NOTE.md)).
+| Bước | mAP | Tăng thêm |
+|---|---|---|
+| CLIP4CMR gốc (RN50) | 68.17 | – |
+| + A: prototype ngữ nghĩa + adapter phần dư, B: huấn luyện theo từng câu mô tả | 70.76 | +2.59 |
+| + C: encoder DFN5B ViT-H/14 (đóng băng) | 73.62 | +2.86 |
+| + D: fine-tune 2 block cuối của nhánh ảnh | **76.15** | +2.53 |
 
-## Báo cáo chi tiết
+- **Đối chứng:** adapter với prototype ngẫu nhiên (A_res) không cải thiện (+0.24), nên phần tăng của A đến từ prototype ngữ nghĩa.
+- **DSCMR:** thay loss không gian chung bằng SupCon chỉ tăng chiều I2T (+1.15, 5/5 seed), không tăng T2I. Đây là kết quả âm tính và được báo cáo đầy đủ.
+- **So với bài báo gốc:** CLIP4CMR cải tiến cao hơn số công bố (69.8 / 69.2) khoảng 6.5 điểm, dù dùng giao thức chặt hơn (chọn checkpoint trên validation thay vì trên test).
 
-| Nội dung | Báo cáo |
-|---|---|
-| So sánh với bài báo gốc | [reports/SO_SANH_BAI_BAO_20261030.md](reports/SO_SANH_BAI_BAO_20261030.md) |
-| Baseline 5.000 + 1.000 epoch | [reports/RESULTS_5000_1000.md](reports/RESULTS_5000_1000.md) |
-| DSCMR: cải tiến loss, vòng 1 và vòng 2 (tuning + 5 seed) | [vòng 1](reports/assignment3_20261029/BAO_CAO.md) · [vòng 2](reports/assignment3_tuning_20261030/BAO_CAO.md) · [protocol](reports/ASSIGNMENT3_PROTOCOL.md) |
-| CLIP4CMR: cải tiến A + B | [split local](reports/clip4cmr_improve_20261030/BAO_CAO.md) · [split tác giả](reports/clip4cmr_author_split_20261030/REPORT.md) |
-| Vòng 3: encoder mạnh + fine-tune | [reports/improve_v3_20261030/BAO_CAO.md](reports/improve_v3_20261030/BAO_CAO.md) |
+---
 
-## Cấu trúc thư mục
+## 2. Cấu trúc thư mục
 
 ```
-scripts/      mã huấn luyện, đánh giá, kiểm chứng và dựng báo cáo
-common/       hàm tính metric dùng chung; tests/ kiểm tra metric
-reports/      kết quả (JSON/CSV/log/hình) và báo cáo của từng vòng
-DSCMR/        source.json (nguồn mã gốc), data_ids/NOTE.md; mã gốc tải về upstream/
-CLIP4CMR/     source.json; mã gốc tải về upstream/, dữ liệu trong data/
-logs/         log các lượt chạy vòng 3
-docs/         ghi chú bố cục
+.
+├── README.md                  hướng dẫn này
+├── requirements.txt           thư viện Python
+├── LICENSE                    MIT cho mã và tài liệu của nhóm
+├── THIRD_PARTY_NOTICES.md     điều khoản của mã, mô hình, dữ liệu bên thứ ba
+│
+├── common/                    hàm dùng chung
+│   └── metrics.py             mAP@ALL, Recall@K, độ liên quan theo nhãn
+├── tests/
+│   └── test_metrics.py        kiểm thử đơn vị cho metrics
+│
+├── scripts/                   toàn bộ thí nghiệm, chạy bằng  python -m scripts.<nhóm>.<tên>
+│   ├── data/                  1. tải mã gốc, dựng dữ liệu, trích đặc trưng
+│   ├── baseline/              2. tái lập DSCMR và CLIP4CMR gốc
+│   ├── dscmr/                 3. cải tiến loss cho DSCMR (SupCon, trọng số thích nghi)
+│   ├── clip4cmr/              4. cải tiến A + B cho CLIP4CMR
+│   ├── encoders/              5. encoder mạnh hơn và fine-tune nhánh ảnh (cho cả hai mô hình)
+│   └── analysis/              phân tích phụ: probe đặc trưng, thử khôi phục ID ảnh của DSCMR
+│
+├── reports/                   kết quả đã chạy (JSON, CSV, log, hình) và báo cáo từng vòng
+├── paper/                     bài báo IEEE (LaTeX + PDF + Word), báo cáo tiếng Việt, kịch bản thuyết trình
+│
+├── DSCMR/                     source.json (nguồn mã gốc), data_ids/NOTE.md; mã gốc tải vào DSCMR/upstream/
+└── CLIP4CMR/                  source.json; mã gốc tải vào CLIP4CMR/upstream/, dữ liệu vào CLIP4CMR/data/
 ```
 
-Không có trong repo (xem [.gitignore](.gitignore)): mã gốc của tác giả, dữ liệu, đặc trưng, trọng số, checkpoint và môi trường Python.
+### Danh sách script
 
-## Tái lập
+| Nhóm | Script | Chức năng |
+|---|---|---|
+| data | `fetch_upstream` | Tải mã gốc DSCMR và CLIP4CMR (kèm đặc trưng Pascal của DSCMR) vào `*/upstream/` |
+| data | `build_pascal_local` | Tải 1.000 ảnh và câu mô tả Pascal Sentence từ UIUC, dựng split cục bộ 800/200 |
+| data | `audit_pascal_sources` | Ghi bằng chứng nguồn dữ liệu (checksum, số câu mô tả mỗi ảnh) |
+| data | `build_multicaption` | Trích đặc trưng CLIP RN50 / ViT-L/14: ảnh, từng câu mô tả, câu nhắc theo lớp |
+| data | `verify_hf_mirror` | Kiểm chứng bản sao split tác giả CLIP4CMR với đặc trưng tự trích |
+| data | `probe_mirror_text_rule` | Tìm quy tắc xử lý văn bản khớp với bản sao |
+| data | `build_author_split` | Dựng dữ liệu theo split tác giả CLIP4CMR |
+| data | `extract_encoders` | Trích đặc trưng 4 encoder lớn (ViT-L/14-336, EVA02-L, SigLIP, DFN5B) |
+| baseline | `train_baseline` | Huấn luyện DSCMR / CLIP4CMR gốc trên đặc trưng cố định |
+| baseline | `report_5000_1000` | Kiểm tra và tổng hợp lượt baseline dài (5.000 + 1.000 epoch) |
+| baseline | `clip4cmr_paper_protocol` | CLIP4CMR theo đúng cách chọn checkpoint của bài báo (so sánh với số công bố) |
+| baseline | `dscmr_author_protocol` | DSCMR theo đúng mã gốc (so sánh với số công bố) |
+| dscmr | `loss_ablation` | Vòng 1: loss gốc / SupCon / trọng số thích nghi / kết hợp, 3 seed |
+| dscmr | `loss_tuning` | Vòng 2: tuning hệ số loss bằng CV, xác nhận 5 seed |
+| dscmr | `audit_loss_ablation` | Kiểm tra ngân sách, early stopping, checkpoint của vòng 1; vẽ hình |
+| dscmr | `plot_loss_tuning` | Vẽ hình cho vòng 2 |
+| dscmr | `recheck_author_eval` | Tính lại mAP test bằng evaluator của tác giả |
+| dscmr | `rerank_cv` | Thử xếp hạng lại kết quả truy hồi (kết quả âm tính) |
+| clip4cmr | `improve` | Cải tiến A (prototype ngữ nghĩa + adapter) và B (từng câu mô tả), đối chứng A_res |
+| clip4cmr | `recheck_author_eval` | Tính lại mAP test bằng evaluator của tác giả |
+| clip4cmr | `plot_improve` | Vẽ hình cho nghiên cứu A + B |
+| encoders | `encoder_study` | So sánh encoder và đầu truy hồi bằng CV, xác nhận 5 seed |
+| encoders | `finetune_image_tower` | Fine-tune N block cuối của nhánh ảnh DFN5B |
+| analysis | `probe_label_space` | Probe tuyến tính: chẩn đoán đặc trưng ảnh là nút thắt |
+| analysis | `dscmr_ids_*` | Bốn cách thử khôi phục ID ảnh trong split DSCMR (đều thất bại, xem `DSCMR/data_ids/NOTE.md`) |
+| analysis | `evaluate_features` | Đánh giá độc lập một file đặc trưng đã xuất |
 
-1. Tạo môi trường Python 3.10, cài PyTorch có CUDA, rồi chạy `pip install -r requirements-common.txt`.
-2. Tải mã gốc DSCMR và CLIP4CMR (kèm đặc trưng Pascal của DSCMR): `python scripts/fetch_selected_20261014.py`.
-3. Dữ liệu CLIP4CMR:
-   - Tải 1.000 ảnh và câu mô tả Pascal Sentence từ trang UIUC: `python scripts/build_pascal_rn50_local.py` (đọc danh sách trong `reports/clip4cmr_investigation_20261014/pascal_raw_manifest.json`).
-   - Tải `clip_train.pkl` và `clip_test.pkl` từ HF Space `shivangibithel/LCMI_T2I` vào `CLIP4CMR/data/hf_mirror_lcmi/`.
-   - Kiểm chứng bằng `scripts/verify_hf_mirror_clip4cmr.py`, dựng split bằng `scripts/build_clip4cmr_author_split.py`.
-4. Chạy thí nghiệm (xem `--help` của từng script):
-   - Cải tiến A + B: `python scripts/clip4cmr_improve.py --feats CLIP4CMR/data/pascal_author_split_mirror --out reports/clip4cmr_author_split_20261030`.
-   - DSCMR: `python scripts/dscmr_assignment3_tuning.py --source-root . --out reports/assignment3_tuning_20261030`.
-   - Vòng 3: `scripts/extract_encoders.py`, rồi `scripts/improve_v3.py --stage cv|confirm`, rồi `scripts/finetune_v3.py --stage cv|confirm`.
+Mỗi script có docstring ở đầu file mô tả đầu vào, đầu ra và cách chạy.
 
-Bảng ánh xạ đầy đủ giữa script và kết quả nằm ở mục 8 của báo cáo Word.
+---
 
-## License
+## 3. Cài đặt môi trường
 
-Mã nguồn và tài liệu của dự án dùng [MIT License](LICENSE). Mã gốc, trọng số mô hình và dữ liệu của bên thứ ba giữ điều khoản riêng, liệt kê trong [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Đã kiểm thử trên Windows 11, Python 3.10, PyTorch 2.7.1 + CUDA 12.8, GPU RTX 5070 Laptop 8 GB.
+
+```bash
+python -m venv .venv310
+.venv310\Scripts\activate          # Linux/macOS: source .venv310/bin/activate
+pip install torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cu128
+pip install -r requirements.txt
+```
+
+`requirements.txt` đã gồm gói OpenAI CLIP (cho RN50 và ViT-L/14).
+
+Các script trong `scripts/encoders/` và `scripts/data/extract_encoders.py` cần thêm `open_clip_torch` và `timm` bản mới. Mã gốc của tác giả lại cần `timm` bản cũ, nên hai gói này được cài vào một thư mục riêng; script tự thêm thư mục này vào `sys.path`:
+
+```bash
+pip install --target .feat_libs open_clip_torch==2.32.0 timm==1.0.15
+```
+
+**Mọi lệnh bên dưới chạy từ thư mục gốc của repo**, theo dạng `python -m scripts.<nhóm>.<tên>`.
+
+---
+
+## 4. Chuẩn bị dữ liệu
+
+Mã gốc, dữ liệu, đặc trưng và trọng số không nằm trong repo (xem [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)). Chạy lần lượt:
+
+```bash
+# 4.1 Mã gốc DSCMR, CLIP4CMR và đặc trưng Pascal của DSCMR
+python -m scripts.data.fetch_upstream
+
+# 4.2 Ảnh + câu mô tả Pascal Sentence từ UIUC (danh sách trong reports/clip4cmr_investigation_20261014/pascal_raw_manifest.json)
+python -m scripts.data.build_pascal_local
+python -m scripts.data.audit_pascal_sources
+
+# 4.3 Đặc trưng CLIP RN50 / ViT-L/14 theo từng câu mô tả
+python -m scripts.data.build_multicaption
+```
+
+**4.4 Split tác giả CLIP4CMR.** Đường dẫn dữ liệu gốc của tác giả đã hết hạn. Nhóm dùng bản sao `clip_train.pkl` và `clip_test.pkl` từ Hugging Face Space `shivangibithel/LCMI_T2I` (bên thứ ba).
+
+1. Đặt hai file vào `CLIP4CMR/data/hf_mirror_lcmi/`.
+2. Chạy kiểm chứng rồi dựng split:
+
+```bash
+python -m scripts.data.verify_hf_mirror        # kiểm tra: 922/1000 ảnh trùng đặc trưng tự trích (cos > 0.999)
+python -m scripts.data.probe_mirror_text_rule
+python -m scripts.data.build_author_split
+```
+
+Pickle được đọc bằng unpickler chỉ cho phép kiểu numpy.
+
+```bash
+# 4.5 Đặc trưng 4 encoder lớn (cần .feat_libs, tải trọng số qua open_clip)
+python -m scripts.data.extract_encoders
+python -m scripts.encoders.encoder_study --stage data
+```
+
+---
+
+## 5. Tái lập từng thí nghiệm
+
+Bảng dưới ánh xạ từng bảng trong bài báo tới lệnh chạy và thư mục kết quả đã lưu sẵn trong repo.
+
+| Bài báo | Lệnh | Kết quả trong repo |
+|---|---|---|
+| Bảng I (tái lập) | 5.1 | `reports/RESULTS_5000_1000.md`, `reports/clip4cmr_paper_protocol_20261030/`, `reports/dscmr_author_protocol_20261030/` |
+| Bảng II (ablation A, B) | 5.3 | `reports/clip4cmr_author_split_20261030/` |
+| Bảng III (so sánh encoder) | 5.4 | `reports/improve_v3_20261030/cv/` |
+| Bảng IV, VI, Hình 1 (kết quả chính) | 5.4, 5.5 | `reports/improve_v3_20261030/confirm/`, `.../finetune/` |
+| Bảng V (loss DSCMR) | 5.2 | `reports/assignment3_20261029/`, `reports/assignment3_tuning_20261030/` |
+
+Mỗi thư mục kết quả có `protocol.json` (cấu hình, checksum dữ liệu và mã), `results.csv`, `aggregate.json` và báo cáo `BAO_CAO.md` hoặc `REPORT.md`.
+
+Một số lưu ý khi chạy:
+- Có thể chạy thử nhanh trước bằng `--stage smoke` (hoặc `check`).
+- Thí nghiệm dài có thể tạm dừng bằng cách tạo file `STOP` trong thư mục `--out`; chạy lại đúng lệnh để tiếp tục.
+- Không ghi đè thư mục kết quả có sẵn: script sẽ báo lỗi nếu cấu hình đổi. Hãy dùng một `--out` mới.
+
+### 5.1 Baseline và so sánh với bài báo gốc
+
+```bash
+python -m scripts.baseline.train_baseline --method DSCMR --max-epochs 5000 --refit-epochs 1000 \
+       --out DSCMR/runs/pascal_selection5000_refit1000_seed42
+python -m scripts.baseline.train_baseline --method CLIP4CMR --data CLIP4CMR/data/pascal_uiuc_seed42 \
+       --max-epochs 5000 --refit-epochs 1000 --out CLIP4CMR/runs/pascal_selection5000_refit1000_seed42
+python -m scripts.baseline.report_5000_1000
+
+python -m scripts.baseline.clip4cmr_paper_protocol     # chọn checkpoint theo test như mã gốc
+python -m scripts.baseline.dscmr_author_protocol
+```
+
+### 5.2 DSCMR: thay loss không gian chung (Bảng V)
+
+```bash
+python -m scripts.dscmr.loss_ablation --out reports/assignment3_20261029             # vòng 1, 3 seed
+python -m scripts.dscmr.audit_loss_ablation reports/assignment3_20261029
+python -m scripts.dscmr.loss_tuning --out reports/assignment3_tuning_20261030        # vòng 2: CV + 5 seed
+python -m scripts.dscmr.plot_loss_tuning reports/assignment3_tuning_20261030 reports/assignment3_20261029
+```
+
+### 5.3 CLIP4CMR: cải tiến A và B (Bảng II)
+
+```bash
+# split tác giả (dùng trong bài báo)
+python -m scripts.clip4cmr.improve --feats CLIP4CMR/data/pascal_author_split_mirror \
+       --out reports/clip4cmr_author_split_20261030
+# split cục bộ UIUC (thí nghiệm phụ)
+python -m scripts.clip4cmr.improve --out reports/clip4cmr_improve_20261030
+python -m scripts.clip4cmr.plot_improve
+```
+
+### 5.4 Encoder mạnh hơn (Bảng III, IV, VI)
+
+```bash
+# CV 3-fold trên train cho từng encoder (có thể chia nhiều lần chạy)
+python -m scripts.encoders.encoder_study --stage cv --encoders rn50 vitl14 vitl14_336 eva02l_336 siglip_so400m_384 dfn5b_h14
+# xác nhận 5 seed các cấu hình đã chốt, mở test một lần
+python -m scripts.encoders.encoder_study --stage confirm --configs reports/improve_v3_20261030/confirm_configs.json
+```
+
+### 5.5 Fine-tune nhánh ảnh DFN5B
+
+```bash
+# chọn số block bằng CV
+python -m scripts.encoders.finetune_image_tower --stage cv --head c4_AB --blocks 2
+python -m scripts.encoders.finetune_image_tower --stage cv --head c4_AB --blocks 4
+python -m scripts.encoders.finetune_image_tower --stage cv --head ds    --blocks 2
+python -m scripts.encoders.finetune_image_tower --stage cv --head ds    --blocks 4
+# xác nhận cấu hình đã chọn (CLIP4CMR: 2 block, DSCMR: 4 block)
+python -m scripts.encoders.finetune_image_tower --stage confirm --head c4_AB --blocks 2
+python -m scripts.encoders.finetune_image_tower --stage confirm --head ds    --blocks 4
+```
+
+Fine-tune dùng bf16, gradient checkpointing và forward theo khúc 25 mẫu, nên chạy được với khoảng 3.4 GB VRAM trống.
+
+### 5.6 Phân tích phụ
+
+```bash
+python -m scripts.analysis.probe_label_space          # đặc trưng ảnh là nút thắt
+python -m scripts.dscmr.rerank_cv                     # xếp hạng lại: không giúp
+python -m scripts.analysis.dscmr_ids_caffe --stage extract   # thử khôi phục ID ảnh DSCMR (thất bại)
+```
+
+---
+
+## 6. Kiểm chứng kết quả đã lưu
+
+Có thể kiểm chứng các con số trong báo cáo mà không cần huấn luyện lại, chỉ cần dữ liệu và checkpoint:
+
+```bash
+python -m unittest discover -s tests -t .                                     # kiểm thử metrics
+python -m scripts.dscmr.recheck_author_eval                                   # DSCMR vòng 1
+python -m scripts.dscmr.recheck_author_eval reports/assignment3_tuning_20261030 confirm   # DSCMR vòng 2
+python -m scripts.clip4cmr.recheck_author_eval reports/clip4cmr_author_split_20261030 CLIP4CMR/data/pascal_author_split_mirror
+```
+
+Các lệnh `recheck_*` nạp lại checkpoint tốt nhất, tính mAP test bằng evaluator gốc của tác giả và so với `results.csv`. Sai lệch tối đa đo được là 2.2e-16.
+
+---
+
+## 7. Giao thức đánh giá
+
+1. **Chọn cấu hình:** kiểm định chéo 3-fold phân tầng chỉ trên 800 mẫu train. Tập test không tham gia.
+2. **Xác nhận:** 5 seed (42–46) trên split cố định 720 train / 80 validation; checkpoint chọn theo mAP validation, có early stopping.
+3. **Đánh giá:** tập test chỉ mở một lần, sau khi mọi lần chạy đã xong. Chỉ số là mAP@ALL; hai mẫu được coi là liên quan khi cùng nhãn lớp.
+4. **So sánh:** theo cặp seed, với baseline chạy lại bằng cùng mã, cùng split, cùng thứ tự batch.
+
+Mã gốc của cả hai bài báo chọn checkpoint trên tập test. Nhóm đo được cách này làm mAP cao hơn tối đa khoảng 2 điểm (mục 5.1).
+
+---
+
+## 8. Phiên bản mã nguồn và lưu ý tái lập
+
+- **Tag `experiments-2026-10-31`** đánh dấu đúng phiên bản mã đã sinh ra mọi kết quả trong `reports/`. Các file `protocol.json` ghi checksum (`runner_sha256`) và tên script của phiên bản đó.
+- **Thay đổi sau tag** chỉ là sắp xếp lại thư mục, đổi tên script và sửa đường dẫn import. Đã kiểm tra rằng các lần chạy thử (`--stage smoke`) cho kết quả giống hệt trước khi sắp xếp, và các lệnh `recheck_*` vẫn khớp kết quả cũ.
+- **Đường dẫn trong file kết quả** được ghi tương đối so với thư mục gốc của repo.
+- **Kết quả âm tính:** ID ảnh trong split DSCMR không thể khôi phục (`DSCMR/data_ids/NOTE.md`). Vì vậy DSCMR với encoder mới được đánh giá trên split CLIP4CMR.
+
+---
+
+## 9. Biên dịch bài báo
+
+[paper/ieee_latex/main.tex](paper/ieee_latex/main.tex) dùng lớp `IEEEtran` và được biên dịch bằng **XeLaTeX**.
+
+- **Overleaf:** tải lên `main.tex` và `fig_results.pdf`, rồi chọn *Menu → Compiler → XeLaTeX*.
+- **Máy cục bộ:**
+
+```bash
+cd paper/ieee_latex
+xelatex main.tex && xelatex main.tex
+```
+
+Thư mục `paper/` còn có:
+- bản Word của bài báo;
+- báo cáo chi tiết tiếng Việt (`Bao_cao_cai_tien_DSCMR_CLIP4CMR.docx`);
+- kịch bản thuyết trình.
+
+---
+
+## 10. License
+
+Mã nguồn và tài liệu của nhóm dùng [MIT License](LICENSE). Mã gốc DSCMR và CLIP4CMR, trọng số mô hình và dữ liệu Pascal Sentence giữ điều khoản riêng, liệt kê trong [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
