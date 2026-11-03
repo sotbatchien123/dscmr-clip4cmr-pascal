@@ -40,13 +40,13 @@
 \IEEEauthorblockA{DE200399\\ \textit{FPT University}\\ Da Nang, Vietnam}
 \and
 \IEEEauthorblockN{\vn{Trần Đăng Khoa}}
-\IEEEauthorblockA{DE200\\ \textit{FPT University}\\ Da Nang, Vietnam}
+\IEEEauthorblockA{DE201144\\ \textit{FPT University}\\ Da Nang, Vietnam}
 }
 
 \maketitle
 
 \begin{abstract}
-We revisit two supervised cross-modal retrieval methods, DSCMR and CLIP4CMR, on the Pascal Sentence benchmark under a stricter evaluation protocol in which all configurations are chosen by cross-validation on the training set, checkpoints are selected on a held-out validation split, and the test set is opened only once. The released code of both methods selects checkpoints on the test set, which we show inflates mAP by up to about two points. For CLIP4CMR we identify that its class prototypes are fixed random vectors and replace them with semantic prototypes obtained from CLIP text embeddings of class prompts, combined with a residual adapter; we further train on individual captions instead of a truncated concatenation, adopt a stronger frozen encoder (DFN5B ViT-H/14), and partially fine-tune the last two blocks of the image tower. Averaged over five seeds, CLIP4CMR improves from 68.17 to 76.15 mean mAP (+7.98), consistently across all seeds and both directions, exceeding the originally published numbers. For DSCMR, a supervised contrastive objective improves only image-to-text retrieval, while keeping its original head and loss on stronger, partially fine-tuned features yields +4.36 points. A control experiment shows that the CLIP4CMR gain stems from prototype semantics rather than added parameters.
+We revisit two supervised cross-modal retrieval methods, DSCMR and CLIP4CMR, on the Pascal Sentence benchmark under a stricter evaluation protocol in which all configurations are chosen through cross-validation on the training set, checkpoints are selected using a held-out validation split, and the test set is evaluated only once. The released code for both methods selects checkpoints based on test-set performance, which we show inflates mAP by up to about two points. For CLIP4CMR, we identify that its class prototypes are fixed random vectors and replace them with semantic prototypes obtained from CLIP text embeddings of class prompts, combined with a residual adapter. We further train on individual captions instead of truncated concatenations, adopt a stronger frozen encoder (DFN5B ViT-H/14), and partially fine-tune the last two blocks of the image tower. Averaged over five seeds, CLIP4CMR improves from 68.17 to 76.15 mean mAP (+7.98), consistently across all seeds and in both retrieval directions, exceeding the originally published numbers. For DSCMR, a supervised contrastive objective improves only image-to-text retrieval, while retaining its original head and loss with stronger, partially fine-tuned features yields +4.36 points. A control experiment shows that the CLIP4CMR gain stems from prototype semantics rather than additional parameters.
 \end{abstract}
 
 \begin{IEEEkeywords}
