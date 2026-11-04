@@ -53,3 +53,7 @@ archive_local/
 
 # --- Tài liệu Word của nhóm: chỉ giữ trên máy ---
 paper/*.docx
+
+# --- Embedding test của các mô hình cuối (nhỏ, dùng cho notebook) ---
+!reports/improve_v3_20261030/confirm/*/*/test_features.npz
+!reports/improve_v3_20261030/finetune/confirm/*/*/test_features.npz

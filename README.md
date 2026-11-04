@@ -6,7 +6,11 @@ Mọi cấu hình được chọn bằng kiểm định chéo trên tập train;
 
 **Nhóm thực hiện (Đại học FPT Đà Nẵng):** Vũ Quốc Đạt · Mai Quốc Huy · Nguyễn Gia Phúc · Ngô Ngọc Trường Sơn · Trần Đăng Khoa
 
-**Bài báo (định dạng IEEE):** [paper/ieee_latex/main.pdf](paper/ieee_latex/main.pdf) · mã nguồn LaTeX [paper/ieee_latex/main.tex](paper/ieee_latex/main.tex)
+**Bài báo (định dạng IEEE, 6 trang):** [paper/ieee_latex/main.pdf](paper/ieee_latex/main.pdf) · mã nguồn LaTeX [paper/ieee_latex/main.tex](paper/ieee_latex/main.tex)
+
+**Notebook kết quả (chạy được ngay, không cần GPU):** [notebooks/results_and_verification.ipynb](notebooks/results_and_verification.ipynb)
+
+**Trọng số đã huấn luyện (5 seed):** [GitHub Releases `weights-v1`](https://github.com/sotbatchien123/dscmr-clip4cmr-pascal/releases/tag/weights-v1)
 
 ---
 
@@ -17,7 +21,7 @@ Mọi cấu hình được chọn bằng kiểm định chéo trên tập train;
 3. [Cài đặt môi trường](#3-cài-đặt-môi-trường)
 4. [Chuẩn bị dữ liệu](#4-chuẩn-bị-dữ-liệu)
 5. [Tái lập từng thí nghiệm](#5-tái-lập-từng-thí-nghiệm)
-6. [Kiểm chứng kết quả đã lưu](#6-kiểm-chứng-kết-quả-đã-lưu)
+6. [Kiểm chứng kết quả, notebook và trọng số](#6-kiểm-chứng-kết-quả-notebook-và-trọng-số)
 7. [Giao thức đánh giá](#7-giao-thức-đánh-giá)
 8. [Phiên bản mã nguồn và lưu ý tái lập](#8-phiên-bản-mã-nguồn-và-lưu-ý-tái-lập)
 9. [Biên dịch bài báo](#9-biên-dịch-bài-báo)
@@ -42,6 +46,10 @@ mAP@ALL (%) trên tập test 200 cặp, trung bình 5 seed (42–46).
 | + A: prototype ngữ nghĩa + adapter phần dư, B: huấn luyện theo từng câu mô tả | 70.76 | +2.59 |
 | + C: encoder DFN5B ViT-H/14 (đóng băng) | 73.62 | +2.86 |
 | + D: fine-tune 2 block cuối của nhánh ảnh | **76.15** | +2.53 |
+
+![Kết quả chính](assets/fig_results.png)
+
+*Trung bình 5 seed, thanh sai số là độ lệch chuẩn mẫu. Đường đứt nét là số công bố của bài báo CLIP4CMR gốc. Hình được vẽ lại bởi notebook.*
 
 - **Đối chứng:** adapter với prototype ngẫu nhiên (A_res) không cải thiện (+0.24), nên phần tăng của A đến từ prototype ngữ nghĩa.
 - **DSCMR:** thay loss không gian chung bằng SupCon chỉ tăng chiều I2T (+1.15, 5/5 seed), không tăng T2I. Đây là kết quả âm tính và được báo cáo đầy đủ.
@@ -72,6 +80,8 @@ mAP@ALL (%) trên tập test 200 cặp, trung bình 5 seed (42–46).
 │   └── analysis/              phân tích phụ: probe đặc trưng, thử khôi phục ID ảnh của DSCMR
 │
 ├── reports/                   kết quả đã chạy (JSON, CSV, log, hình) và báo cáo từng vòng
+├── notebooks/                 notebook kết quả + kiểm chứng (đã có sẵn output)
+├── assets/                    hình do notebook sinh ra, dùng trong README
 ├── paper/ieee_latex/          bài báo IEEE: mã nguồn LaTeX, hình và bản PDF
 │
 ├── DSCMR/                     source.json (nguồn mã gốc), data_ids/NOTE.md; mã gốc tải vào DSCMR/upstream/
@@ -259,9 +269,45 @@ python -m scripts.analysis.dscmr_ids_caffe --stage extract   # thử khôi phụ
 
 ---
 
-## 6. Kiểm chứng kết quả đã lưu
+## 6. Kiểm chứng kết quả, notebook và trọng số
 
-Có thể kiểm chứng các con số trong báo cáo mà không cần huấn luyện lại, chỉ cần dữ liệu và checkpoint:
+### 6.1 Notebook (không cần GPU, dữ liệu hay trọng số)
+
+[notebooks/results_and_verification.ipynb](notebooks/results_and_verification.ipynb) đã chạy sẵn, nên xem được output ngay trên GitHub. Notebook làm 4 việc:
+1. Tính lại mAP@ALL của 6 cấu hình cuối × 5 seed từ embedding test đã lưu (`reports/improve_v3_20261030/**/test_features.npz`). Kết quả khớp tuyệt đối với số đã báo cáo, sai lệch 0.
+2. Vẽ lại các hình kết quả vào `assets/`.
+3. Bảng ablation cải tiến A và B.
+4. Ví dụ truy hồi ảnh → văn bản và văn bản → ảnh.
+
+Chạy lại:
+
+```bash
+pip install -r requirements.txt jupyter
+jupyter notebook notebooks/results_and_verification.ipynb
+```
+
+| | |
+|---|---|
+| ![Mức tăng theo seed](assets/fig_paired_gains.png) | ![AP theo lớp](assets/fig_per_class_ap.png) |
+
+### 6.2 Trọng số đã huấn luyện
+
+Trọng số của cả 5 seed nằm ở [GitHub Releases `weights-v1`](https://github.com/sotbatchien123/dscmr-clip4cmr-pascal/releases/tag/weights-v1). Các file vượt giới hạn 100 MB của repo nên không commit trực tiếp được.
+
+| File | Nội dung | Dung lượng |
+|---|---|---|
+| `clip4cmr_dfn5b_finetune_2blocks.zip` | CLIP4CMR cuối: đầu A+B + 2 block cuối DFN5B (Bảng VII) | 796 MB |
+| `dscmr_dfn5b_finetune_4blocks.zip` | DSCMR cuối: đầu gốc + 4 block cuối DFN5B (Bảng IX) | 1.6 GB |
+| `heads_frozen_features.zip` | Các đầu trên đặc trưng đóng băng: baseline RN50, DFN5B, ensemble | 432 MB |
+| `clip4cmr_ablation_AB.zip` | Ablation A/B trên RN50 và ViT-L/14 (Bảng III) | 186 MB |
+
+Giải nén **ở thư mục gốc repo**: mỗi `best.pt` sẽ nằm đúng cạnh file kết quả của nó (`reports/.../seedXX/`). Kiểm tra file tải về bằng `SHA256SUMS.txt`.
+
+> Checkpoint fine-tune chứa trọng số dẫn xuất từ DFN5B của Apple (Apple Sample Code License). Chỉ dùng cho nghiên cứu, xem [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+### 6.3 Kiểm chứng bằng evaluator gốc
+
+Với dữ liệu và checkpoint đã có, có thể kiểm chứng các con số mà không cần huấn luyện lại:
 
 ```bash
 python -m unittest discover -s tests -t .                                     # kiểm thử metrics
