@@ -115,14 +115,14 @@ Table~\ref{tab:repro} compares published numbers with our reproductions. Followi
 \label{tab:repro}
 \small
 \setlength{\tabcolsep}{5pt}
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc@{}}
 \toprule
 Method & Published & Test-selected & Our protocol \\
 \midrule
 CLIP4CMR & 69.8 / 69.2 & 69.23 / 68.95 & 68.48 / 67.87 \\
 DSCMR & 71.0 / 72.2 & 68.84 / 71.05 & 66.77 / 69.32 \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 
 \vspace{2pt}
 \parbox{\columnwidth}{\footnotesize CLIP4CMR: CLIP RN50 features, 200 test pairs. DSCMR: VGG19 features, 100 test pairs; 3 seeds under our protocol. Test-selected: best epoch chosen on the test set, as in the released code.}
@@ -198,7 +198,7 @@ computed over the normalized image and text representations $z$ of a batch, wher
 \label{tab:share}
 \small
 \setlength{\tabcolsep}{4.5pt}
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc@{}}
 \toprule
 Variant (tuned weights) & Label space & Common space & Invariance \\
 \midrule
@@ -207,7 +207,7 @@ B1*: SupCon & 65.0 & 27.1 & 7.9 \\
 B2*: adaptive weights & 86.5 & 3.0 & 10.5 \\
 B3*: both & 65.4 & 26.6 & 8.0 \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 
 \vspace{2pt}
 \parbox{\columnwidth}{\footnotesize With the default weights ($\alpha = 0.001$) the common-space share is only about 0.3--1\%. Seed 42.}
@@ -225,7 +225,7 @@ Table~\ref{tab:ablation} reports the ablation on the CLIP4CMR split with RN50 fe
 \caption{Ablation on CLIP4CMR (RN50, test, 5 seeds)}
 \label{tab:ablation}
 \small
-\begin{tabular}{@{}lcccc@{}}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lcccc@{}}
 \toprule
 Variant & I2T & T2I & Avg. & Paired gain (seeds) \\
 \midrule
@@ -235,7 +235,7 @@ Baseline & 68.48 & 67.87 & 68.17 & -- \\
 + \Asem & 70.35 & 69.92 & 70.13 & +1.87 / +2.05 (5, 5) \\
 \textbf{+ \Asem{} + B} & \textbf{70.90} & \textbf{70.61} & \textbf{70.76} & \textbf{+2.42 / +2.74 (5, 5)} \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 
 \vspace{2pt}
 \parbox{\columnwidth}{\footnotesize Paired gain: mean difference to the baseline with the same seed, I2T / T2I, with the number of seeds (out of 5) that improve.}
@@ -251,7 +251,7 @@ Table~\ref{tab:encoders} compares encoders by CV. Stronger encoders raise the ba
 \caption{Encoder comparison (CV mAP, \%, average of I2T and T2I)}
 \label{tab:encoders}
 \small
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc@{}}
 \toprule
 Encoder & Dim. & Baseline & \Asem{} + B \\
 \midrule
@@ -262,7 +262,7 @@ EVA02-L/14-336 & 768 & 69.90 & 71.90 \\
 SigLIP-SO400M/14-384 & 1152 & 70.21 & 71.20 \\
 DFN5B ViT-H/14 & 1024 & 70.43 & 71.53 \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 
 \vspace{2pt}
 \parbox{\columnwidth}{\footnotesize Stratified 3-fold CV on the 800 training pairs only.}
@@ -276,7 +276,7 @@ Table~\ref{tab:text} isolates the text side. Without any training, CLIP already 
 \caption{Text representation (mAP, \%, average of I2T and T2I)}
 \label{tab:text}
 \small
-\begin{tabular}{@{}llcc@{}}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}llcc@{}}
 \toprule
 Setting & Features & Concatenated & Caption mean \\
 \midrule
@@ -285,7 +285,7 @@ Zero-shot CLIP (test) & ViT-L/14 & 53.92 & 57.60 \\
 DSCMR head (CV) & RN50 & 67.35 & 68.21 \\
 DSCMR head (CV) & DFN5B & 72.27 & 72.24 \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 
 \vspace{2pt}
 \parbox{\columnwidth}{\footnotesize Concatenated: five captions joined and truncated to 77 tokens, as in the original CLIP4CMR code.}
@@ -299,14 +299,14 @@ Table~\ref{tab:depth} selects the number of fine-tuned image blocks. Fine-tuning
 \caption{Fine-tuned DFN5B image blocks (CV mAP, \%)}
 \label{tab:depth}
 \small
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc@{}}
 \toprule
 Head & Frozen & $N = 2$ & $N = 4$ \\
 \midrule
 CLIP4CMR + A + B & 71.53 & \textbf{73.24} & 72.90 \\
 DSCMR (original head and loss) & 72.24 & 72.71 & \textbf{73.04} \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \end{table}
 
 \subsection{Main Results for CLIP4CMR}
@@ -317,7 +317,7 @@ Table~\ref{tab:clip4cmr} and Fig.~\ref{fig:results}(a) show the cumulative effec
 \caption{CLIP4CMR progression (test, 5 seeds, mean $\pm$ std)}
 \label{tab:clip4cmr}
 \small
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc@{}}
 \toprule
 Configuration & I2T & T2I & Avg. \\
 \midrule
@@ -326,7 +326,7 @@ Baseline (RN50) & 68.48 $\pm$ 0.70 & 67.87 $\pm$ 0.45 & 68.17 \\
 + DFN5B (frozen) & 73.71 $\pm$ 0.18 & 73.53 $\pm$ 0.22 & 73.62 \\
 \textbf{+ Fine-tune 2 blocks} & \textbf{76.63 $\pm$ 0.43} & \textbf{75.68 $\pm$ 0.51} & \textbf{76.15} \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 
 \vspace{2pt}
 \parbox{\columnwidth}{\footnotesize Baseline and final rows: paired gain +8.15 / +7.81, 5/5 seeds in both directions.}
@@ -356,7 +356,7 @@ Table~\ref{tab:dscmrloss} shows the loss modifications on the original DSCMR spl
 \caption{Loss modifications for DSCMR (original split, test, 5 seeds)}
 \label{tab:dscmrloss}
 \small
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc@{}}
 \toprule
 Variant (tuned weights) & I2T & T2I & Paired gain (seeds) \\
 \midrule
@@ -365,7 +365,7 @@ B1*: SupCon, $\tau = 0.2$ & 67.17 & 68.24 & +1.15 / $-$0.18 (5, 1) \\
 B2*: adaptive weights & 66.52 & 68.40 & +0.50 / $-$0.02 (4, 2) \\
 B3*: both & 67.06 & 68.07 & +1.04 / $-$0.35 (5, 3) \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 
 \vspace{2pt}
 \parbox{\columnwidth}{\footnotesize Reference: DSCMR with default weights reaches 66.77 / 69.32 (3 seeds).}
@@ -379,7 +379,7 @@ Table~\ref{tab:dscmrfeat} and Fig.~\ref{fig:results}(b) report the original DSCM
 \label{tab:dscmrfeat}
 \small
 \setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc@{}}
 \toprule
 Input features & I2T & T2I & Avg. \\
 \midrule
@@ -387,7 +387,7 @@ RN50 (baseline) & 68.86 $\pm$ 0.53 & 69.89 $\pm$ 0.31 & 69.38 \\
 3-encoder ensemble$^\dagger$ & 73.75 $\pm$ 0.37 & 74.38 $\pm$ 0.53 & 74.06 \\
 \textbf{DFN5B, FT 4 blocks} & \textbf{74.78 $\pm$ 0.57} & \textbf{72.70 $\pm$ 0.69} & \textbf{73.74} \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 
 \vspace{2pt}
 \parbox{\columnwidth}{\footnotesize CLIP4CMR split; text features are the mean of the five caption embeddings. Bold: primary configuration, fixed before opening the test set. $^\dagger$Secondary configuration.}
@@ -413,7 +413,7 @@ Fig.~\ref{fig:perclass} breaks the CLIP4CMR result down by class. Animals and ve
 \caption{Post-hoc re-ranking (CV mAP, \%, average of both directions)}
 \label{tab:rerank}
 \small
-\begin{tabular}{@{}llccc@{}}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}llccc@{}}
 \toprule
 Features & Head & None & Dual-softmax & $\Delta$ \\
 \midrule
@@ -424,7 +424,7 @@ DFN5B & CLIP4CMR & 70.43 & 70.08 & $-$0.35 \\
 DFN5B & CLIP4CMR + A + B & 71.53 & 71.68 & +0.15 \\
 DFN5B & DSCMR & 72.24 & 71.42 & $-$0.81 \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 
 \vspace{2pt}
 \parbox{\columnwidth}{\footnotesize Best re-ranking setting per row (dual-softmax, $\tau = 0.1$); database-side augmentation was never the best setting.}
