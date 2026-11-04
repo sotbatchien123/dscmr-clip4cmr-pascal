@@ -72,7 +72,7 @@ mAP@ALL (%) trên tập test 200 cặp, trung bình 5 seed (42–46).
 │   └── analysis/              phân tích phụ: probe đặc trưng, thử khôi phục ID ảnh của DSCMR
 │
 ├── reports/                   kết quả đã chạy (JSON, CSV, log, hình) và báo cáo từng vòng
-├── paper/                     bài báo IEEE (LaTeX + PDF + Word), báo cáo tiếng Việt, kịch bản thuyết trình
+├── paper/ieee_latex/          bài báo IEEE: mã nguồn LaTeX, hình và bản PDF
 │
 ├── DSCMR/                     source.json (nguồn mã gốc), data_ids/NOTE.md; mã gốc tải vào DSCMR/upstream/
 └── CLIP4CMR/                  source.json; mã gốc tải vào CLIP4CMR/upstream/, dữ liệu vào CLIP4CMR/data/
@@ -306,11 +306,6 @@ Mã gốc của cả hai bài báo chọn checkpoint trên tập test. Nhóm đo
 cd paper/ieee_latex
 xelatex main.tex && xelatex main.tex
 ```
-
-Thư mục `paper/` còn có:
-- bản Word của bài báo;
-- báo cáo chi tiết tiếng Việt (`Bao_cao_cai_tien_DSCMR_CLIP4CMR.docx`);
-- kịch bản thuyết trình.
 
 ---
 
