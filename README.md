@@ -6,7 +6,7 @@ Mọi cấu hình được chọn bằng kiểm định chéo trên tập train;
 
 **Nhóm thực hiện (Đại học FPT Đà Nẵng):** Vũ Quốc Đạt · Mai Quốc Huy · Nguyễn Gia Phúc · Ngô Ngọc Trường Sơn · Trần Đăng Khoa
 
-**Bài báo (định dạng IEEE, 6 trang):** [paper/ieee_latex/main.pdf](paper/ieee_latex/main.pdf) · mã nguồn LaTeX [paper/ieee_latex/main.tex](paper/ieee_latex/main.tex)
+**Bài báo (định dạng IEEE, 6 trang):** [paper/ieee_latex/DSCMR_CLIP4CMR_IEEE.pdf](paper/ieee_latex/DSCMR_CLIP4CMR_IEEE.pdf) · mã nguồn LaTeX [paper/ieee_latex/DSCMR_CLIP4CMR_IEEE.tex](paper/ieee_latex/DSCMR_CLIP4CMR_IEEE.tex)
 
 **Notebook kết quả (chạy được ngay, không cần GPU):** [notebooks/results_and_verification.ipynb](notebooks/results_and_verification.ipynb)
 
@@ -343,14 +343,14 @@ Mã gốc của cả hai bài báo chọn checkpoint trên tập test. Nhóm đo
 
 ## 9. Biên dịch bài báo
 
-[paper/ieee_latex/main.tex](paper/ieee_latex/main.tex) dùng lớp `IEEEtran`. File `main.pdf` trong repo được biên dịch bằng **XeLaTeX**; pdfLaTeX cũng biên dịch được (tên tiếng Việt dùng gói `vntex`), chỉ khác font nên số trang có thể chênh một trang.
+[paper/ieee_latex/DSCMR_CLIP4CMR_IEEE.tex](paper/ieee_latex/DSCMR_CLIP4CMR_IEEE.tex) dùng lớp `IEEEtran`. File `DSCMR_CLIP4CMR_IEEE.pdf` trong repo được biên dịch bằng **XeLaTeX**; pdfLaTeX cũng biên dịch được (tên tiếng Việt dùng gói `vntex`), chỉ khác font nên số trang có thể chênh một trang.
 
-- **Overleaf:** tải lên `main.tex` và `fig_results.pdf`, rồi bấm *Recompile* (trình biên dịch mặc định chạy được; chọn *Menu → Compiler → XeLaTeX* để ra đúng như `main.pdf`).
+- **Overleaf:** tải lên `DSCMR_CLIP4CMR_IEEE.tex` và **cả 3 hình** `fig_results.pdf`, `fig_paired.pdf`, `fig_per_class.pdf`, rồi bấm *Recompile*. Trình biên dịch mặc định chạy được; chọn *Menu → Compiler → XeLaTeX* để ra đúng như bản PDF trong repo.
 - **Máy cục bộ:**
 
 ```bash
 cd paper/ieee_latex
-xelatex main.tex && xelatex main.tex
+xelatex DSCMR_CLIP4CMR_IEEE.tex && xelatex DSCMR_CLIP4CMR_IEEE.tex
 ```
 
 ---
