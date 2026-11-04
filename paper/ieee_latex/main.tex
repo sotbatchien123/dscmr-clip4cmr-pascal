@@ -154,7 +154,7 @@ Fig.~\ref{fig:method} summarizes the four changes made to CLIP4CMR: semantic pro
 \node[box] (loss) at (at |- proto) {$\mathcal{L}_{\mathrm{PCL}}$};
 \draw[->] (img) -- (enc); \draw[->] (enc) -- (tail); \draw[->] (tail) -- (ai);
 \draw[->] (cap) -- (tenc); \draw[->] (tenc) -- (pc); \draw[->] (pc) -- (at);
-\draw[->] (ai.south) |- (loss.east);
+\draw[->] (ai.east) -- ++(2.5mm,0) |- (loss.east);
 \draw[->] (at.south) -- (loss.north);
 \draw[->] (proto) -- (loss);
 \node[frz, minimum width=3mm, minimum height=2.2mm, anchor=north west] (k1) at ($(cap.south west)+(0,-14mm)$) {};
@@ -344,7 +344,7 @@ Baseline (RN50) & 68.48 $\pm$ 0.70 & 67.87 $\pm$ 0.45 & 68.17 \\
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_paired.pdf}
-\caption{Paired gain of the final models over their RN50 baselines for each seed (markers) and on average (bars). All 20 gains are positive.}
+\caption{Paired gain of the final models over their RN50 baselines for each seed (markers) and on average (horizontal lines). All 20 gains are positive.}
 \label{fig:paired}
 \end{figure}
 
