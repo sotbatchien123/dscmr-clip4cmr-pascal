@@ -24,6 +24,14 @@
 \newcommand{\Asem}{A\textsubscript{sem}}
 \newcommand{\Ares}{A\textsubscript{res}}
 
+% Same layout as IEEEtran (centered small-caps sections, left italic subsections), larger and bold.
+\makeatletter
+\def\section{\@startsection{section}{1}{\z@}{2.2ex plus 1ex minus .5ex}{1ex plus .3ex}%
+  {\normalfont\fontsize{12}{14}\selectfont\bfseries\scshape\centering}}
+\def\subsection{\@startsection{subsection}{2}{\z@}{1.6ex plus .8ex minus .4ex}{.7ex plus .2ex}%
+  {\normalfont\fontsize{11}{13}\selectfont\bfseries\itshape\raggedright}}
+\makeatother
+
 \begin{document}
 
 \title{Semantic Prototypes and Stronger Visual Features for Supervised Image--Text Retrieval: Revisiting DSCMR and CLIP4CMR on Pascal Sentence}
