@@ -8,8 +8,8 @@ regex
 tqdm
 matplotlib>=3.7
 python-docx>=1.1
-# OpenAI CLIP (RN50, ViT-L/14) cho CLIP4CMR
-git+https://github.com/openai/CLIP.git
+# OpenAI CLIP (RN50, ViT-L/14) cho CLIP4CMR; cài từ file zip nên không cần Git
+clip @ https://github.com/openai/CLIP/archive/main.zip
 
 # Vòng 3 (encoder lớn, fine-tune DFN5B) cần thêm hai gói dưới. Dự án cài chúng vào thư mục
 # riêng .feat_libs (pip install --target .feat_libs ...), vì venv chính giữ timm 0.4.12 cho mã gốc.

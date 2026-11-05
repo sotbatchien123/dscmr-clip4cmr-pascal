@@ -142,7 +142,9 @@ Các script trong `scripts/encoders/` và `scripts/data/extract_encoders.py` c�
 pip install --target .feat_libs open_clip_torch==2.32.0 timm==1.0.15
 ```
 
-### Hai lỗi thường gặp và cách khắc phục:
+**Mọi lệnh bên dưới chạy từ thư mục gốc của repo**, theo dạng `python -m scripts.<nhóm>.<tên>`.
+
+### Khắc phục sự cố khi cài đặt
 
 1. **Lỗi chặn thực thi script khi kích hoạt môi trường ảo trên PowerShell (`running scripts is disabled on this system`):**
    - *Hiện tượng:* Khi chạy `.venv310\Scripts\activate` trên Windows PowerShell, hệ thống chặn kích hoạt do chính sách bảo mật thực thi script (`ExecutionPolicy`).
@@ -156,15 +158,18 @@ pip install --target .feat_libs open_clip_torch==2.32.0 timm==1.0.15
      ```
 
 2. **Lỗi thiếu Git khi cài đặt thư viện (`Cannot find command 'git' - do you have 'git' installed and in your PATH?`):**
-   - *Hiện tượng:* Lệnh `pip install -r requirements.txt` bị lỗi do file chứa gói `git+https://github.com/openai/CLIP.git`, đòi hỏi máy phải có công cụ Git trong PATH.
+   - *Hiện tượng:* Bản `requirements.txt` cũ cài CLIP bằng `git+https://github.com/openai/CLIP.git`, đòi hỏi máy phải có công cụ Git trong PATH.
    - *Cách khắc phục:*
-     - Cài đặt Git từ [git-scm.com](https://git-scm.com) (chọn thêm Git vào PATH) rồi khởi động lại terminal.
-     - *Hoặc* cài đặt trực tiếp gói CLIP từ file zip qua pip mà không cần Git CLI:
-       ```bash
-       pip install https://github.com/openai/CLIP/archive/master.zip
-       ```
+     - `requirements.txt` hiện đã cài CLIP từ file zip (`clip @ https://github.com/openai/CLIP/archive/main.zip`), nên không cần Git nữa. Hãy `git pull` để lấy bản mới.
+     - Nếu vẫn dùng bản cũ: cài Git từ [git-scm.com](https://git-scm.com) (chọn thêm Git vào PATH) rồi khởi động lại terminal. Lưu ý: chỉ cài riêng CLIP từ file zip là chưa đủ, vì dòng `git+https://...` trong file cũ vẫn bắt pip dùng Git.
 
-**Mọi lệnh bên dưới chạy từ thư mục gốc của repo**, theo dạng `python -m scripts.<nhóm>.<tên>`.
+3. **PyTorch bị đổi sang bản khác sau khi cài `requirements.txt`:**
+   - *Hiện tượng:* Chạy `pip install -r requirements.txt` trước khi cài PyTorch thì gói CLIP tự kéo về PyTorch bản mới nhất, không phải bản 2.7.1 dự án dùng.
+   - *Cách khắc phục:* Luôn cài PyTorch **trước**, đúng thứ tự trong khung lệnh ở trên. Kiểm tra lại bằng:
+     ```bash
+     python -c "import torch; print(torch.__version__)"
+     ```
+     Kết quả phải bắt đầu bằng `2.7.1`. Nếu sai, chạy lại lệnh cài PyTorch ở trên.
 
 ---
 
