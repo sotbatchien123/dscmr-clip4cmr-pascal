@@ -3,8 +3,10 @@
 Tokens entering block L-N are cached once (frozen prefix, fp16, all 1000 author-split rows; no
 labels used). Trainable: last N residual blocks + ln_post + proj (fp32 master weights, bf16
 autocast, gradient checkpointing) jointly with a retrieval head:
-  c4_AB : CLIP4CMR residual adapter + semantic prototypes + per-caption text (alpha 0.3), PAN loss
-  ds    : DSCMR IDCM_NN + upstream loss (balanced batches), text = caption mean
+  c4_AB   : CLIP4CMR residual adapter + semantic prototypes + per-caption text (alpha 0.3), PAN loss
+  c4_base : original CLIP4CMR head (random fixed prototypes, concatenated captions), PAN loss;
+            ablation that separates the contribution of A+B from that of the fine-tuned encoder
+  ds      : DSCMR IDCM_NN + upstream loss (balanced batches), text = caption mean
 Text side stays frozen (DFN5B text features from CLIP4CMR/data/author_split_v3/dfn5b_h14.npz).
 Stages: cv (3-fold on train, seed 42) | confirm (5 seeds, 720/80 val selection, test once).
 Usage: python -m scripts.encoders.finetune_image_tower --stage cv --head c4_AB --blocks 2
@@ -79,6 +81,15 @@ class Tail(torch.nn.Module):
         return p @ self.proj
 
 
+def build_head(head, d, Model):
+    """Retrieval head and the text representation it is evaluated with."""
+    if head == 'c4_AB':
+        return ci.build_model(d, 'sem', .3, 'cuda'), d['capmean']
+    if head == 'c4_base':
+        return ci.build_model(d, None, None, 'cuda'), d['concat']
+    return Model(img_input_dim=d['dim'], text_input_dim=d['dim'], output_dim=d['nc']).cuda(), d['capmean']
+
+
 def run(head, blocks, rows, val_rows, seed, out, d, cache, pan, Model):
     out.mkdir(parents=True, exist_ok=True)
     if (out/'result.json').exists():
@@ -87,9 +98,9 @@ def run(head, blocks, rows, val_rows, seed, out, d, cache, pan, Model):
     tail = Tail(cache['tail']).cuda()
     toks = cache['tokens']
     y_all = torch.as_tensor(d['labels'], device='cuda')
-    if head == 'c4_AB':
-        h = ci.build_model(d, 'sem', .3, 'cuda'); text_eval = d['capmean']
-        fwd = lambda img, txt: h(img, txt)
+    if head.startswith('c4_'):
+        h, text_eval = build_head(head, d, Model)
+        fwd = lambda img, txt: ci.forward(h, img, txt)  # (prototypes, image, text) for both c4 heads
     else:
         h = Model(img_input_dim=d['dim'], text_input_dim=d['dim'], output_dim=d['nc']).cuda(); text_eval = d['capmean']
         fwd = lambda img, txt: h(img, txt)
@@ -103,14 +114,14 @@ def run(head, blocks, rows, val_rows, seed, out, d, cache, pan, Model):
         img = torch.cat(feats)
         with torch.inference_mode():
             o = fwd(img, text_eval[rr])
-        zi, zt = (o[1], o[2]) if head == 'c4_AB' else (o[0], o[1])
+        zi, zt = (o[1], o[2]) if head.startswith('c4_') else (o[0], o[1])
         return F.normalize(zi.float(), dim=1), F.normalize(zt.float(), dim=1)
 
     best, best_ep, hist = -1., 0, []
     for epoch in range(1, MAX_EPOCHS+1):
         if epoch-1-best_ep >= PATIENCE: epoch -= 1; break
         tail.train(); h.train()
-        if head == 'c4_AB':
+        if head.startswith('c4_'):
             order = np.array(rows, copy=True); np.random.shuffle(order)
             crng = np.random.default_rng(np.random.SeedSequence([seed, epoch, 7]))
             pick = {int(i): int(crng.choice(d['groups'][i])) for i in rows}
@@ -123,8 +134,9 @@ def run(head, blocks, rows, val_rows, seed, out, d, cache, pan, Model):
             with torch.autocast('cuda', dtype=torch.bfloat16):  # micro-chunks: checkpoint recompute per chunk, same loss
                 img = torch.cat([tail(toks[ix[c:c+25]].cuda().float()) for c in range(0, len(ix), 25)])
             img = img.float()
-            if head == 'c4_AB':
-                txt = d['caps'][torch.as_tensor([pick[int(i)] for i in ix], device='cuda')]
+            if head.startswith('c4_'):
+                txt = (d['caps'][torch.as_tensor([pick[int(i)] for i in ix], device='cuda')] if head == 'c4_AB'
+                       else d['concat'][it])
                 c, fi, ft = fwd(img, txt)
                 loss = pan(fi, c.T, y_all[it]) + pan(ft, c.T, y_all[it])
             else:
@@ -152,7 +164,7 @@ def free():
 def reload(head, blocks, out, d, cache, Model):
     """rebuild embed() from best.pt"""
     tail = Tail(cache['tail']).cuda()
-    h = ci.build_model(d, 'sem', .3, 'cuda') if head == 'c4_AB' else Model(img_input_dim=d['dim'], text_input_dim=d['dim'], output_dim=d['nc']).cuda()
+    h, text_eval = build_head(head, d, Model)
     ck = torch.load(out/'best.pt', map_location='cuda'); tail.load_state_dict(ck['tail']); h.load_state_dict(ck['head'])
     tail.eval(); h.eval(); toks = cache['tokens']
 
@@ -160,8 +172,8 @@ def reload(head, blocks, out, d, cache, Model):
         with torch.inference_mode(), torch.autocast('cuda', dtype=torch.bfloat16):
             img = torch.cat([tail(toks[rr[s:s+50]].cuda().float()).float() for s in range(0, len(rr), 50)])
         with torch.inference_mode():
-            o = h(img.float(), d['capmean'][rr])
-        zi, zt = (o[1], o[2]) if head == 'c4_AB' else (o[0], o[1])
+            o = h(img.float(), text_eval[rr])
+        zi, zt = (o[1], o[2]) if head.startswith('c4_') else (o[0], o[1])
         return F.normalize(zi.float(), dim=1), F.normalize(zt.float(), dim=1)
     return embed
 
@@ -169,7 +181,7 @@ def reload(head, blocks, out, d, cache, Model):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('--stage', choices=('cv', 'confirm'), required=True)
-    p.add_argument('--head', choices=('c4_AB', 'ds'), required=True)
+    p.add_argument('--head', choices=('c4_AB', 'c4_base', 'ds'), required=True)
     p.add_argument('--blocks', type=int, default=2)
     p.add_argument('--vram', type=float, default=0.4)
     a = p.parse_args()

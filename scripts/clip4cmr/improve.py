@@ -38,6 +38,9 @@ SEEDS = (42, 43, 44, 45, 46)
 TUNE_EPOCHS, CONFIRM_EPOCHS, PATIENCE, BATCH = 300, 500, 50, 300
 VARIANTS = {'base': (None, False), 'B': (None, True), 'A_res': ('res', False),
             'A_sem': ('sem', False), 'A_sem+B': ('sem', True)}
+# Learnable semantic prototypes (initialised from the class prompts, then updated); used by
+# scripts/clip4cmr/prototype_ablation.py and not part of the original study in main().
+EXTRA_VARIANTS = {'A_semL': ('semL', False), 'A_semL+B': ('semL', True)}
 
 
 def l2n(x):
@@ -45,14 +48,17 @@ def l2n(x):
 
 
 class ResidualProto(nn.Module):
-    """Upstream ImgNN/TextNN as residual adapters in CLIP space; fixed prototypes."""
-    def __init__(self, upstream, dim, prototypes, alpha):
+    """Upstream ImgNN/TextNN as residual adapters in CLIP space; fixed (or learnable) prototypes."""
+    def __init__(self, upstream, dim, prototypes, alpha, learn=False):
         super().__init__()
         ns = upstream
         self.imgnn = ns.imgnn.__class__(input_dim=dim, mindum_dim=256, out_dim=dim)
         self.textnn = ns.textnn.__class__(input_dim=dim, mindum_dim=256, out_dim=dim)
         self.alpha = alpha
-        self.register_buffer('centers', prototypes)  # (dim, classes), unit columns
+        if learn:
+            self.centers = nn.Parameter(prototypes.clone())  # (dim, classes), unit columns at init
+        else:
+            self.register_buffer('centers', prototypes)  # (dim, classes), unit columns
 
     def forward(self, img, text):
         a = self.alpha
@@ -109,12 +115,12 @@ def build_model(data, mode, alpha, device):
     base = ts.network('CLIP4CMR', data['nc'], data['dim'], data['dim'])
     if mode is None:
         return base.to(device)
-    if mode == 'sem':
+    if mode in ('sem', 'semL'):
         protos = torch.as_tensor(data['prompts'], dtype=torch.float32).T
     else:  # same initialisation rule as upstream centers, in CLIP dimension
         protos = torch.randn(data['dim'], data['nc']); nn.init.kaiming_normal_(protos, mode='fan_out')
     protos = protos / protos.norm(dim=0, keepdim=True)
-    return ResidualProto(base, data['dim'], protos, alpha).to(device)
+    return ResidualProto(base, data['dim'], protos, alpha, learn=(mode == 'semL')).to(device)
 
 
 def forward(model, x, t):
@@ -136,7 +142,7 @@ def eval_text(data, rows, use_b):
 
 
 def train_run(args, data, pan, rows, val_rows, variant, alpha, seed, run, epochs):
-    mode, use_b = VARIANTS[variant]
+    mode, use_b = {**VARIANTS, **EXTRA_VARIANTS}[variant]
     run.mkdir(parents=True, exist_ok=True)
     if (run/'training_result.json').exists():
         return json.loads((run/'training_result.json').read_text(encoding='utf-8'))

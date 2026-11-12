@@ -51,7 +51,9 @@ mAP@ALL (%) trên tập test 200 cặp, trung bình 5 seed (42–46).
 
 *Trung bình 5 seed, thanh sai số là độ lệch chuẩn mẫu. Đường đứt nét là số công bố của bài báo CLIP4CMR gốc. Hình được vẽ lại bởi notebook.*
 
-- **Đối chứng:** adapter với prototype ngẫu nhiên (A_res) không cải thiện (+0.24), nên phần tăng của A đến từ prototype ngữ nghĩa.
+- **Phần tăng chủ yếu đến từ đặc trưng ảnh:** fine-tune 2 block DFN5B với đầu CLIP4CMR **gốc** đã đạt 75.34 (+7.16 so với baseline). A+B chỉ thêm +0.82 trên encoder này (khoảng tin cậy 95% là [−0.26, 1.88]), trong khi trên RN50 A+B thêm +2.58. Prototype ngữ nghĩa giúp nhiều nhất khi encoder yếu.
+- **Baseline đơn giản:** phân loại zero-shot rồi xếp hạng trên DFN5B (không huấn luyện) đạt 75.07, mô hình cuối chỉ hơn khoảng 1 điểm. Xem mục 5.7.
+- **Đối chứng:** adapter với prototype ngẫu nhiên (A_res) không cải thiện (+0.24), và prototype có học cũng không tốt hơn prototype cố định.
 - **DSCMR:** thay loss không gian chung bằng SupCon chỉ tăng chiều I2T (+1.15, 5/5 seed), không tăng T2I. Đây là kết quả âm tính và được báo cáo đầy đủ.
 - **So với bài báo gốc:** CLIP4CMR cải tiến cao hơn số công bố (69.8 / 69.2) khoảng 6.5 điểm, dù dùng giao thức chặt hơn (chọn checkpoint trên validation thay vì trên test).
 
@@ -113,11 +115,14 @@ mAP@ALL (%) trên tập test 200 cặp, trung bình 5 seed (42–46).
 | clip4cmr | `improve` | Cải tiến A (prototype ngữ nghĩa + adapter) và B (từng câu mô tả), đối chứng A_res |
 | clip4cmr | `recheck_author_eval` | Tính lại mAP test bằng evaluator của tác giả |
 | clip4cmr | `plot_improve` | Vẽ hình cho nghiên cứu A + B |
+| clip4cmr | `prototype_ablation` | Prototype cố định so với prototype có học (RN50, DFN5B) |
+| clip4cmr | `self_features_check` | Phân tích 78 ảnh lệch với bản mirror, chạy lại RN50 bằng đặc trưng tự trích |
 | encoders | `encoder_study` | So sánh encoder và đầu truy hồi bằng CV, xác nhận 5 seed |
 | encoders | `finetune_image_tower` | Fine-tune N block cuối của nhánh ảnh DFN5B |
 | analysis | `probe_label_space` | Probe tuyến tính: chẩn đoán đặc trưng ảnh là nút thắt |
 | analysis | `dscmr_ids_*` | Bốn cách thử khôi phục ID ảnh trong split DSCMR (đều thất bại, xem `DSCMR/data_ids/NOTE.md`) |
 | analysis | `evaluate_features` | Đánh giá độc lập một file đặc trưng đã xuất |
+| analysis | `revision_stats` | Baseline zero-shot / phân loại rồi xếp hạng, độ chính xác phân loại, bootstrap CI |
 
 Mỗi script có docstring ở đầu file mô tả đầu vào, đầu ra và cách chạy.
 
@@ -217,10 +222,13 @@ Bảng dưới ánh xạ từng bảng trong bài báo tới lệnh chạy và t
 | Bài báo | Lệnh | Kết quả trong repo |
 |---|---|---|
 | Bảng I (tái lập) | 5.1 | `reports/RESULTS_5000_1000.md`, `reports/clip4cmr_paper_protocol_20261030/`, `reports/dscmr_author_protocol_20261030/` |
-| Bảng II (ablation A, B) | 5.3 | `reports/clip4cmr_author_split_20261030/` |
+| Bảng II (ablation A, B, prototype có học) | 5.3, 5.7 | `reports/clip4cmr_author_split_20261030/`, `reports/revision_20261112/prototype_ablation/` |
 | Bảng III (so sánh encoder) | 5.4 | `reports/improve_v3_20261030/cv/` |
-| Bảng IV, VI, Hình 1 (kết quả chính) | 5.4, 5.5 | `reports/improve_v3_20261030/confirm/`, `.../finetune/` |
-| Bảng V (loss DSCMR) | 5.2 | `reports/assignment3_20261029/`, `reports/assignment3_tuning_20261030/` |
+| Bảng IV, Hình 2 (encoder và phương pháp, CI) | 5.4, 5.5, 5.7 | `reports/improve_v3_20261030/confirm/`, `.../finetune/`, `reports/revision_20261112/stats/` |
+| Bảng V (baseline không có đầu truy hồi) | 5.7 | `reports/revision_20261112/stats/` |
+| Bảng VI (loss DSCMR) | 5.2 | `reports/assignment3_20261029/`, `reports/assignment3_tuning_20261030/` |
+| Bảng VII (DSCMR trên đặc trưng mới) | 5.4, 5.5 | `reports/improve_v3_20261030/confirm/`, `.../finetune/` |
+| Kiểm tra 78 ảnh mirror (mục III-A) | 5.7 | `reports/revision_20261112/self_features/` |
 
 Mỗi thư mục kết quả có `protocol.json` (cấu hình, checksum dữ liệu và mã), `results.csv`, `aggregate.json` và báo cáo `BAO_CAO.md` hoặc `REPORT.md`.
 
@@ -242,7 +250,7 @@ python -m scripts.baseline.clip4cmr_paper_protocol     # chọn checkpoint theo 
 python -m scripts.baseline.dscmr_author_protocol
 ```
 
-### 5.2 DSCMR: thay loss không gian chung (Bảng V)
+### 5.2 DSCMR: thay loss không gian chung (Bảng VI)
 
 ```bash
 python -m scripts.dscmr.loss_ablation --out reports/assignment3_20261029             # vòng 1, 3 seed
@@ -262,7 +270,7 @@ python -m scripts.clip4cmr.improve --out reports/clip4cmr_improve_20261030
 python -m scripts.clip4cmr.plot_improve
 ```
 
-### 5.4 Encoder mạnh hơn (Bảng III, IV, VI)
+### 5.4 Encoder mạnh hơn (Bảng III, IV, VII)
 
 ```bash
 # CV 3-fold trên train cho từng encoder (có thể chia nhiều lần chạy)
@@ -294,6 +302,29 @@ python -m scripts.dscmr.rerank_cv                     # xếp hạng lại: khô
 python -m scripts.analysis.dscmr_ids_caffe --stage extract   # thử khôi phục ID ảnh DSCMR (thất bại)
 ```
 
+### 5.7 Thí nghiệm bổ sung theo góp ý của giảng viên (12/11/2026)
+
+Kết quả nằm trong `reports/revision_20261112/` và `reports/improve_v3_20261030/finetune/confirm/c4_base_L2/`. Các thí nghiệm này chỉ để phân tích, không dùng để chọn cấu hình nào.
+
+```bash
+# tách đóng góp của encoder và của A+B: fine-tune 2 block DFN5B với đầu CLIP4CMR gốc
+python -m scripts.encoders.finetune_image_tower --stage confirm --head c4_base --blocks 2
+# prototype cố định và prototype có học (khởi tạo từ prompt rồi cập nhật), RN50 và DFN5B đóng băng
+python -m scripts.clip4cmr.prototype_ablation
+# baseline không có đầu truy hồi (zero-shot, phân loại rồi xếp hạng), độ chính xác phân loại, bootstrap CI
+python -m scripts.analysis.revision_stats
+# 78 ảnh lệch với bản mirror + chạy lại RN50 bằng đặc trưng tự trích
+python -m scripts.clip4cmr.self_features_check
+# vẽ lại hình của bài báo
+python paper/ieee_latex/make_figures.py
+```
+
+Tóm tắt:
+- **Phân loại rồi xếp hạng** bằng bộ phân loại zero-shot trên DFN5B (không huấn luyện) đạt 75.07. Mô hình CLIP4CMR cuối chỉ hơn 1.09 điểm, khoảng tin cậy 95% là [−0.30, 2.53]. Trên RN50, baseline này (71.91) cao hơn CLIP4CMR gốc 3.7 điểm.
+- **A+B** giúp nhiều nhất khi encoder yếu: +2.58 với RN50, +0.30 với ViT-L/14, +0.22 với DFN5B đóng băng.
+- **Prototype có học** không tốt hơn prototype cố định (chênh từ −0.23 đến +0.10).
+- **Đặc trưng RN50 tự trích** cho cùng kết luận: base 68.05, A+B 70.77, tăng +2.72, cả 5/5 seed đều tăng. 78 ảnh lệch với bản mirror vẫn là cùng ảnh: cos ≥ 0.969 với chính nó, trong khi ảnh khác giống nhất chỉ ≤ 0.902.
+
 ---
 
 ## 6. Kiểm chứng kết quả, notebook và trọng số
@@ -323,10 +354,10 @@ Trọng số của cả 5 seed nằm ở [GitHub Releases `weights-v1`](https://
 
 | File | Nội dung | Dung lượng |
 |---|---|---|
-| `clip4cmr_dfn5b_finetune_2blocks.zip` | CLIP4CMR cuối: đầu A+B + 2 block cuối DFN5B (Bảng VII) | 796 MB |
-| `dscmr_dfn5b_finetune_4blocks.zip` | DSCMR cuối: đầu gốc + 4 block cuối DFN5B (Bảng IX) | 1.6 GB |
+| `clip4cmr_dfn5b_finetune_2blocks.zip` | CLIP4CMR cuối: đầu A+B + 2 block cuối DFN5B (Bảng IV) | 796 MB |
+| `dscmr_dfn5b_finetune_4blocks.zip` | DSCMR cuối: đầu gốc + 4 block cuối DFN5B (Bảng VII) | 1.6 GB |
 | `heads_frozen_features.zip` | Các đầu trên đặc trưng đóng băng: baseline RN50, DFN5B, ensemble | 432 MB |
-| `clip4cmr_ablation_AB.zip` | Ablation A/B trên RN50 và ViT-L/14 (Bảng III) | 186 MB |
+| `clip4cmr_ablation_AB.zip` | Ablation A/B trên RN50 và ViT-L/14 (Bảng II) | 186 MB |
 
 Giải nén **ở thư mục gốc repo**: mỗi `best.pt` sẽ nằm đúng cạnh file kết quả của nó (`reports/.../seedXX/`). Kiểm tra file tải về bằng `SHA256SUMS.txt`.
 
