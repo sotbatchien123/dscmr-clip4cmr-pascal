@@ -222,12 +222,15 @@ Bảng dưới ánh xạ từng bảng trong bài báo tới lệnh chạy và t
 | Bài báo | Lệnh | Kết quả trong repo |
 |---|---|---|
 | Bảng I (tái lập) | 5.1 | `reports/RESULTS_5000_1000.md`, `reports/clip4cmr_paper_protocol_20261030/`, `reports/dscmr_author_protocol_20261030/` |
-| Bảng II (ablation A, B, prototype có học) | 5.3, 5.7 | `reports/clip4cmr_author_split_20261030/`, `reports/revision_20261112/prototype_ablation/` |
-| Bảng III (so sánh encoder) | 5.4 | `reports/improve_v3_20261030/cv/` |
-| Bảng IV, Hình 2 (encoder và phương pháp, CI) | 5.4, 5.5, 5.7 | `reports/improve_v3_20261030/confirm/`, `.../finetune/`, `reports/revision_20261112/stats/` |
-| Bảng V (baseline không có đầu truy hồi) | 5.7 | `reports/revision_20261112/stats/` |
-| Bảng VI (loss DSCMR) | 5.2 | `reports/assignment3_20261029/`, `reports/assignment3_tuning_20261030/` |
-| Bảng VII (DSCMR trên đặc trưng mới) | 5.4, 5.5 | `reports/improve_v3_20261030/confirm/`, `.../finetune/` |
+| Bảng II (tỉ trọng các loss DSCMR) | 5.2 | `reports/assignment3_tuning_20261030/` |
+| Bảng III (ablation A, B, prototype có học) | 5.3, 5.7 | `reports/clip4cmr_author_split_20261030/`, `reports/revision_20261112/prototype_ablation/` |
+| Bảng IV (so sánh encoder), Bảng V (biểu diễn văn bản) | 5.4 | `reports/improve_v3_20261030/cv/` |
+| Bảng VI (số block fine-tune) | 5.5 | `reports/improve_v3_20261030/finetune/cv/` |
+| Bảng VII, Hình 2–4 (encoder và phương pháp, CI) | 5.4, 5.5, 5.7 | `reports/improve_v3_20261030/confirm/`, `.../finetune/`, `reports/revision_20261112/stats/` |
+| Bảng VIII (baseline không có đầu truy hồi) | 5.7 | `reports/revision_20261112/stats/` |
+| Bảng IX (loss DSCMR) | 5.2 | `reports/assignment3_20261029/`, `reports/assignment3_tuning_20261030/` |
+| Bảng X (DSCMR trên đặc trưng mới) | 5.4, 5.5 | `reports/improve_v3_20261030/confirm/`, `.../finetune/` |
+| Bảng XI (re-ranking) | 5.4, 5.6 | `reports/improve_v3_20261030/cv/` (trường rerank trong `cv.json`) |
 | Kiểm tra 78 ảnh mirror (mục III-A) | 5.7 | `reports/revision_20261112/self_features/` |
 
 Mỗi thư mục kết quả có `protocol.json` (cấu hình, checksum dữ liệu và mã), `results.csv`, `aggregate.json` và báo cáo `BAO_CAO.md` hoặc `REPORT.md`.
@@ -250,7 +253,7 @@ python -m scripts.baseline.clip4cmr_paper_protocol     # chọn checkpoint theo 
 python -m scripts.baseline.dscmr_author_protocol
 ```
 
-### 5.2 DSCMR: thay loss không gian chung (Bảng VI)
+### 5.2 DSCMR: thay loss không gian chung (Bảng II, IX)
 
 ```bash
 python -m scripts.dscmr.loss_ablation --out reports/assignment3_20261029             # vòng 1, 3 seed
@@ -259,7 +262,7 @@ python -m scripts.dscmr.loss_tuning --out reports/assignment3_tuning_20261030   
 python -m scripts.dscmr.plot_loss_tuning reports/assignment3_tuning_20261030 reports/assignment3_20261029
 ```
 
-### 5.3 CLIP4CMR: cải tiến A và B (Bảng II)
+### 5.3 CLIP4CMR: cải tiến A và B (Bảng III)
 
 ```bash
 # split tác giả (dùng trong bài báo)
@@ -270,7 +273,7 @@ python -m scripts.clip4cmr.improve --out reports/clip4cmr_improve_20261030
 python -m scripts.clip4cmr.plot_improve
 ```
 
-### 5.4 Encoder mạnh hơn (Bảng III, IV, VII)
+### 5.4 Encoder mạnh hơn (Bảng IV, V, VII, X)
 
 ```bash
 # CV 3-fold trên train cho từng encoder (có thể chia nhiều lần chạy)
@@ -354,10 +357,10 @@ Trọng số của cả 5 seed nằm ở [GitHub Releases `weights-v1`](https://
 
 | File | Nội dung | Dung lượng |
 |---|---|---|
-| `clip4cmr_dfn5b_finetune_2blocks.zip` | CLIP4CMR cuối: đầu A+B + 2 block cuối DFN5B (Bảng IV) | 796 MB |
-| `dscmr_dfn5b_finetune_4blocks.zip` | DSCMR cuối: đầu gốc + 4 block cuối DFN5B (Bảng VII) | 1.6 GB |
+| `clip4cmr_dfn5b_finetune_2blocks.zip` | CLIP4CMR cuối: đầu A+B + 2 block cuối DFN5B (Bảng VII) | 796 MB |
+| `dscmr_dfn5b_finetune_4blocks.zip` | DSCMR cuối: đầu gốc + 4 block cuối DFN5B (Bảng X) | 1.6 GB |
 | `heads_frozen_features.zip` | Các đầu trên đặc trưng đóng băng: baseline RN50, DFN5B, ensemble | 432 MB |
-| `clip4cmr_ablation_AB.zip` | Ablation A/B trên RN50 và ViT-L/14 (Bảng II) | 186 MB |
+| `clip4cmr_ablation_AB.zip` | Ablation A/B trên RN50 và ViT-L/14 (Bảng III) | 186 MB |
 
 Giải nén **ở thư mục gốc repo**: mỗi `best.pt` sẽ nằm đúng cạnh file kết quả của nó (`reports/.../seedXX/`). Kiểm tra file tải về bằng `SHA256SUMS.txt`.
 
