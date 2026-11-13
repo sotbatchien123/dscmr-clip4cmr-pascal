@@ -1,6 +1,7 @@
 % IEEE conference paper: DSCMR and CLIP4CMR on Pascal Sentence.
 % Compiles with XeLaTeX (used for DSCMR_CLIP4CMR_IEEE.pdf) or pdfLaTeX (vntex/T5 for Vietnamese names).
-% On Overleaf: upload this file and fig_results.pdf (made by make_figures.py);
+% On Overleaf: upload this file and fig_results.pdf (made by make_figures.py),
+% fig_paired.pdf and fig_per_class.pdf;
 % the default compiler works.
 \documentclass[conference]{IEEEtran}
 
@@ -71,7 +72,7 @@ cross-modal retrieval, image--text retrieval, CLIP, prototype learning, supervis
 \end{IEEEkeywords}
 
 \section{Introduction}
-Cross-modal retrieval finds sentences that describe an image (image-to-text, I2T) or images that match a sentence (text-to-image, T2I). Most methods learn a common space in which related samples are close; in the supervised setting, class labels define relevance and are also used for training.
+Cross-modal retrieval aims to retrieve relevant items of one modality given a query of another, for example finding sentences that describe an image (image-to-text, I2T) or images that match a sentence (text-to-image, T2I). Because images and text live in heterogeneous feature spaces, most methods learn a common representation in which semantically related samples are close. In the supervised setting, class labels define relevance and are also used as a training signal.
 
 DSCMR~\cite{dscmr} learns modality-specific networks with a shared classifier and combines a label-space loss, a common-space discriminative loss and a modality-invariance loss. CLIP4CMR~\cite{clip4cmr} builds on frozen features of the vision--language model CLIP~\cite{clip} and studies several objectives, among which a prototype contrastive loss (PCL) performs best. Both report results on Pascal Sentence~\cite{pascal}, a small benchmark of 1,000 images in 20 classes.
 
@@ -90,7 +91,7 @@ Our contributions are as follows:
 
 \textbf{Vision--language pre-training.} CLIP~\cite{clip} learns aligned image and text encoders from large-scale image--text pairs and enables zero-shot classification by embedding prompts such as ``a photo of a \{class\}''. CLIP4CMR~\cite{clip4cmr} shows that frozen CLIP features substantially improve supervised cross-modal retrieval. More recent encoders improve the data or the objective, including EVA-02~\cite{eva02}, SigLIP with a sigmoid loss~\cite{siglip} and models trained on data selected by data filtering networks (DFN)~\cite{dfn}; we use the open\_clip implementations~\cite{openclip}.
 
-\textbf{Adapting CLIP.} CLIP-Adapter~\cite{clipadapter} trains a light residual module on frozen features, which inspires our residual adapter. CoOp~\cite{coop} learns the prompt context, and Tip-Adapter~\cite{tipadapter} builds a training-free cache classifier; both use text embeddings of class names as classifier weights, as our semantic prototypes do. For fine-tuning the encoder, LP-FT~\cite{lpft} first fits a linear head and then fine-tunes everything, WiSE-FT~\cite{wiseft} interpolates zero-shot and fine-tuned weights, and FLYP~\cite{flyp} fine-tunes with the contrastive pre-training loss using class prompts as text. These methods target classification and robustness; we transfer two of their ideas to supervised cross-modal \emph{retrieval}: text-initialized class embeddings as prototypes of a loss acting on both modalities, and fine-tuning only the last image blocks on an 8\,GB GPU, without weight interpolation or prompt learning. Supervised contrastive learning (SupCon)~\cite{supcon} pulls together all samples of a class and is our candidate for the common-space loss of DSCMR.
+\textbf{Adapting CLIP.} CLIP-Adapter~\cite{clipadapter} trains a light residual module on frozen features, which inspires our residual adapter. CoOp~\cite{coop} learns the prompt context, and Tip-Adapter~\cite{tipadapter} builds a training-free cache classifier; both use text embeddings of class names as classifier weights, as our semantic prototypes do. For fine-tuning the encoder, LP-FT~\cite{lpft} first fits a linear head and then fine-tunes everything, WiSE-FT~\cite{wiseft} interpolates zero-shot and fine-tuned weights, and FLYP~\cite{flyp} fine-tunes with the contrastive pre-training loss using class prompts as text. These methods target few-shot or full classification and robustness. We transfer two of their ideas to supervised cross-modal \emph{retrieval}: text-initialized class embeddings as prototypes of a retrieval loss that acts on both modalities, and fine-tuning only the last image blocks under an 8\,GB memory budget. We do not use weight interpolation or prompt learning. Supervised contrastive learning (SupCon)~\cite{supcon} pulls together all samples of a class and is our candidate for the common-space loss of DSCMR.
 
 \section{Baselines and Evaluation Protocol}
 
@@ -146,10 +147,10 @@ DSCMR & 71.0 / 72.2 & 68.84 / 71.05 & 66.77 / 69.32 \\
 \parbox{\columnwidth}{\footnotesize CLIP4CMR: CLIP RN50 features, 200 test pairs. DSCMR: VGG19 features, 100 test pairs; 3 seeds under our protocol. Test-selected: best epoch chosen on the test set, as in the released code.}
 \end{table}
 
-Reporting the \emph{last} of 500 epochs of the released DSCMR code instead of the best test epoch gives only 64.22 / 67.26.
+The same comparison explains the remaining gap for DSCMR. Training exactly as in its released code for 500 epochs but reporting the \emph{last} epoch instead of the best test epoch gives only 64.22 / 67.26, so the choice of checkpoint alone moves its result by about four points.
 
 \subsection{Implementation Details}
-All experiments run on a single laptop GPU (NVIDIA RTX 5070, 8\,GB) with PyTorch 2.7.1 and deterministic algorithms enabled. Heads on frozen features follow the original optimizers (Adam, learning rate $10^{-4}$, $\beta = (0.5, 0.999)$, batch 300 for CLIP4CMR), with at most 500 epochs and early stopping after 50 epochs without improvement on the validation split. A run on frozen features takes 0.5--2 minutes; encoder features are extracted once in fp16 and cached.
+All experiments run on a single laptop GPU (NVIDIA RTX 5070, 8\,GB) with PyTorch 2.7.1 and deterministic algorithms enabled. Heads on frozen features follow the original optimizers (Adam, learning rate $10^{-4}$, $\beta = (0.5, 0.999)$, batch 300 for CLIP4CMR), with at most 500 epochs and early stopping after 50 epochs without improvement on the validation split. A confirmation run takes on average 31\,s for the RN50 CLIP4CMR head, 53\,s with frozen DFN5B features, 128\,s for the DSCMR head on RN50 features and 98\,s for the three-encoder ensemble. Encoder features are extracted once in fp16 and cached, so every configuration of the study can be trained on the same hardware.
 
 \section{Proposed Improvements}
 
@@ -208,7 +209,29 @@ With its default weight of 0.001, the common-space loss of DSCMR accounts for on
 \begin{equation}
 \mathcal{L}_{\mathrm{SC}} = \sum_{i} \frac{-1}{|P(i)|} \sum_{p \in P(i)} \log \frac{\exp(z_i^{\top} z_p / \tau)}{\sum_{a \neq i} \exp(z_i^{\top} z_a / \tau)},
 \end{equation}
-computed over the normalized image and text representations $z$ of a batch, where $P(i)$ contains all other samples of the class of $i$ and $\tau = 0.2$. Separately, we test adaptive loss weights that rescale each term by the exponential moving average of its relative decrease. All loss weights are re-tuned by CV with the same budget for the baseline and the new variants. Tuning makes the common-space term matter: its share of the loss grows from 0.3--1\% to about 3\% for the original loss and 27\% for SupCon.
+computed over the normalized image and text representations $z$ of a batch, where $P(i)$ contains all other samples of the class of $i$ and $\tau = 0.2$. Separately, we test adaptive loss weights that rescale each term by the exponential moving average of its relative decrease. All loss weights are re-tuned by CV with the same budget for the baseline and the new variants. Table~\ref{tab:share} shows that tuning makes the common-space term matter: its share grows to about 3\% for the original loss and 27\% for SupCon.
+
+\begin{table}[t]
+\centering
+\caption{Share of each DSCMR loss term (\%, mean up to the best epoch)}
+\label{tab:share}
+\small
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc@{}}
+\toprule
+Variant (tuned weights) & Label space & Common space & Invariance \\
+\midrule
+B0*: original loss & 86.8 & 2.8 & 10.4 \\
+B1*: SupCon & 65.0 & 27.1 & 7.9 \\
+B2*: adaptive weights & 86.5 & 3.0 & 10.5 \\
+B3*: both & 65.4 & 26.6 & 8.0 \\
+\bottomrule
+\end{tabular*}
+
+\vspace{2pt}
+\parbox{\columnwidth}{\footnotesize With the default weights ($\alpha = 0.001$) the common-space share is only about 0.3--1\%. Seed 42.}
+\end{table}
+
 For DSCMR on new features, we keep its original head and loss and only change the inputs: image features from the CLIP-family encoders and the caption-mean text representation, with class-balanced batches of five samples per class. We consider an ensemble of L2-normalized DFN5B, EVA02-L and SigLIP features, concatenated and divided by $\sqrt{3}$, and DFN5B with partial fine-tuning.
 
 \section{Experiments}
@@ -269,6 +292,47 @@ DFN5B ViT-H/14 & 1024 & 70.43 & 71.53 \\
 \parbox{\columnwidth}{\footnotesize Stratified 3-fold CV on the 800 training pairs only.}
 \end{table}
 
+\subsection{Text Representation and Zero-Shot Reference}
+Table~\ref{tab:text} isolates the text side. Without any training, CLIP already retrieves well above chance, and averaging the embeddings of the individual captions is clearly better than encoding their truncated concatenation (+3.4 points for RN50, +3.7 for ViT-L/14). The same holds for the DSCMR head on RN50 features (+0.9 on CV), which motivated the caption-mean input used for DSCMR throughout. With DFN5B features both text inputs perform the same, consistent with the image side being the bottleneck.
+
+\begin{table}[t]
+\centering
+\caption{Text representation (mAP, \%, average of I2T and T2I)}
+\label{tab:text}
+\small
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}llcc@{}}
+\toprule
+Setting & Features & Concatenated & Caption mean \\
+\midrule
+Zero-shot CLIP (test) & RN50 & 55.15 & 58.54 \\
+Zero-shot CLIP (test) & ViT-L/14 & 53.92 & 57.60 \\
+DSCMR head (CV) & RN50 & 67.35 & 68.21 \\
+DSCMR head (CV) & DFN5B & 72.27 & 72.24 \\
+\bottomrule
+\end{tabular*}
+
+\vspace{2pt}
+\parbox{\columnwidth}{\footnotesize Concatenated: five captions joined and truncated to 77 tokens, as in the original CLIP4CMR code.}
+\end{table}
+
+\subsection{Depth of Fine-Tuning}
+Table~\ref{tab:depth} selects the number of fine-tuned image blocks. Fine-tuning helps both heads compared with frozen DFN5B features, by 1.7 points for CLIP4CMR and 0.8 for DSCMR on CV. Two blocks are best for CLIP4CMR, while the DSCMR head, which has more trainable parameters of its own and no semantic prototypes, profits from four.
+
+\begin{table}[t]
+\centering
+\caption{Fine-tuned DFN5B image blocks (CV mAP, \%)}
+\label{tab:depth}
+\small
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc@{}}
+\toprule
+Head & Frozen & $N = 2$ & $N = 4$ \\
+\midrule
+CLIP4CMR + A + B & 71.53 & \textbf{73.24} & 72.90 \\
+DSCMR (original head and loss) & 72.24 & 72.71 & \textbf{73.04} \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
 \subsection{Main Results for CLIP4CMR: Encoder versus Method}
 Table~\ref{tab:clip4cmr} and Fig.~\ref{fig:results}(a) show the cumulative effect. On top of \Asem+B, frozen DFN5B features add 2.86 points and fine-tuning the last two blocks another 2.54 (CI [1.75, 3.33]; CV: 73.24 for $N = 2$, 72.90 for $N = 4$). The final model reaches 76.63 / 75.68, a paired gain of +8.15 / +7.81 over the baseline on all five seeds in both directions (each seed gains 6.4--8.9 points), about 6.5 points above the published results.
 
@@ -302,6 +366,16 @@ DFN5B FT 2 bl., original head & 75.77 & 74.91 & 75.34 & [71.4, 79.2] \\
 \caption{Test mAP@ALL (\%, mean and sample standard deviation over 5 seeds) for (a) CLIP4CMR improvements and (b) the original DSCMR head on different input features. Numbers above bars are the average of both directions; the dashed line marks the published result of CLIP4CMR~\cite{clip4cmr}, the dotted line the classify-then-rank baseline with DFN5B (no retrieval head).}
 \label{fig:results}
 \end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_paired.pdf}
+\caption{Paired gain of the final models over their RN50 baselines for each seed (markers) and on average (horizontal lines). All 20 gains are positive.}
+\label{fig:paired}
+\end{figure}
+
+Fig.~\ref{fig:paired} shows that the improvement does not depend on a lucky seed: each of the five seeds gains between 6.4 and 8.9 points for CLIP4CMR in both directions, roughly ten times the seed-to-seed standard deviation in Table~\ref{tab:clip4cmr}. For DSCMR every seed also improves, by 4.9--7.2 points for I2T and by a smaller 1.9--3.7 points for T2I.
+
 \subsection{Simple Baselines}
 Because relevance is defined by a single class label, retrieval on Pascal Sentence is closely tied to classification. Table~\ref{tab:baselines} therefore reports baselines without any retrieval head. Zero-shot retrieval compares image and text embeddings directly; averaging the caption embeddings beats the truncated concatenation by 2--3 points, which motivates B. \emph{Classify-then-rank} predicts class probabilities $p$ for every image and text, either with a zero-shot classifier (softmax over cosine similarities to the class prompts, temperature 0.01) or with a logistic-regression probe per modality trained on the 800 training pairs (regularization chosen by CV), and ranks by $p_{\mathrm{img}}^{\top} p_{\mathrm{txt}}$.
 
@@ -373,21 +447,57 @@ RN50 (baseline) & 68.86 $\pm$ 0.53 & 69.89 $\pm$ 0.31 & 69.38 \\
 \parbox{\columnwidth}{\footnotesize CLIP4CMR split; text features are the mean of the five caption embeddings. Bold: primary configuration, fixed before opening the test set. $^\dagger$Secondary configuration.}
 \end{table}
 
+\subsection{Per-Class Analysis}
+Fig.~\ref{fig:perclass} breaks the CLIP4CMR result down by class. Animals and vehicles with a distinctive appearance (sheep, train, cow, horse, cat) are retrieved almost perfectly by both models. The hardest classes are person, potted plant and chair: their images are often cluttered indoor or street scenes in which the labeled object is small and appears together with objects of other classes, so the captions may describe something else. The improved model gains much on these ambiguous classes (person +14.9, chair +15.6) and most on sofa (+37.0, from 47.6 to 84.6), a class whose indoor scenes overlap with chair and dining table.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_per_class.pdf}
+\caption{Average precision per class for CLIP4CMR (mean over 5 seeds and both directions), sorted by the final model.}
+\label{fig:perclass}
+\end{figure}
+
 \section{Discussion}
-\textbf{Sources of improvement.} For CLIP4CMR, most of the gain comes from the image encoder: the original head on the fine-tuned DFN5B encoder recovers 7.16 of the 7.98 points. Their effect is best understood through the classify-then-rank baseline: on a single-label benchmark retrieval is close to classification, and text prototypes give the head a zero-shot classifier for free, which matters when the head cannot learn a good one from weak features. For DSCMR, almost the entire gain also comes from better input features.
+\textbf{Sources of improvement.} For CLIP4CMR, most of the gain comes from the image encoder: the original head on the fine-tuned DFN5B encoder recovers 7.16 of the 7.98 points. Semantic prototypes are worth +2.6 points with RN50 but at most about 0.8 with strong features, and making them learnable does not help. The control experiment is important: an adapter with random prototypes does not help and can hurt, so the gain of A comes from injecting class semantics. Their effect is best understood through the classify-then-rank baseline: on a single-label benchmark retrieval is close to classification, and text prototypes give the head a zero-shot classifier for free, which matters when the head cannot learn a good one from weak features. For DSCMR, almost the entire gain also comes from better input features: strengthening its nearly inactive common-space term improved only one retrieval direction.
 
-\textbf{Negative results.} Post-hoc re-ranking (dual-softmax, $\tau = 0.1$, or database-side augmentation) gives at most +0.89 on CV with RN50 \Asem+B and +0.15 with DFN5B, and hurts the other heads, so it was not used.
-\textbf{Reproducibility.} The repository provides every script, logs and test embeddings of all runs, the trained weights, and a notebook that recomputes the reported test numbers without a GPU. The tag \texttt{experiments-2026-10-31} marks the code of the original results.
+\textbf{Negative results.} Beyond the DSCMR loss variants, we tested post-hoc re-ranking with dual-softmax normalization and database-side augmentation (Table~\ref{tab:rerank}). The best setting helps CLIP4CMR with \Asem+B on RN50 features (+0.89 on CV), but only +0.15 with DFN5B features, and it hurts the baseline head and the DSCMR head. Since it also requires access to the whole retrieval set at query time, it was not used. Fine-tuning more blocks did not help CLIP4CMR (4 blocks: 72.90 versus 73.24 on CV).
 
-\textbf{Limitations.} The CLIP4CMR split comes from a third-party mirror that, although verified, has not been confirmed by the authors. The improved DSCMR uses the CLIP4CMR split, so it cannot be compared with its published numbers. Most of the gain comes from a larger encoder that needs more computation, and the test set was reused across rounds (Section~\ref{sec:protocol}). All results are on a single small dataset with 200 test pairs; a second benchmark such as Wikipedia or NUS-WIDE is left for future work.
+\begin{table}[t]
+\centering
+\caption{Post-hoc re-ranking (CV mAP, \%, average of both directions)}
+\label{tab:rerank}
+\small
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}llccc@{}}
+\toprule
+Features & Head & None & Dual-softmax & $\Delta$ \\
+\midrule
+RN50 & CLIP4CMR & 66.60 & 66.21 & $-$0.39 \\
+RN50 & CLIP4CMR + A + B & 68.99 & 69.88 & +0.89 \\
+RN50 & DSCMR & 68.21 & 67.56 & $-$0.64 \\
+DFN5B & CLIP4CMR & 70.43 & 70.08 & $-$0.35 \\
+DFN5B & CLIP4CMR + A + B & 71.53 & 71.68 & +0.15 \\
+DFN5B & DSCMR & 72.24 & 71.42 & $-$0.81 \\
+\bottomrule
+\end{tabular*}
+
+\vspace{2pt}
+\parbox{\columnwidth}{\footnotesize Best re-ranking setting per row (dual-softmax, $\tau = 0.1$); database-side augmentation was never the best setting.}
+\end{table}
+
+\textbf{Reproducibility.} The repository provides every script, the saved predictions and logs of all runs, the trained weights of all five seeds as release assets, and a notebook that recomputes every reported test number from the saved test embeddings without a GPU. The tag \texttt{experiments-2026-10-31} marks the exact code version that produced the original results; the analyses added in this revision are in \texttt{reports/revision\_20261112}.
+
+\textbf{Limitations.} The CLIP4CMR split comes from a third-party mirror that, although verified, has not been confirmed by the authors. The improved DSCMR is evaluated on the CLIP4CMR split and therefore cannot be compared with its published numbers on the same test set. Most of the improvement is due to a stronger pre-trained encoder, which also requires more computation, and a training-free classify-then-rank baseline is within about one point of our best model. The test set was reused across rounds (Section~\ref{sec:protocol}). All results are on a single small dataset with 200 test pairs; a second benchmark such as Wikipedia or NUS-WIDE is left for future work.
 
 \section{Conclusion}
 We revisited DSCMR and CLIP4CMR under a protocol that does not use the test set for model selection. CLIP4CMR improves from 68.17 to 76.15 mean mAP on Pascal Sentence, consistently across seeds, but the gain comes mainly from better image features: the original head on a partially fine-tuned DFN5B encoder reaches 75.34. Semantic prototypes from class prompts help most when the encoder is weak (+2.6 points with RN50), and a zero-shot classify-then-rank baseline is within about one point of the best model. For DSCMR, a supervised contrastive loss helps only image-to-text retrieval, while stronger features add 4.36 points. Evaluation protocol, simple baselines and the choice of encoder matter more on this benchmark than the retrieval head.
 
 Code and results: \url{https://github.com/sotbatchien123/dscmr-clip4cmr-pascal}
 
-\section*{Author Contributions and Use of AI}
-\vn{Ngô Ngọc Trường Sơn}: idea, implementation, all experiments, analysis and writing. \vn{Nguyễn Gia Phúc}: unit tests of the retrieval metrics. \vn{Vũ Quốc Đạt}: verification of the references. \vn{Mai Quốc Huy}: installation check on a clean machine and the troubleshooting guide. \vn{Trần Đăng Khoa}: proofreading of the abstract and author information. All authors approved the paper. AI assistants (Claude and Codex) were used to help write and debug code, to run and check experiments and to draft and edit the text. The authors checked every reported number against the saved outputs and take full responsibility for the code, the results and the paper.
+\section*{Author Contributions}
+\vn{Ngô Ngọc Trường Sơn}: idea, implementation, all experiments, analysis and writing. \vn{Nguyễn Gia Phúc}: unit tests of the retrieval metrics. \vn{Vũ Quốc Đạt}: verification of the references. \vn{Mai Quốc Huy}: installation check on a clean machine and the troubleshooting guide. \vn{Trần Đăng Khoa}: proofreading of the abstract and author information. All authors read and approved the paper.
+
+\section*{Use of AI Tools}
+AI assistants (Claude and Codex) were used to help write and debug code, to run and check experiments and to draft and edit the text. The authors checked every reported number against the saved outputs and take full responsibility for the code, the results and the paper.
 
 \begin{thebibliography}{00}
 \bibitem{dscmr} L. Zhen, P. Hu, X. Wang, and D. Peng, ``Deep supervised cross-modal retrieval,'' in \textit{Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR)}, 2019, pp. 10394--10403.

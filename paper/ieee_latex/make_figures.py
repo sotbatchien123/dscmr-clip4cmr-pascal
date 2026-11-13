@@ -2,7 +2,8 @@
 
     python paper/ieee_latex/make_figures.py        (from the repository root)
 
-Writes fig_results.pdf next to this file (per-class AP is plotted in the notebook).
+Writes fig_results.pdf next to this file. fig_paired.pdf and fig_per_class.pdf are unchanged
+from the first version of the paper (the notebook draws the same plots from the same embeddings).
 """
 import json
 import sys
